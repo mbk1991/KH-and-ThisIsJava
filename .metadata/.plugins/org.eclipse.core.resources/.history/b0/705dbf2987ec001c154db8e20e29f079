@@ -28,7 +28,7 @@ public class Exercise_Logical2 {
 			boolean capitalCheck = (inputChar >= 'A') && (inputChar <= 'Z') ? true : false;
 
 			System.out.println("영어 대문자 확인 : " + capitalCheck);
-			System.out.println('A' +'B');
+			System.out.println((char)'A' +'B');
 
 		}
 
