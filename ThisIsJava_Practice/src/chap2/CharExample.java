@@ -6,7 +6,7 @@ public class CharExample {
 		char c2 = 65;
 		char c3 = '\u0041';
 		
-		char c4 = '°¡';
+		char c4 = 'B';
 		char c5 = 44032;
 		char c6 = '\uac00';
 		

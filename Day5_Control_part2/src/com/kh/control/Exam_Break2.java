@@ -6,24 +6,24 @@ public class Exam_Break2 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		Á¾·á:
+		quit:
 		while(true) {
 			System.out.println("-----");
-			System.out.println("1. ÀÔ·Â");
-			System.out.println("2. ¼öÁ¤");
-			System.out.println("3. Á¶È¸");
-			System.out.println("4. »èÁ¦");
-			System.out.println("0. Á¾·á");
-			System.out.println("¸Þ´º ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä :");
+			System.out.println("1. ï¿½Ô·ï¿½");
+			System.out.println("2. ï¿½ï¿½ï¿½ï¿½");
+			System.out.println("3. ï¿½ï¿½È¸");
+			System.out.println("4. ï¿½ï¿½ï¿½ï¿½");
+			System.out.println("0. ï¿½ï¿½ï¿½ï¿½");
+			System.out.println("ï¿½Þ´ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ :");
 			System.out.println("-----");
 	
 			int select = sc.nextInt();
 			switch (select) {
-			case 1: System.out.println("ÀÔ·Â¸Þ´ºÀÔ´Ï´Ù."); break;
-			case 2: System.out.println("¼öÁ¤¸Þ´ºÀÔ´Ï´Ù."); break;
-			case 3: System.out.println("Á¶È¸¸Þ´ºÀÔ´Ï´Ù."); break;
-			case 4: System.out.println("»èÁ¦¸Þ´ºÀÔ´Ï´Ù."); break;
-			case 0: System.out.println("Á¾·á¸Þ´ºÀÔ´Ï´Ù."); break Á¾·á;
+			case 1: System.out.println("ï¿½Ô·Â¸Þ´ï¿½ï¿½Ô´Ï´ï¿½."); break;
+			case 2: System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Þ´ï¿½ï¿½Ô´Ï´ï¿½."); break;
+			case 3: System.out.println("ï¿½ï¿½È¸ï¿½Þ´ï¿½ï¿½Ô´Ï´ï¿½."); break;
+			case 4: System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Þ´ï¿½ï¿½Ô´Ï´ï¿½."); break;
+			case 0: System.out.println("ï¿½ï¿½ï¿½ï¿½Þ´ï¿½ï¿½Ô´Ï´ï¿½."); break quit;
 			default : System.out.println(); break;
 			
    }
