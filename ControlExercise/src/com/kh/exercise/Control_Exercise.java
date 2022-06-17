@@ -15,6 +15,7 @@ public class Control_Exercise {
 			if (i == input) break;
 			i++;
 		}
+		System.out.println();
 	}
 
 	
@@ -31,6 +32,7 @@ public class Control_Exercise {
 				System.out.print(i + " ");
 			}
 		}
+		System.out.println();
 	}
 
 	public void practice3() {
@@ -46,6 +48,7 @@ public class Control_Exercise {
 			if (i == input)
 				System.out.println(" = " + sum);
 		}
+		System.out.println();
 	}
 
 	public void practice4() {
@@ -83,7 +86,7 @@ public class Control_Exercise {
 			}
 
 		}
-
+		System.out.println();
 	}
 
 	public void practice5() {
@@ -95,7 +98,7 @@ public class Control_Exercise {
 		for (int i = 1; i <= 9; i++) {
 			System.out.printf("%d * % d = %d\n", input, i, input * i);
 		}
-
+		System.out.println();
 	}
 
 	public void practice6() {
@@ -112,6 +115,7 @@ public class Control_Exercise {
 			System.out.println();
 
 		}
+		System.out.println();
 	}
 
 	public void practice7() {
@@ -125,7 +129,7 @@ public class Control_Exercise {
 			}
 			System.out.println();
 		}
-
+		System.out.println();
 	}
 
 	public void practice8() {
@@ -139,7 +143,7 @@ public class Control_Exercise {
 			}
 			System.out.println();
 		}
-
+		System.out.println();
 	}
 
 }
