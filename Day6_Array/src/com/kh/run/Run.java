@@ -23,8 +23,9 @@ public class Run {
 //		ea2.practice6();
 //		ea2.practice7();
 //		ea2.practice8();
-		ea2.practice9();
+//		ea2.practice9();
+//		ea2.practice11();
+		ea2.practice12();
 		
-
 	}
 }

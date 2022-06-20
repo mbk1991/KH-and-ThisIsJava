@@ -1,5 +1,6 @@
 package com.kh.exercise;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Exercise2_Array {
@@ -175,19 +176,113 @@ public class Exercise2_Array {
 		System.out.print("치킨 이름을 입력하세요: ");
 		String inputString = sc.next();
 
-		int count =0;
+		int count = 0;
 		for (int i = 0; i < chickenMenu.length; i++) {
 			if (chickenMenu[i].equals(inputString)) {
 				System.out.println(inputString + "치킨은 배달 가능");
-				count ++;
+				count++;
 				break;
 			}
 		}
-		if(count==0) {
+		if (count == 0) {
 			System.out.println("없는메뉴입니다.");
 		}
 	}
+
 	public void practice10() {
-		//주민번호 마스킹 문제 수업 중 풂
+		// 주민번호 마스킹 문제 수업 중 풂
+	}
+
+	public void practice11() {
+		// 로또 번호 자동 생성기 프로그램 작성
+		// 중복 값 없이 오름차순으로 정렬하여 출력
+		Random rand = new Random();
+		int[] lottos = new int[6];
+		// 중복값 없게 값 초기화
+		for (int i = 0; i < lottos.length; i++) {
+			System.out.println("i" + i);
+			lottos[i] = rand.nextInt(45) + 1;
+			for (int j = 0; j < i; j++) {
+				if (lottos[i] == lottos[j]) {
+
+					i--;
+					break;
+				}
+			}
+		}
+
+		for (int i = 0; i < lottos.length; i++) {
+			System.out.print(lottos[i] + " ");
+		}
+
+		// 버블정렬
+		for (int i = 0; i < lottos.length - 1; i++) {
+			for (int j = 0; j < (lottos.length - 1) - i; j++) {
+				if (lottos[j] > lottos[j + 1]) {
+					int temp = lottos[j];
+					lottos[j] = lottos[j + 1];
+					lottos[j + 1] = temp;
+				}
+			}
+		}
+
+		System.out.println();
+		for (int i = 0; i < lottos.length; i++) {
+			System.out.print(lottos[i] + " ");
+		}
+
+	}
+
+	public void practice12() {
+		// 문자열 입력, 문자열에 어떤 문자가 들어갔는지
+		// 배열에 저장// 문자의 개수와 함께 출력
+		Scanner sc = new Scanner(System.in);
+		System.out.println("문자열 입력> "); // application
+		String inputString = sc.next();
+
+		char[] charArray = new char[inputString.length()];
+
+		for (int i = 0; i < charArray.length; i++) {
+			charArray[i] = inputString.charAt(i);
+		}
+
+//		for (int i = 0; i < charArray.length; i++)
+//			System.out.print(charArray[i] + " ");
+
+//		int count = 0;
+		for (int i = 0; i < charArray.length; i++) {
+			for (int j = i+1; j < charArray.length; j++) {
+				if (charArray[i] == charArray[j]) {
+					charArray[j]=' ';
+				}
+			}
+		}
+		
+		int minus = 0;
+		for(int i = 0; i< charArray.length; i++) {
+			if(charArray[i] == ' ') {
+				for(int j= i+1; j<charArray.length; j++) {
+					charArray[j-1] = charArray[j];
+				}
+				charArray[charArray.length-1] = ' ';
+			}
+		}
+		
+		char[] copyArray = new char[charArray.length];
+		for(int i=0; i<copyArray.length; i++) {
+			copyArray[i] = charArray[i];
+		}
+		
+		int count = 0;
+		for(int i=0; i<copyArray.length; i++) {
+			if(copyArray[i] == ' ') {
+				count ++;
+			}else {
+				System.out.print(copyArray[i] + ", ");
+			}
+		}
+		System.out.println();
+		System.out.println("문자 개수 : " + (copyArray.length-count));
+
 	}
 }

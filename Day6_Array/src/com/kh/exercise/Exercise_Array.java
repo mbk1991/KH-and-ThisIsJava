@@ -172,7 +172,7 @@ public class Exercise_Array {
 		for (int i = 0; i < lottos.length; i++) {
 			lottos[i] = rand.nextInt(45) + 1;
 			for(int j =0; j<i; j++) {
-				if(lottos[j]==lottos[i] {
+				if(lottos[j]==lottos[i]) {
 					i--;  //이게 포인트 /중복될 경우 증가식과 만나서 같은 i값을 다시 뽑게됨.
 					break;  //
 				}
