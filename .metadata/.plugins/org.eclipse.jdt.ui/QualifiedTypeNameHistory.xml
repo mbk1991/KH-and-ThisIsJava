@@ -8,8 +8,10 @@
 <fullyQualifiedTypeName name="com.kh.exercise.Control_Exercise2"/>
 <fullyQualifiedTypeName name="chap5.ArrayCreateByValueListExample"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="com.kh.exercise.Exercise_Array"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="com.kh.exercise.Exercise2_Array"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="com.kh.exercise.Exercise_DimArray"/>
+<fullyQualifiedTypeName name="com.kh.exercise.Exercise_Method"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>
