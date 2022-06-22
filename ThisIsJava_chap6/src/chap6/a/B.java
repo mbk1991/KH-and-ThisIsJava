@@ -9,7 +9,7 @@ public class B {
 		B b = new B();
 		System.out.println(intnum);
 		System.out.println(b.str);
-		aa();
+//		aa();
 	}
 	
 	public void aa() {};

@@ -13,5 +13,10 @@
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="com.kh.exercise.Exercise_DimArray"/>
 <fullyQualifiedTypeName name="com.kh.exercise.Exercise_Method"/>
+<fullyQualifiedTypeName name="com.kh.oop.Person"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="com.kh.exercise.Motel"/>
+<fullyQualifiedTypeName name="chap6.Singleton"/>
+<fullyQualifiedTypeName name="chap6.Person"/>
+<fullyQualifiedTypeName name="chap6.Earth"/>
 </qualifiedTypeNameHistroy>
