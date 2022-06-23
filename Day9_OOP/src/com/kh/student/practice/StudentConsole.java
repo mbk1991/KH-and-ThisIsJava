@@ -62,5 +62,5 @@ public class StudentConsole {
 			System.out.println("ЦђБе : " + std.getAvg());
 		}
 	}
-
+ 
 }
