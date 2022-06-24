@@ -7,10 +7,8 @@
 <fullyQualifiedTypeName name="com.kh.exercixe.Exercise_ForDouble"/>
 <fullyQualifiedTypeName name="com.kh.exercise.Control_Exercise2"/>
 <fullyQualifiedTypeName name="chap5.ArrayCreateByValueListExample"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="com.kh.exercise.Exercise_Array"/>
 <fullyQualifiedTypeName name="com.kh.exercise.Exercise2_Array"/>
-<fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="com.kh.exercise.Exercise_DimArray"/>
 <fullyQualifiedTypeName name="com.kh.exercise.Exercise_Method"/>
 <fullyQualifiedTypeName name="com.kh.oop.Person"/>
@@ -20,6 +18,14 @@
 <fullyQualifiedTypeName name="chap6.Earth"/>
 <fullyQualifiedTypeName name="chap6.constructor_access.package1.A"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="com.kh.student.Student"/>
+<fullyQualifiedTypeName name="com.kh.student.practice.Student"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.annotation.RetentionPolicy"/>
+<fullyQualifiedTypeName name="java.lang.annotation.Target"/>
+<fullyQualifiedTypeName name="java.lang.annotation.Retention"/>
+<fullyQualifiedTypeName name="java.lang.annotation.ElementType"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Method"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
 </qualifiedTypeNameHistroy>
