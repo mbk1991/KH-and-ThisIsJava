@@ -8,8 +8,28 @@ public class Exam_WrapperClass {
 		Integer input = new Integer(3);
 
 //		parseExample();
-		boxingExample();
+//		boxingExample();
+		parsingStringExample();
 
+	}
+	static void parsingStringExample() { //기본형을 String으로 만들어주기
+		//Wrapper클래스로 객체화 한 것을 toString하여 String으로 반환받는것.
+		//3 - String
+		String iStr = Integer.valueOf(3).toString();
+		System.out.println(iStr);
+		
+		String bStr = Byte.valueOf((byte)5).toString();
+		String sStr = Short.valueOf((short)4).toString();
+		String lStr = Long.valueOf((long)5).toString();
+		
+		String fStr = Float.valueOf(0.3f).toString();
+		String dStr = Double.valueOf(0.21).toString();
+		
+		String boolStr = Boolean.valueOf(true).toString();
+		String cStr = Character.valueOf('A').toString();
+		
+		//String.valueOf(123) 이 Integer.valueOf(123).toString() 와 같다.
+		
 	}
 
 	static void boxingExample() {
