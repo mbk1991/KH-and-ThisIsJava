@@ -1,4 +1,4 @@
-package chap6.peopleexam;
+package chap7.peopleexam;
 
 public class StudentExample {
 	public static void main(String[] args) {

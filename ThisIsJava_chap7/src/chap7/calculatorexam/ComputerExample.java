@@ -1,4 +1,4 @@
-package chap6.calculatorexam;
+package chap7.calculatorexam;
 
 public class ComputerExample {
 	public static void main(String[] args) {

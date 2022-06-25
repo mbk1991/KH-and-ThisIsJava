@@ -1,4 +1,4 @@
-package chap6.airplaneexam;
+package chap7.airplaneexam;
 
 public class SupersonicAirplaneExample {
 	public static void main(String[] args) {

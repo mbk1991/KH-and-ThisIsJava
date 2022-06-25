@@ -1,4 +1,4 @@
-package chap6.peopleexam;
+package chap7.peopleexam;
 
 public class Student extends People {
 	private int studentNo;

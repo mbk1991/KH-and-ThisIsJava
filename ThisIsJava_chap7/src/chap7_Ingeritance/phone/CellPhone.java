@@ -1,4 +1,4 @@
-package chap6_Ingeritance.phone;
+package chap7_Ingeritance.phone;
 
 public class CellPhone {
 	//ÇÊµå

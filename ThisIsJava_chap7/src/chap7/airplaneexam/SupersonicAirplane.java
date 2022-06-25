@@ -1,4 +1,4 @@
-package chap6.airplaneexam;
+package chap7.airplaneexam;
 
 public class SupersonicAirplane extends Airplane {
 	public static final int NORMAL = 1;

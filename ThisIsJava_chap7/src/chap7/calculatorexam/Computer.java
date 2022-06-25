@@ -1,4 +1,4 @@
-package chap6.calculatorexam;
+package chap7.calculatorexam;
 
 public class Computer extends Calculator {
 
