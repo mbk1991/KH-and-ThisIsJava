@@ -9,7 +9,45 @@ public class Exam_WrapperClass {
 
 //		parseExample();
 //		boxingExample();
-		parsingStringExample();
+//		parsingStringExample();
+		
+		//int값을 Integer형 참조변수에 대입하는 3가지 방법.
+		Integer num1 = 10; //int 리터럴을 바로 대입 가능. 오토박싱
+		Integer num2 = new Integer(10);  //new연산자로 객체의 주소 대입 가능
+		Integer num3 = Integer.valueOf(10); //valueOf()메소드 기본형을 매개변수로 받아 wrapper형을 반환.
+		
+		num1 = null;
+		
+		int intNum = num1;
+		
+//		try {
+//			
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}catch(NullPointerException e){
+//			
+//		}finally {
+//		}
+//			
+//		}
+		
+	
+		
+		
+		//참조변수인데 int처럼 연산이 가능하다.
+		System.out.println(num1+ num2+ num3);
+		int result = num1 * num2 * num3;
+		System.out.println(result);
+		
+		//null을 대입할 수가 있다.
+		num1 = null;
+		System.out.println(num1);
+		
+		//객체형과 기본형의 연산도 가능하다. 
+		int num4 = Integer.parseInt("100");
+		Integer num5 = Integer.parseInt("200");
+		long num6 = Integer.parseInt("300");
+		System.out.println(num4 + num5 + num6);
 
 	}
 	static void parsingStringExample() { //기본형을 String으로 만들어주기
