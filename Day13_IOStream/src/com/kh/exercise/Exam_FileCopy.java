@@ -18,7 +18,7 @@ public class Exam_FileCopy {
 		String data = "";
 		
 		try {
-			is = new FileInputStream("C:\\temp2\\image1.png");
+			is = new FileInputStream("c:\\temp2\\image1.png");
 			byte[] dataByteNo = new byte[10000];
 			int dataNo;
 			
@@ -41,7 +41,7 @@ public class Exam_FileCopy {
 		OutputStream os = null;
 		
 		try {
-			os = new FileOutputStream("C:\\temp3\\image1_copy.png");
+			os = new FileOutputStream("c:\\temp3\\copiedImage1.png");
 			byte[] dataByteNo = data.getBytes();
 			os.write(dataByteNo);
 			os.flush();

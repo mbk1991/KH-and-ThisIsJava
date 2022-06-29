@@ -17,13 +17,13 @@ public class Exam_FileCopy_1 {
 		OutputStream os = null;
 
 		try {
-			is = new FileInputStream("C:\\temp2\\image1.png");
-			os = new FileOutputStream("C:\\temp3\\copyImage1.png");
+			is = new FileInputStream("C:\\temp2\\testmp4.mp4");
+			os = new FileOutputStream("C:\\temp3\\testmp4_copy.mp4");
 			int readByteNo;
 			byte[] readBytes = new byte[100];
 			while ((readByteNo = is.read(readBytes)) != -1) {
 				// 여기에 쓰기 코드가 필요함.
-				os.write(readBytes);
+				os.write(readBytes);  // 읽어온 데이터를 os경로 copyImage1.png파일에 씀.
 			}
 			os.flush();
 			System.out.println("작업 완료");
