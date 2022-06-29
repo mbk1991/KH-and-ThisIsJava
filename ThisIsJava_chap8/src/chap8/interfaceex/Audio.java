@@ -1,7 +1,8 @@
 package chap8.interfaceex;
 
 public class Audio implements RemoteControl {
-	int volume;
+	private int volume;
+	private boolean mute;
 	
 	@Override
 	public void turnOn() {
@@ -23,6 +24,16 @@ public class Audio implements RemoteControl {
 			this.volume = volume;
 		}
 		System.out.println("현재 볼륨 : " + volume);
+	}
+	
+	@Override  // 디폴트메소드 재정의
+	public void setMute(boolean mute) {
+		this.mute = mute;
+		if(mute) {
+			System.out.println("Audio 무음 처리합니다.");
+		}else {
+			System.out.println("Audio 무음 해제합니다.");
+		}
 	}
 
 }

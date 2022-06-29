@@ -2,12 +2,10 @@ package exercise.nintendo.game;
 
 import java.util.Random;
 import java.util.Scanner;
-// 1대1 극악의 난이도 베스킨라빈스.
+
 public class BeskinGame {
 	int gamePointerNumber = 0;
 	public static final int GOAL_NUMBER = 31;
-	public static final int PLAYER = 1;
-	public static final int COM = 2;
 	public static boolean gamePlay = true;
 
 	public void baskinGame(Player p1, Player p2) {
@@ -49,14 +47,14 @@ public class BeskinGame {
 			System.out.println(p.getName() + " : " + gamePointerNumber + "!!");
 			try {
 				Thread.sleep(400);
+				if (gamePointerNumber == GOAL_NUMBER) {
+					System.out.println("31을 불렀습니다.");
+					System.out.println(p.getName() + "의 패배!");
+					gamePlay = false;
+					return;
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
-			if (gamePointerNumber == GOAL_NUMBER) {
-				System.out.println("31을 불렀습니다.");
-				System.out.println(p.getName() + "의 패배!");
-				gamePlay = false;
-				return;
 			}
 		}
 	}
