@@ -2,8 +2,10 @@ package exercise.nintendo.game;
 
 import java.util.Random;
 
-public class Com implements Player {
-	String name = "COM";
+public class Com extends PlayerClass implements Player {
+	public String name = "COM";
+	Random rand = null;
+	public int diceSum = 0;
 
 	@Override
 	public int choice(int gamePointerNumber) {
@@ -24,4 +26,11 @@ public class Com implements Player {
 	public String getName() {
 		return this.name;
 	}
+	
+	@Override
+	public int dice() {
+		rand = new Random();
+		return rand.nextInt(6)+1;
+	}
+
 }

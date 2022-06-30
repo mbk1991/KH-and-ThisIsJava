@@ -1,7 +1,7 @@
 package exercise.nintendo.game;
 
 public class RunBeskinGame {
-	public static void main(String[] args) {
+	public void RunBeskin() {
 		Player user = new User();
 		Player com = new Com();
 		

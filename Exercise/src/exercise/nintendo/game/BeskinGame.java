@@ -8,6 +8,18 @@ public class BeskinGame {
 	public static final int GOAL_NUMBER = 31;
 	public static boolean gamePlay = true;
 
+	public void RunBeskin(User user) {
+//		Player user = new User();
+		Player com = new Com();
+
+		System.out.println("베스킨라빈스 31 게임을 시작합니다.");
+		if (setOrder() == 1) {
+			baskinGame(user, com);
+		} else {
+			baskinGame(com, user);
+		}
+	}
+
 	public void baskinGame(Player p1, Player p2) {
 		while (gamePlay) {
 			int choice1 = p1.choice(gamePointerNumber);
@@ -50,6 +62,13 @@ public class BeskinGame {
 				if (gamePointerNumber == GOAL_NUMBER) {
 					System.out.println("31을 불렀습니다.");
 					System.out.println(p.getName() + "의 패배!");
+					
+					if(p instanceof Com) {
+						System.out.println("User의 승리!");
+						((User)p).winGameChip();
+					}
+					
+					
 					gamePlay = false;
 					return;
 				}
