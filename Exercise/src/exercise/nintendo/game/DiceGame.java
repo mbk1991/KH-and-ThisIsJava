@@ -13,6 +13,8 @@ public class DiceGame {
 	public void RunDiceGame(User user) {
 //		User user = new User();
 		Com com = new Com();
+		p1DiceSum = 0;
+		p2DiceSum = 0;
 		
 		if(setOrder() == 1) {
 			diceGame(user,com);
@@ -48,22 +50,28 @@ public class DiceGame {
 	public void diceGame(Player p1, Player p2) {
 
 		for (int i = 0; i < 2; i++) {
-			System.out.println("주사위 게임을 시작합니다.");
+			System.out.println("\n주사위 게임을 시작합니다.");
 			Random rand = new Random();
 
 			int p1Dice = p1.dice();
 			System.out.println(p1.getName() + "이 주사위를 던집니다.");
 
 			try {
-				Thread.sleep(500);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
 			
 			System.out.println(p1Dice + "!!");
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
 			p1DiceSum += p1Dice;
-			System.out.println(p1.getName() + "의 "+(i+1)+"회차 눈금 합계 : " + p1DiceSum);
+			System.out.println(p1.getName() + "의 "+(i+1)+"회차 눈금 합계 : " + p1DiceSum + "\n");
 
 			/////
 
@@ -71,14 +79,19 @@ public class DiceGame {
 			System.out.println(p2.getName() + "이 주사위를 던집니다.");
 			
 			try {
-				Thread.sleep(500);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
 			System.out.println(p2Dice + "!!");
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			p2DiceSum += p2Dice;
-			System.out.println(p2.getName() + "의 "+(i+1)+"회차 눈금 합계 : " + p2DiceSum);
+			System.out.println(p2.getName() + "의 "+(i+1)+"회차 눈금 합계 : " + p2DiceSum + "\n");
 
 		}
 		

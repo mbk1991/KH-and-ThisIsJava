@@ -11,24 +11,28 @@ public class BeskinGame {
 	public void RunBeskin(User user) {
 //		Player user = new User();
 		Player com = new Com();
+		int winUser = 0;
 
 		System.out.println("베스킨라빈스 31 게임을 시작합니다.");
 		if (setOrder() == 1) {
-			baskinGame(user, com);
+			winUser = baskinGame(user, com);
+			if(winUser == 1) user.winGameChip();
 		} else {
-			baskinGame(com, user);
+			winUser = baskinGame(com, user);
+			if(winUser ==1) user.winGameChip();
 		}
 	}
 
-	public void baskinGame(Player p1, Player p2) {
+	public int baskinGame(Player p1, Player p2) {
+		int winUser = 0;
 		while (gamePlay) {
 			int choice1 = p1.choice(gamePointerNumber);
-			gameProgress(p1, choice1);
+			winUser = gameProgress(p1, choice1);
 
 			int choice2 = p2.choice(gamePointerNumber);
-			gameProgress(p2, choice2);
+			winUser = gameProgress(p2, choice2);
 		}
-
+		return winUser;
 	}
 
 	public int setOrder() {
@@ -52,8 +56,8 @@ public class BeskinGame {
 		}
 	}
 
-	public void gameProgress(Player p, int choice) {
-
+	public int gameProgress(Player p, int choice) {
+		
 		for (int i = 1; i <= choice; i++) {
 			gamePointerNumber++;
 			System.out.println(p.getName() + " : " + gamePointerNumber + "!!");
@@ -65,16 +69,19 @@ public class BeskinGame {
 					
 					if(p instanceof Com) {
 						System.out.println("User의 승리!");
-						((User)p).winGameChip();
+						gamePlay = false;
+						return 1;
+//						((User)p).winGameChip();
 					}
 					
 					
 					gamePlay = false;
-					return;
+					return 0;
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+		return 0;
 	}
 }
