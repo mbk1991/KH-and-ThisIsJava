@@ -67,28 +67,5 @@ public class NintendoGameMachine {
 			
 			}
 		}
-		
 	}
-	
-	public int setOrder() {
-		System.out.println("동전으로 순서를 정합니다.");
-		Random rand = new Random();
-		Scanner sc = new Scanner(System.in);
-		System.out.print("선택 앞면(1) 뒷면(2) >");
-		int choice = sc.nextInt();
-		int coinSide = rand.nextInt(2) + 1;
-		if (coinSide == 1) {
-			System.out.println("동전은 앞면!");
-		} else {
-			System.out.println("동전은 뒷면!");
-		}
-		if (choice == coinSide) {
-			System.out.println("맞췄습니다. User 먼저 진행합니다.");
-			return 1;
-		} else {
-			System.out.println("틀렸습니다. Com 먼저 진행합니다.");
-			return 2;
-		}
-	}
-	
 }

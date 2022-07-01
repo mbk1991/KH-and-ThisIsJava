@@ -3,7 +3,7 @@ package exercise.nintendo.game;
 import java.util.Random;
 import java.util.Scanner;
 
-public class User extends PlayerClass implements Player {
+public class User implements Player {
 	public String name = "USER";
 	private int gameChip = 0;
 	Random rand = null;

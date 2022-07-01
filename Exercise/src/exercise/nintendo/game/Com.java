@@ -2,7 +2,7 @@ package exercise.nintendo.game;
 
 import java.util.Random;
 
-public class Com extends PlayerClass implements Player {
+public class Com implements Player {
 	public String name = "COM";
 	Random rand = null;
 	public int diceSum = 0;
