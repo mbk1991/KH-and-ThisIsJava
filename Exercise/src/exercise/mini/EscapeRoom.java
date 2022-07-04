@@ -114,8 +114,10 @@ public class EscapeRoom {
 		effectPrintFast("『더블A 인쇄용지는 무엇인가』");
 		effectPrintFast("『Hemingway의 노인과 바다』");
 		effectPrintFast("『K팝 혁명』");
-
-		saveHint((hintCount + 1) + ": 『VJ특공대 시청률의 비밀』,『더블A 인쇄용지는 무엇인가』,『Hemingway의 노인과 바다』,『K팝 혁명』");
+		
+		if(hintCount <2 ) {
+			saveHint((hintCount + 1) + ": 『VJ특공대 시청률의 비밀』,『더블A 인쇄용지는 무엇인가』,『Hemingway의 노인과 바다』,『K팝 혁명』");
+		}
 	}
 
 	public static void beskinGame() {
@@ -165,8 +167,10 @@ public class EscapeRoom {
 					if (gamePointerNumber == GOAL_NUMBER) {
 						System.out.println("31을 불렀습니다.");
 						System.out.println("COM의 패배!");
-
-						saveHint((hintCount + 1) + " : CAPITAL 534621");
+						
+						if(hintCount < 2) {
+							saveHint((hintCount + 1) + " : CAPITAL 534621");
+						}
 						System.out.println();
 						System.out.println("<CAPITAL 534621>");
 						gamePlay = false;

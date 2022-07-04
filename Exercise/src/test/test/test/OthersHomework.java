@@ -8,13 +8,19 @@ import java.util.Scanner;
 
 
 
-import exercise.nintendo.game.Com;
-
-import exercise.nintendo.game.Player;
-
-
-
 public class OthersHomework {
+
+	static String name = "";
+
+	static int money = 0;
+
+	static int coin = 0;
+
+
+
+	static Random r = new Random();
+
+	static Scanner sc = new Scanner(System.in);
 
 
 
@@ -22,610 +28,535 @@ public class OthersHomework {
 
 
 
-		intro();
+		String[] present = new String[3];
 
+		String gift = "";
 
+		for (int i = 0; i < 3; i++) {
 
-		while (ingEscape) {
-
-			mainMenu();
-
-		}
-
-	}
-
-
-
-	public static void mainMenu() {
-
-		Scanner sc = new Scanner(System.in);
-
-		System.out.println();
-
-		effectPrintFast("<¸Ş´º ¼±ÅÃ>");
-
-		effectPrintFast("1. ÁÖº¯À» »ìÆìº»´Ù.");
-
-		effectPrintFast("2. ¼Ò¸®¸¦ Áú·¯º»´Ù.");
-
-		effectPrintFast("3. ¼ÒÁöÇ°À» »ìÆìº»´Ù.");
-
-		effectPrintFast("4. ÈùÆ®¸¦ º»´Ù.");
-
-		System.out.print(" ¼±ÅÃ >> ");
-
-		char choice = sc.nextLine().charAt(0);
-
-		switch (choice) {
-
-		case '1':
-
-			searchRoom();
-
-			break;
-
-		case '2':
-
-			shout();
-
-			break;
-
-		case '3':
-
-			checkItem();
-
-			break;
-
-		case '4':
-
-			getHint();
-
-			break;
-
-		default:
-
-			effectPrint("´Ù¸¥ ¼±ÅÃÁö´Â ¾ø´Â °Í °°´Ù...");
-
-			break;
+			present[i] = "";
 
 		}
 
-	}
 
 
-
-	public static void searchRoom() {
-
-		Scanner sc = new Scanner(System.in);
-
-		System.out.println();
-
-		effectPrint("... ...");
-
-		effectPrint("¹æÀ» µÑ·¯º»´Ù...");
-
-		effectPrintFast("1. Á¤¸é¿¡´Â µµ¾î¶ôÀ¸·Î Àá±ä ¹®ÀÌ ÀÖ´Ù.");
-
-		effectPrintFast("2. ¿ŞÂÊ¿¡´Â ³ëÆ®ºÏÀÌ ÀÖ´Ù.");
-
-		effectPrintFast("3. ¿À¸¥ÂÊ¿¡´Â ÀÚ¹°¼è°¡ °É¸° »óÀÚ°¡ ÀÖ´Ù.");
-
-		effectPrintFast("4. µŞ Æí¿¡´Â Ã¥²ÈÀÌ°¡ ÀÖ´Ù.");
-
-
-
-		char choice = sc.nextLine().charAt(0);
-
-
-
-		switch (choice) {
-
-		case '1':
-
-			openDoorLock();
-
-			break;
-
-		case '2':
-
-			checkNoteBook();
-
-			break;
-
-		case '3':
-
-			checkBox();
-
-			break;
-
-		case '4':
-
-			checkBookShelf();
-
-			break;
-
-		default:
-
-			effectPrint("´Ù¸¥ °÷Àº µÑ·¯º¼ °÷ÀÌ ¾ø´Ù...");
-
-			break;
-
-		}
-
-	}
-
-
-
-	public static void checkNoteBook() {
-
-		effectPrint("³ëÆ®ºÏÀ» »ìÆìº»´Ù...");
-
-		effectPrint("Àü¿ø ¿¬°áÀÌ µÇ¾î ÀÖÁö ¾Ê¾Æ ÄÓ ¼ö°¡ ¾ø´Ù.");
-
-		if (item.contains("¾î´ğÅÍ")) {
-
-			effectPrint("¾î´ğÅÍ¸¦ ¿¬°áÇØº¼±î?");
-
-			effectPrint("ÄÄÇ»ÅÍ°¡ ÄÑÁ³´Ù.");
-
-			effectPrint("<ÄÄÇ»ÅÍ¸¦ ÀÌ±â¸é ÈùÆ®¸¦ ¾òÀ» ¼ö ÀÖ´Ù.>");
+		end: while (true) {
 
 			System.out.println();
 
-			beskinGame();
+			System.out.println("==========¸Ş´º==========");
 
-		} else {
+			System.out.println("1.¿À¶ô½Ç ÀÔÀåÇÏ±â");
 
-			effectPrint("¾î´ğÅÍ°¡ ¾ø¾î ÄÓ ¼ö°¡ ¾ø´Ù.");
+			System.out.println("2.°ÔÀÓ ½ÃÀÛÇÏ±â");
+
+			System.out.println("3.»óÇ° ±³È¯ÇÏ±â");
+
+			System.out.println("4.¿À¶ô½Ç ÅğÀåÇÏ±â");
+
+			System.out.println("5.³» Á¤º¸");
 
 			System.out.println();
 
-		}
+			System.out.println("ÀÔÀå ¸ÕÀú ÇØÁÖ¼¼¿ä~ :)");
 
-	}
+			System.out.println("=======================");
 
+			System.out.print("[¼±ÅÃ]");
 
-
-	public static void checkBox() {
-
-		Scanner sc = new Scanner(System.in);
-
-		effectPrint("ÀÚ¹°¼è°¡ °É¸° »óÀÚ¸¦ »ìÆìº»´Ù.");
-
-		effectPrint("ÀÚ¹°¼è: StringT¤·¤·¤·¤·¤·¤·¤·r"); // gTokenize
-
-		System.out.print("ºñ¹Ğ¹øÈ£ ÀÔ·Â > ");
-
-		String input = sc.next();
-
-		if (input.equals("okenize")) {
-
-			effectPrint("»óÀÚ°¡ ¿­·È´Ù.");
-
-			effectPrint("³ëÆ®ºÏ ¾î´ğÅÍ¸¦ ¹ß°ßÇß´Ù..!");
-
-			getItem("¾î´ğÅÍ");
-
-		} else {
-
-			effectPrint("»óÀÚ°¡ ¿­¸®Áö ¾Ê´Â´Ù.");
-
-		}
-
-	}
+			System.out.println();
 
 
 
-	public static void checkBookShelf() {
-
-		effectPrint("Ã¥²ÈÀÌ¸¦ »ìÆìº»´Ù...");
-
-		effectPrint("Ã¥µéÀÌ ²ÈÇô ÀÖ´Ù.");
-
-		effectPrintFast("¡ºVJÆ¯°ø´ë ½ÃÃ»·üÀÇ ºñ¹Ğ¡»");
-
-		effectPrintFast("¡º´õºíA ÀÎ¼â¿ëÁö´Â ¹«¾ùÀÎ°¡¡»");
-
-		effectPrintFast("¡ºHemingwayÀÇ ³ëÀÎ°ú ¹Ù´Ù¡»");
-
-		effectPrintFast("¡ºKÆË Çõ¸í¡»");
+			int menu = sc.nextInt();
 
 
 
-		saveHint((hintCount + 1) + ": ¡ºVJÆ¯°ø´ë ½ÃÃ»·üÀÇ ºñ¹Ğ¡»,¡º´õºíA ÀÎ¼â¿ëÁö´Â ¹«¾ùÀÎ°¡¡»,¡ºHemingwayÀÇ ³ëÀÎ°ú ¹Ù´Ù¡»,¡ºKÆË Çõ¸í¡»");
-
-	}
+			switch (menu) {
 
 
 
-	public static void beskinGame() {
+			case 1:
 
-		int gamePointerNumber = 0;
+				if (money > 0) {
 
-		int GOAL_NUMBER = 31;
+					System.out.println("ÀÌ¹Ì ¿À¶ô½Ç¿¡ ÀÔÀå Çß½À´Ï´Ù.");
 
-		boolean gamePlay = true;
-
-		Random rand = new Random();
-
-		Scanner sc = new Scanner(System.in);
-
-
-
-		effectPrint("º£½ºÅ²¶óºó½º 31 °ÔÀÓ");
-
-		while (gamePlay) {
-
-			System.out.print("User: 1~3 »çÀÌ ¼±ÅÃ >");
-
-			int userChoice = sc.nextInt();
-
-
-
-			for (int i = 1; i <= userChoice; i++) {
-
-				gamePointerNumber++;
-
-				System.out.println("User : " + gamePointerNumber + "!!");
-
-				try {
-
-					Thread.sleep(400);
-
-					if (gamePointerNumber == GOAL_NUMBER) {
-
-						System.out.println("31À» ºÒ·¶½À´Ï´Ù.");
-
-						System.out.println("UserÀÇ ÆĞ¹è!");
-
-						gamePlay = false;
-
-						break;
-
-					}
-
-				} catch (InterruptedException e) {
-
-					e.printStackTrace();
+					break;
 
 				}
-
-			}
-
-
-
-			int comChoice;
-
-			if ((((gamePointerNumber + 1)) - 2) % 4 == 0) {
-
-				comChoice = 1;
-
-			} else if ((((gamePointerNumber + 2)) - 2) % 4 == 0) {
-
-				comChoice = 2;
-
-			} else if ((((gamePointerNumber + 3)) - 2) % 4 == 0) {
-
-				comChoice = 3;
-
-			} else {
-
-				comChoice = rand.nextInt(3) + 1;
-
-			}
-
-
-
-			for (int i = 1; i <= comChoice; i++) {
-
-				gamePointerNumber++;
-
-				System.out.println("COM : " + gamePointerNumber + "!!");
-
-				try {
-
-					Thread.sleep(400);
-
-					if (gamePointerNumber == GOAL_NUMBER) {
-
-						System.out.println("31À» ºÒ·¶½À´Ï´Ù.");
-
-						System.out.println("COMÀÇ ÆĞ¹è!");
-
-
-
-						saveHint((hintCount + 1) + " : CAPITAL 534621");
-
-						System.out.println();
-
-						System.out.println("<CAPITAL 534621>");
-
-						gamePlay = false;
-
-						break;
-
-					}
-
-				} catch (InterruptedException e) {
-
-					e.printStackTrace();
-
-				}
-
-			}
-
-		}
-
-	}
-
-
-
-	public static void shout() {
-
-		Scanner sc = new Scanner(System.in);
-
-		System.out.print("¹¹¶ó°í ¼Ò¸®¸¦ Áö¸¦±î?");
-
-		String shout = sc.nextLine();
-
-		effectPrint(shout);
-
-		if (shout.equals(shoutAnswer)) {
-
-			// ¹æ
-
-			effectPrint("???: ¾î? ±×·³ ³»º¸³»¾ß°Ú±º...");
-
-			effectPrint("¶ì·Î¸µ(µµ¾î¶ô ¿­¸®´Â ¼Ò¸®)");
-
-			effectPrint("È÷µç¿£µù, ¹æÅ»Ãâ ¼º°ø");
-
-			ingEscape = false;
-
-		} else {
-
-			effectPrint("ÇÏÁö¸¸ ¾Æ¹« ÀÏµµ ÀÏ¾î³ªÁö ¾Ê´Â´Ù.");
-
-		}
-
-	}
-
-
-
-	public static void checkItem() {
-
-		effectPrint("... ...");
-
-		effectPrint("È£ÁÖ¸Ó´Ï¸¦ µÚÁ®º»´Ù...");
-
-		if (item.equals(" ")) {
-
-			effectPrint("È£ÁÖ¸Ó´Ï°¡ ÅÖ ºñ¾ú´Ù..");
-
-		} else {
-
-			effectPrint(item + "À» °¡Áö°í ÀÖ´Ù.");
-
-		}
-
-
-
-	}
-
-
-
-	public static void openDoorLock() {
-
-		Scanner sc = new Scanner(System.in);
-
-		effectPrint("µµ¾î¶ô Ä¿¹ö¸¦ ¿Ã¸°´Ù.");
-
-		effectPrint("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÑ´Ù.");
-
-		System.out.print("ºñ¹Ğ¹øÈ£ ÀÔ·Â> ");
-
-		String inputPassword = sc.next();
-
-		sc.nextLine();
-
-		if (inputPassword.equals(password)) {
-
-			effectPrint("¶ì¸®¸®¸µ");
-
-			effectPrint("µµ¾î¶ôÀÌ ¿­¸°´Ù.");
-
-			effectPrint("¹æ ¹®À» Èû²¯ ¿­¾îÁ¥Èù´Ù..!");
-
-			effectPrint("µåµğ¾î... Å»ÃâÀÎ°¡...!!");
-
-			effectPrint("... ...");
-
-			effectPrint("ÇÏÁö¸¸ ¿­¸° ¹® ³Ê¸Ó·Î º¸ÀÌ´Â °ÍÀº ¶Ç´Ù¸¥ ¹ĞÆóµÈ ¹æÀÌ¾ú´Ù...");
-
-			effectPrint("1¹ø ¹æ Å»Ãâ ¼º°ø");
-
-			effectPrint("<To be continue...>");
-
-			ingEscape = false;
-
-
-
-		} else {
-
-			effectPrint("»ß!!»ß!!»ß!!»ß!!");
-
-			countDoorLock--;
-
-			if (countDoorLock <= 0) {
-
-				effectPrint("µµ¾î¶ôÀÇ Àü¿øÀÌ ²¨Áı´Ï´Ù. ¹æ¿¡¼­ ¿µ¿øÈ÷ ºüÁ®³ª°¥ ¼ö ¾ø½À´Ï´Ù.");
-
-				effectPrint("Game Over...");
-
-				ingEscape = false;
-
-			}
-
-			effectPrint("ºñ¹Ğ ¹øÈ£¸¦ Æ²·È½À´Ï´Ù. (³²Àº È½¼ö : " + countDoorLock + " )");
-
-			if (countDoorLock == 2) {
-
-				effectPrint("³²Àº È½¼ö°¡ ÀÖ´Â °Ç°¡...? ½ÅÁßÇØ¾ß°Ú±º...");
-
-			}
-
-		}
-
-
-
-	}
-
-
-
-	public static void intro() {
-
-		effectPrint("ÀÎÆ®·Î");
-
-		effectPrint("==========");
-
-		effectPrint("¸Ó¸®°¡ Áö²ö°Å¸°´Ù..");
-
-		effectPrint("¿©±â°¡ ¾îµğÁö..?");
-
-		effectPrint("´«À» ¶°º¸´Ï ³¸¼± ¹æÀÌ´Ù.");
-
-		effectPrint("Ã¢¹® ÇÏ³ª ¾ø´Â ¹æ¿¡ Çª¸¥ Çü±¤µî ºÒºûÀÌ ÁöÁ÷°Å¸°´Ù..");
-
-		effectPrint("³»°¡ ¿Ö ÀÌ·± °÷¿¡ ÀÖ´Â°ÅÁö...?");
-
-		effectPrint("¾îÁ¦ ¼úÀ» ¸¶½Ã´Ù ÇÊ¸§ÀÌ ²÷±ä ÈÄ·Î ±â¾ïÀÌ ³ªÁú ¾Ê´Â´Ù...");
-
-		effectPrint("... ...");
-
-		effectPrint("¹®ÀÌ º¸ÀÎ´Ù.");
-
-		effectPrint("¹®°í¸®¸¦ µ¹·Áº¸¾ÒÀ¸³ª ¿ª½Ã³ª ¿­¸®Áö ¾Ê´Â´Ù.");
-
-		effectPrint("µµ¾î¶ôÀÌ ´Ş·ÁÀÖ´Ù...");
-
-		effectPrint("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ¾ß ³ª°¥ ¼ö ÀÖ´Â °Ç°¡...?");
-
-		effectPrint("... ...");
-
-	}
-
-
-
-	public static void getItem(String itemStr) {
-
-		item += itemStr;
-
-	}
-
-
-
-	public static void saveHint(String hint) {
-
-		hints[hintCount] = hint;
-
-		hintCount++;
-
-	}
-
-
-
-	public static void getHint() {
-
-
-
-		if (hints[0] != null) {
-
-			effectPrint("Áö±İ±îÁö ¸ğÀº ÈùÆ®µé...");
-
-			for (int i = 0; i < hintCount; i++) {
-
-				effectPrint(hints[i]);
 
 				System.out.println();
 
+				System.out.println("========¿À¶ô½Ç¿¡ ÀÔÀå Çß½À´Ï´Ù.========");
+
+				System.out.print("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä : ");
+
+				name = sc.next();
+
+				while (true) {
+
+					System.out.println("10ÄÚÀÎ¿¡ 1000¿ø ÀÔ´Ï´Ù. ¾ó¸¶¸¦ ÃæÀüÇÏ°Ú½À´Ï±î? ");
+
+					System.out.println("(1000¿ø ´ÜÀ§·Î ÃæÀüÇØ ÁÖ¼¼¿ä)");
+
+					System.out.println("(ÃæÀüÀº ÇÑ¹ø¸¸ µË´Ï´Ù.)");
+
+					System.out.print(">>");
+
+					money = sc.nextInt();
+
+					if (money < 2000) {
+
+						System.out.println();
+
+						System.out.println("2000¿ø ÀÌ»ó ÃæÀüÇØÁÖ¼¼¿ä");
+
+						System.out.println();
+
+					} else {
+
+						coin = money / 100;
+
+						System.out.println(coin + "ÄÚÀÎ ÃæÀü µÇ¾ú½À´Ï´Ù.");
+
+						break;
+
+					}
+
+				}
+
+
+
+				break;
+
+
+
+			case 2:
+
+				if (name.equals("")) {
+
+					System.out.println("¿À¶ô½Ç ÀÔÀå ¸ÕÀú ÇØÁÖ¼¼¿ä.");
+
+					break;
+
+				}
+
+				System.out.println();
+
+				System.out.println("=========°ÔÀÓÀ» ¼±ÅÃÇÏ¼¼¿ä=========");
+
+				System.out.println("1. µ¿Àü(¾Õ/µÚ) ¸ÂÃß±â   [ÄÚÀÎ 20°³]");
+
+				System.out.println("2. °¡À§! ¹ÙÀ§! º¸!      [ÄÚÀÎ 10°³]");
+
+				System.out.println();
+
+				System.out.println("**ÀÌ±â¸é ³½ ÄÚÀÎÀÇ 2¹è¸¦ ¾ò½À´Ï´Ù**");
+
+				System.out.println("===================================");
+
+				System.out.println();
+
+				System.out.print("[¼±ÅÃ]");
+
+
+
+				int game = sc.nextInt();
+
+				switch (game) {
+
+				case 1:
+
+					if (coin < 20) {
+
+						System.out.println("ÄÚÀÎÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+
+						break;
+
+					}
+
+					CoinGame();
+
+					break;
+
+
+
+				case 2:
+
+					if (coin < 10) {
+
+						System.out.println("ÄÚÀÎÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+
+						break;
+
+					}
+
+					RPS_Game();
+
+					break;
+
+
+
+				default:
+
+					System.out.println("¾ø´Â °ÔÀÓÀÔ´Ï´Ù.");
+
+					break;
+
+				}
+
+				break;
+
+
+
+			case 3:
+
+				if (name.equals("")) {
+
+					System.out.println("¿À¶ô½Ç ÀÔÀå ¸ÕÀú ÇØÁÖ¼¼¿ä.");
+
+					break;
+
+				}
+
+
+
+				System.out.println();
+
+				System.out.println("==========»óÇ° ±³È¯==========");
+
+				System.out.println("1.°õÀÎÇü[ÄÚÀÎ 30°³]");
+
+				System.out.println("2.ÀÛÀº ÀÎÇü[ÄÚÀÎ10°³] ");
+
+				System.out.println("3.Å°¸µ[ÄÚÀÎ5°³]");
+
+				System.out.println("=============================");
+
+				System.out.println();
+
+				System.out.print("[¼±ÅÃ]");
+
+
+
+				int num = sc.nextInt();
+
+				switch (num) {
+
+				case 1:
+
+					if (coin < 30) {
+
+						System.out.println("ÄÚÀÎÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+
+						break;
+
+					}
+
+					gift = " °õÀÎÇü ";
+
+					coin -= 30;
+
+					System.out.println(gift + "À¸·Î ±³È¯ÇÏ¿´½À´Ï´Ù.");
+
+					break;
+
+				case 2:
+
+					if (coin < 10) {
+
+						System.out.println("ÄÚÀÎÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+
+						break;
+
+					}
+
+					gift = " ÀÛÀºÀÎÇü ";
+
+					coin -= 10;
+
+					System.out.println(gift + "À¸·Î ±³È¯ÇÏ¿´½À´Ï´Ù.");
+
+					break;
+
+				case 3:
+
+					if (coin < 5) {
+
+						System.out.println("ÄÚÀÎÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+
+						break;
+
+					}
+
+					gift = " Å°¸µ ";
+
+					coin -= 5;
+
+					System.out.println(gift + "À¸·Î ±³È¯ÇÏ¿´½À´Ï´Ù.");
+
+					break;
+
+
+
+				default:
+
+					System.out.println("¾ø´Â »óÇ°ÀÔ´Ï´Ù.");
+
+					break;
+
+
+
+				}
+
+				if (num > 0 && num < 4) {
+
+					present[num - 1] = gift;
+
+				}
+
+
+
+				break;
+
+
+
+			case 4:
+
+
+
+				System.out.println("Àß°¡¿ä~~");
+
+
+
+				break end;
+
+
+
+			case 5:
+
+				if (name.equals("")) {
+
+					System.out.println("¿À¶ô½Ç ÀÔÀå ¸ÕÀú ÇØÁÖ¼¼¿ä.");
+
+					break;
+
+				}
+
+				System.out.println();
+
+				System.out.println("==========³» Á¤º¸==========");
+
+				System.out.println("ÀÌ¸§ :" + name);
+
+				System.out.println("º¸À¯ ÄÚÀÎ : " + coin + "°³");
+
+				System.out.println("º¸À¯ »óÇ° : " + present[0] + present[1] + present[2]);
+
+				break;
+
+
+
+			default:
+
+				System.out.println("¸Ş´º¿¡ ÀÖ´Â ¹øÈ£¸¸ ´©¸£¼¼¿ä");
+
+				break;
+
+
+
 			}
+
+		}
+
+	}
+
+
+
+	static void CoinGame() {
+
+		coin -= 20;
+
+		System.out.println("========µ¿Àü ¸ÂÃß±â °ÔÀÓ========");
+
+		System.out.println("¼ıÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä(1.¾Õ¸é/2.µŞ¸é)");
+
+		System.out.print(">>>");
+
+		int coinGame = sc.nextInt();
+
+		int coinComputer = r.nextInt(2) + 1;
+
+		switch (coinComputer) {
+
+		case 1:
+
+			System.out.println("ÄÄÇ»ÅÍ´Â ¾Õ¸éÀÌ ³ª¿Ô½À´Ï´Ù.");
+
+			break;
+
+		case 2:
+
+			System.out.println("ÄÄÇ»ÅÍ´Â µŞ¸éÀÌ ³ª¿Ô½À´Ï´Ù.");
+
+			break;
+
+
+
+		}
+
+		if (coinGame == coinComputer) {
+
+			System.out.println("¸Â®u½À´Ï´Ù!! ÄÚÀÎ 2¹è¸¦ È¹µæÇÏ¿´½À´Ï´Ù.");
+
+			coin += 40;
 
 		} else {
 
-			effectPrint("Áö±İ±îÁö ¾òÀº ÈùÆ®°¡ ¾ø´Ù.");
+			System.out.println("Æ²·È½À´Ï´Ù.. ÄÚÀÎ 20°³¸¦ ÀÒ¾ú½À´Ï´Ù.");
 
 		}
+
+
 
 	}
 
 
 
-	public static void effectPrint(String tempStr) {
+	static void RPS_Game() {
 
-		try {
+		coin -= 10;
 
-			for (int i = 0; i < tempStr.length(); i++) {
+		String com = "";
 
-				System.out.print(tempStr.charAt(i));
+		String win = "";
 
-				Thread.sleep(40);
+		System.out.println("===========°¡À§! ¹ÙÀ§! º¸!==========");
 
-			}
+		end: while (true) {
 
-			Thread.sleep(800);
+			System.out.println("¼ıÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä (1.°¡À§ / 2.¹ÙÀ§ / 3.º¸)");
+
+			System.out.print(">>>");
 
 			System.out.println();
 
-		} catch (InterruptedException e) {
+			int me = sc.nextInt();
 
-			e.printStackTrace();
+			int computer = r.nextInt(2) + 1;
 
-		}
+			if (me == computer) {
 
-	}
+				System.out.println("ºñ°å½À´Ï´Ù. ´Ù½ÃÇÒ²²¿ä");
+
+				System.out.println();
 
 
 
-	public static void effectPrintFast(String tempStr) {
+			} else {
 
-		try {
+				switch (me) {
 
-			for (int i = 0; i < tempStr.length(); i++) {
+				case 1:
 
-				System.out.print(tempStr.charAt(i));
+					if (computer == 3) {
 
-				Thread.sleep(30);
+						win = "ÀÌ°å";
+
+					} else if (computer == 2) {
+
+						win = "Á³";
+
+					}
+
+					break;
+
+				case 2:
+
+					if (computer == 1) {
+
+						win = "ÀÌ°å";
+
+					} else if (computer == 3) {
+
+						win = "Á³";
+
+					}
+
+					break;
+
+				case 3:
+
+					if (computer == 2) {
+
+						win = "ÀÌ°å";
+
+					} else if (computer == 1) {
+
+						win = "Á³";
+
+					}
+
+					break;
+
+				}
+
+
+
+				switch (computer) {
+
+				case 1:
+
+					com = "°¡À§";
+
+					break;
+
+				case 2:
+
+					com = "¹ÙÀ§";
+
+					break;
+
+				case 3:
+
+					com = "º¸";
+
+					break;
+
+				}
+
+				System.out.println("ÄÄÇ»ÅÍ´Â " + com + "¸¦ ³Â½À´Ï´Ù.");
+
+				System.out.println(win + "½À´Ï´Ù.");
+
+				if (win.equals("ÀÌ°å")) {
+
+					System.out.println();
+
+					System.out.println("ÃàÇÏÇÕ´Ï´Ù! ÄÚÀÎ 2¹è¸¦ È¹µæÇÏ¿´½À´Ï´Ù.");
+
+					coin += 20;
+
+					break end;
+
+				} else {
+
+					System.out.println();
+
+					System.out.println("ÄÚÀÎ 10°³¸¦ ÀÒ¾ú½À´Ï´Ù.");
+
+					break end;
+
+				}
 
 			}
 
-			Thread.sleep(30);
-
-			System.out.println();
-
-		} catch (InterruptedException e) {
-
-			e.printStackTrace();
-
 		}
 
+
+
 	}
-
-
-
-	public static String item = " ";
-
-	public static String password = "KHJAVA";
-
-	public static String shoutAnswer = "¾Æ Á¤¸» ¾Æ´ÁÇÑ ¹æÀÌ´Ù!!!";
-
-	public static int countDoorLock = 3;
-
-	String tempStr = " ";
-
-	public static boolean ingEscape = true;
-
-	public static String[] hints = new String[2];
-
-	public static int hintCount = 0;
 
 }
+
