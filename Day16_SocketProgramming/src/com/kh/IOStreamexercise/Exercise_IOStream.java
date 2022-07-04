@@ -15,7 +15,7 @@ public class Exercise_IOStream {
 	static InputStream is = null;
 	static OutputStream os = null;
 	static File file = null;
-	
+
 	static FileInputStream fis = null;
 	static FileOutputStream fos = null;
 	private static String name;
@@ -59,11 +59,10 @@ public class Exercise_IOStream {
 				break EXIT;
 			default:
 				System.out.println("다시 입력하세요.");
-				break ;
+				break;
 
 			}
 		}
-
 	}
 
 	static void insert() {
@@ -89,17 +88,29 @@ public class Exercise_IOStream {
 	static void save() {
 		try {
 			os = new FileOutputStream(name + ".txt");
+			boolean nullCheck = name == null || age == null || address == null;
+			boolean emptyCheck = name.isEmpty() || age.isEmpty() || address.isEmpty();
+			if(nullCheck || emptyCheck) {
+				System.out.println("저장할 내용을 모두 입력해주세요.");
+				return;
+			}
 			
-			String temp = name +"/" + age + "/" + address;
+			String temp = name + "/" + age + "/" + address;
 			informations = new byte[temp.length()];
 			informations = temp.getBytes();
 			os.write(informations);
 			System.out.println("파일 저장 완료");
-			
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				os.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -108,20 +119,19 @@ public class Exercise_IOStream {
 		System.out.print("파일명> ");
 		String fileName = sc.nextLine();
 		file = new File(fileName);
-		if(!file.exists()) {
+		if (!file.exists()) {
 			System.out.println("존재하지 않는 파일입니다.");
 			System.out.print("파일명> ");
 			fileName = sc.nextLine();
 		}
-	
-		
+
 		try {
 			is = new FileInputStream(fileName);
 			byte[] bufferBytes = new byte[100];
 			int readByteNum;
 			String temp = "";
 			String[] strArray = null;
-			while((readByteNum = is.read(bufferBytes)) != -1) {
+			while ((readByteNum = is.read(bufferBytes)) != -1) {
 				temp += new String(bufferBytes);
 			}
 //			System.out.println(temp);
@@ -130,12 +140,18 @@ public class Exercise_IOStream {
 			age = strArray[1];
 			address = strArray[2];
 			System.out.println("파일을 읽어왔습니다.");
-			
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				is.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
