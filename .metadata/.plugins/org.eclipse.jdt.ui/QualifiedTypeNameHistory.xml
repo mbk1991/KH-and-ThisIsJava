@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="chap6.constructor_access.package1.A"/>
-<fullyQualifiedTypeName name="com.kh.student.Student"/>
-<fullyQualifiedTypeName name="com.kh.student.practice.Student"/>
-<fullyQualifiedTypeName name="java.lang.annotation.RetentionPolicy"/>
 <fullyQualifiedTypeName name="java.lang.annotation.Target"/>
 <fullyQualifiedTypeName name="java.lang.annotation.Retention"/>
 <fullyQualifiedTypeName name="java.lang.annotation.ElementType"/>
@@ -60,4 +56,8 @@
 <fullyQualifiedTypeName name="java.util.Stack"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="chap11.clone.Student"/>
+<fullyQualifiedTypeName name="java.util.Comparator"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.util.Objects"/>
 </qualifiedTypeNameHistroy>
