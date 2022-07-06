@@ -40,6 +40,13 @@ public class Member {
 
 		return infoStr;
 	}
+	public String forFileStr() {
+		String forFileStr = memberId+"/f/"+memberPwd+"/f/"+memberName+"/f/"+memberAge+"/f/"+memberGender+"/f/"+memberEmail+"/f/"+
+						memberPhone+"/f/"+memberAddress+"/f/"+memberHobby+"/o/";
+		return forFileStr;
+	}
+	
+	
 
 	public String getMemberId() {
 		return memberId;

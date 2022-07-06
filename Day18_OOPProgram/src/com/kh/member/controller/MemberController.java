@@ -42,4 +42,26 @@ public class MemberController {
 		}
 		return -1; // ¾øÀ» ¶§ -1
 	}
+	
+	public int findMemberName(String memberName) {
+		for(int i = 0; i < mList.size(); i++) {
+			Member mOne = mList.get(i);
+			if(memberName.equals(mOne.getMemberName())) {
+				return i;
+			}
+		}
+		return -1; 
+	}
+	
+	
+	public Member printOneById(int index) {
+		return mList.get(index);
+	}
+	
+	public void loadFile(ArrayList<Member> mList) {
+		this.mList = mList;
+	}
+	
+	
+
 }
