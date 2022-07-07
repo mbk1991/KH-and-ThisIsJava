@@ -4,6 +4,14 @@ import java.util.Scanner;
 
 public class TestCoding {
 	public static void main(String[] args) {
+		
+		char a = '°¡';
+		char b = '´Ù';
+		char c = '³ª';
+		char d = 'a';
+		
+		System.out.println(a<b);
+		System.out.println(a<d);
 //		
 //		char[] charArray = new char[5];
 //		int[] intArray = new int[5];

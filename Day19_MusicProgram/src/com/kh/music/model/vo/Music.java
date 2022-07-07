@@ -32,5 +32,7 @@ public class Music {
 		return printInfo;
 	}
 	
-	
+	public String fileFormat() {
+				return this.song+","+this.singer;
+	}
 }
