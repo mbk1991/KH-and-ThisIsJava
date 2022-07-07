@@ -53,7 +53,6 @@ public class MemberController {
 		return -1; 
 	}
 	
-	
 	public Member printOneById(int index) {
 		return mList.get(index);
 	}

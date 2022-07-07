@@ -10,6 +10,8 @@ public class MemberFileSave {
 	OutputStream os = null;
 	FileInputStream fis = null;
 	FileOutputStream fos = null;
+	FileReader fReader = null;
+	FileWriter fWriter = null;
 	String totalSaveStr = null;
 	ArrayList<Member> mList = new ArrayList<Member>();
 
@@ -38,12 +40,13 @@ public class MemberFileSave {
 
 	public ArrayList<Member> loadMemberList() {
 		try {
-			fis = new FileInputStream("mListSave.txt");
+			fReader = new FileReader("mListSave.txt");
 			totalSaveStr = null;
 
 			int readData = 0;
-			while ((readData = fis.read()) != -1) {
-				totalSaveStr += (char) readData;
+			char[] bufferChar = new char[100];
+			while ((readData = fReader.read(bufferChar)) != -1) {
+				totalSaveStr += (char)readData;
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
