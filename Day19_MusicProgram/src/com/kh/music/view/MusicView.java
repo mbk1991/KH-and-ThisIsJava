@@ -71,5 +71,6 @@ public class MusicView {
 		System.out.print("가수이름 수정 > ");
 		music.setSinger(sc.next());
 	}
+	
 
 }

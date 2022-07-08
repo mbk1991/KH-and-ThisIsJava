@@ -2,13 +2,14 @@ package com.kh.music.controller;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import com.kh.music.file.MusicFile;
 import com.kh.music.model.vo.Music;
 
 public class MusicController {
-	List<Music> mList = null;
+	ArrayList<Music> mList = null;
 	
 	public MusicController() {
 		mList = new ArrayList<Music>();
@@ -105,4 +106,11 @@ public class MusicController {
 		}
 		this.mList = mList;
 	}
+	
+	//강사님 정렬 방법
+		public void sortByTitle() {
+			Collections.sort(mList);
+			//sort메소드는List인터페이스를 매개변수로 받음.
+			// mList를 ArrayList변수가 아닌 List변수로 했던 이유.
+		}
 }

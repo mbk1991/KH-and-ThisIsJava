@@ -23,17 +23,49 @@ public class TestCoding {
 		// 입력하지 않는 것도 그냥 넘어가져야하는데 안 될 듯.
 		//char의 초기값을 이용하면 어떨까?
 		
-		Scanner sc = new Scanner(System.in);
-		char input= '\u0000';
 		
-		while(input == '\u0000') {
-			System.out.println("무한반복의 늪");
-			
-			input = sc.next().charAt(0);
-			
-		}
 		
 		System.out.println("이게 될까.");
+		
+		System.out.println(2^3);
+		
+		int n = 45;
+		int x = 1;
+		int len = 0;
+	
+		for(int i = 0; i < 45; i++) {
+		  x*=3;
+		  if(n<x) {
+			  System.out.println("i" +i);
+			  len = i;
+			  break;
+		  }	  		
+		  System.out.println(x);
+		}
+		String[] strArr = new String[len+1];
+		
+		x/=3;
+		EXIT:
+		for(int i = len; i>=0; i--) {
+			for(int j = 2; j>=0; j--) {
+				int temp = x*j;
+				System.out.println("temp"+temp);
+				if(n>=temp) {
+					n-=temp;
+					strArr[i] = Integer.toString(j);
+					if(n == 0) break EXIT;
+					break;
+				}
+			}
+			x/=3;
+		}
+		for(int i = 0; i<strArr.length; i++) {
+			System.out.println(strArr[i]);
+		}
+		
+		String tempStr;
+		
+		
 		
 	}
 }

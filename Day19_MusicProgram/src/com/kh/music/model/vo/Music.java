@@ -1,6 +1,6 @@
 package com.kh.music.model.vo;
 
-public class Music {
+public class Music implements Comparable<Music>{
 	private String song;
 	private String singer;
 
@@ -34,5 +34,10 @@ public class Music {
 	
 	public String fileFormat() {
 				return this.song+","+this.singer;
+	}
+
+	@Override
+	public int compareTo(Music o) {
+		return 0;
 	}
 }
