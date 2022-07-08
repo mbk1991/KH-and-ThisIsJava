@@ -5,23 +5,21 @@ public class Board {
 	private String writer;
 	private String title;
 	private String content;
-	//private String id;
-	//private String pwd;
-	
-	public Board() {}
-	
-	public Board(String writer,String title,String content) {
+	// private String id;
+	// private String pwd;
+
+	public Board() {
+	}
+
+	public Board(String writer, String title, String content) {
 		this.writer = writer;
 		this.title = title;
 		this.content = content;
 	}
 
-	
-	
-	
 	@Override
 	public String toString() {
-		return writer + " | " + "\t" + title + "\t|";
+		return no + " | " + writer + " | " + "\t" + title + "\t|";
 	}
 
 	public int getNo() {
@@ -55,5 +53,5 @@ public class Board {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
+
 }

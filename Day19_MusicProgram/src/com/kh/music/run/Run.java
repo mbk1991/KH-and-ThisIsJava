@@ -53,11 +53,13 @@ public class Run {
 				}
 				break;
 			case '7':
-				mView.showList(mController.sortAscendingByTitle(mController.copyMList()));
+//				mView.showList(mController.sortAscendingByTitle(mController.copyMList()));
+				mView.showList(mController.sortByTitle(mController.copyMList()));
 				mController.displaySuccess("노래제목 오름차순 정렬 출력");
 				break;
 			case '8':
-				mView.showList(mController.sortDescendingBySinger(mController.copyMList()));
+//				mView.showList(mController.sortDescendingBySinger(mController.copyMList()));
+				mView.showList(mController.sortBySinger(mController.copyMList()));
 				mController.displaySuccess("가수이름 내림차순 정렬 출력");
 				break;
 			case '0':

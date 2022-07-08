@@ -11,6 +11,8 @@ public class BoardController {
 	}
 
 	public void boardCreate(Board board) {
+		int no = bList.size()+1;
+		board.setNo(no);
 		bList.add(board);
 	}
 	public void boardRead() {}

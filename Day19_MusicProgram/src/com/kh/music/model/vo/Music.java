@@ -1,5 +1,7 @@
 package com.kh.music.model.vo;
 
+import java.util.Comparator;
+
 public class Music implements Comparable<Music>{
 	private String song;
 	private String singer;
@@ -9,6 +11,11 @@ public class Music implements Comparable<Music>{
 		this.singer = singer;
 	}
 
+	@Override
+	public int compareTo(Music o) {
+		return this.song.compareTo(o.getSong());
+	}
+	
 	public void setSong(String song) {
 		this.song = song;
 	}
@@ -36,8 +43,5 @@ public class Music implements Comparable<Music>{
 				return this.song+","+this.singer;
 	}
 
-	@Override
-	public int compareTo(Music o) {
-		return 0;
-	}
+
 }

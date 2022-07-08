@@ -15,7 +15,7 @@ public class BoardView {
 			System.out.println("게시글이 없습니다.\n");
 		}else {
 			for(int i = 0; i<bList.size(); i++) {
-				System.out.println((bList.size())+ " | " + bList.get(i).toString());
+				System.out.println(bList.get(i).toString());
 			}
 		}
 		System.out.println("--------------------------------------------------------------");
@@ -43,6 +43,14 @@ public class BoardView {
 		return new Board(writer,title,content);
 		
 	}
-	public void oneView() {}
-	public void serachWriting() {}
+	public void oneView() {
+		System.out.print("제목 : ");
+		System.out.println("내용 > ");
+	}
+	public char serachWritingByNo() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("검색할 글 번호 > ");
+		return sc.next().charAt(0);
+		
+	}
 }
