@@ -112,7 +112,7 @@ public class MusicController {
 
 	// 강사님 정렬 방법
 	public List<Music> sortByTitle(List<Music> mList) {
-		Collections.sort(mList);
+		Collections.sort(mList);  //기본이 오름차순이고,,
 		// sort메소드는List인터페이스를 매개변수로 받음.
 		// mList를 ArrayList변수가 아닌 List변수로 했던 이유.
 		return mList;

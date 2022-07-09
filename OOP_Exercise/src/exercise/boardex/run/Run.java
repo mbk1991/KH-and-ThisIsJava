@@ -22,6 +22,7 @@ public class Run {
 					System.out.println("게시글 저장 성공");
 					break quitMenu;
 				case '2':
+					bView.oneView(bController.boardReadByNo(bView.searchWritingByNo()));
 					break quitMenu;
 				case '3':
 					break quitMenu;

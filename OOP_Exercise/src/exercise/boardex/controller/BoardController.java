@@ -15,7 +15,15 @@ public class BoardController {
 		board.setNo(no);
 		bList.add(board);
 	}
-	public void boardRead() {}
+	public Board boardReadByNo(int no) {
+		
+		for(int i=0; i < bList.size(); i++) {
+			if(bList.get(i).getNo() == no) {
+				return bList.get(i);
+			}
+		}
+		return null;
+	}
 	public void boardUpdate() {}
 	public void boardDelete() {}
 	

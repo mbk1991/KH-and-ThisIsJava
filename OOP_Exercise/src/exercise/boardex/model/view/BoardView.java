@@ -43,14 +43,17 @@ public class BoardView {
 		return new Board(writer,title,content);
 		
 	}
-	public void oneView() {
+	public void oneView(Board board) {
+		System.out.print("no " + board.getNo());
 		System.out.print("제목 : ");
-		System.out.println("내용 > ");
+		System.out.println(board.getTitle());
+		System.out.print("내용 > ");
+		System.out.println(board.getContent());
 	}
-	public char serachWritingByNo() {
+	public int searchWritingByNo() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("검색할 글 번호 > ");
-		return sc.next().charAt(0);
+		return sc.nextInt() -1;
 		
 	}
 }
