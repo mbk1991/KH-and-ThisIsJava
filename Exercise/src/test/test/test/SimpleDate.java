@@ -20,6 +20,10 @@ public class SimpleDate {
 			System.out.println(date.toString());
 			
 			
+			int a = 1;
+			String aStr = String.valueOf(a);
+			
+			
 			String result = to.format(date);
 			
 			System.out.println(result);
