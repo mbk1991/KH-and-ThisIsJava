@@ -11,8 +11,8 @@ public class BaseballServer {
 
 		ServerSocket serverSocket = null;
 		Socket socket = null;
-		InputStream is = null;
-		OutputStream os = null;
+//		InputStream is = null;
+//		OutputStream os = null;
 		DataInputStream dis = null;
 		DataOutputStream dos = null;
 		Random rand = new Random();
@@ -40,10 +40,10 @@ public class BaseballServer {
 			socket = serverSocket.accept();
 			System.out.println(time + "클라이언트가 접속했습니다.");
 
-			is = socket.getInputStream();
-			os = socket.getOutputStream();
-			dis = new DataInputStream(is);
-			dos = new DataOutputStream(os);
+//			is = socket.getInputStream();
+//			os = socket.getOutputStream();
+			dis = new DataInputStream(socket.getInputStream());
+			dos = new DataOutputStream(socket.getOutputStream());
 
 			// 중복되지 않는 번호를 랜덤으로 3개 추출
 
