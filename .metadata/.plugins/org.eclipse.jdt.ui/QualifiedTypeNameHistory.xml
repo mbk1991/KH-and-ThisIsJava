@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.kh.controller.ListController"/>
 <fullyQualifiedTypeName name="com.kh.listcollection.ObjectList"/>
 <fullyQualifiedTypeName name="com.kh.listcollection.RList"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
@@ -37,7 +36,6 @@
 <fullyQualifiedTypeName name="com.kh.music.model.vo.Music"/>
 <fullyQualifiedTypeName name="exercise.boardex.model.view.BoardView"/>
 <fullyQualifiedTypeName name="exercise.boardex.controller.BoardController"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="exercise.board.model.vo.Board"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="java.lang.Comparable"/>
@@ -59,5 +57,7 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.stream.IntStream"/>
 <fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.util.stream.Stream"/>
 </qualifiedTypeNameHistroy>
