@@ -15,7 +15,7 @@ public class StreamPipelineExam {
 				new Member("박수미",Member.FEMALE,27)
 				);
 		
-		// 1. 스트림을 얻어낸다 2.중간처리하여 중간스트림을 얻어낸다 3. 최종처리하여 값을 얻어낸다.
+		// 1. 스트림을 얻어낸다 2.중간처리하여 중간스트림을 얻어낸다 3. 최종처리하여 값을 얻어낸다.// lazy 개념 상기: 최종처리가 시작되어야 중간처리가 진행됨.
 		// 이 과정이 왠지 SQL의 집계함수를 사용하는 과정과 유사한 것 같다.
 		
 		Stream<Member> maleFemaleStream = list.stream(); //list컬렉션으로 stream객체를 얻고
@@ -25,6 +25,11 @@ public class StreamPipelineExam {
 		double avg = optionalDouble.getAsDouble(); // 이를 다시 double 으로 변환
 		
 		System.out.println(avg);
+		
+		//이를 불필요한 변수 선언을 없애 메소드체이닝하면
+		
+		double avg2 = list.stream().filter(m->m.getSex() == Member.MALE).mapToInt(Member::getAge).average().getAsDouble();
+		System.out.println(avg2);
 		
 		
 		
