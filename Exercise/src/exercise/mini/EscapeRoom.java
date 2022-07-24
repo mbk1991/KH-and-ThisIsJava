@@ -131,6 +131,12 @@ public class EscapeRoom {
 		while (gamePlay) {
 			System.out.print("User: 1~3 사이 선택 >");
 			int userChoice = sc.nextInt();
+			while(userChoice <1 || userChoice >3) {
+				System.out.println("1~3사이만 입력하시라고!");
+				System.out.print("User: 1~3 사이 선택 >");
+				userChoice = sc.nextInt();
+				
+			}
 
 			for (int i = 1; i <= userChoice; i++) {
 				gamePointerNumber++;
@@ -287,9 +293,9 @@ public class EscapeRoom {
 		try {
 			for (int i = 0; i < tempStr.length(); i++) {
 				System.out.print(tempStr.charAt(i));
-				Thread.sleep(40);
+				Thread.sleep(20);
 			}
-			Thread.sleep(800);
+			Thread.sleep(400);
 			System.out.println();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -300,9 +306,9 @@ public class EscapeRoom {
 		try {
 			for (int i = 0; i < tempStr.length(); i++) {
 				System.out.print(tempStr.charAt(i));
-				Thread.sleep(30);
+				Thread.sleep(10);
 			}
-			Thread.sleep(30);
+			Thread.sleep(10);
 			System.out.println();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
