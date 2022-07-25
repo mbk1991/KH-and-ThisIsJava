@@ -1,5 +1,6 @@
 package member.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import member.model.vo.Member;
@@ -62,6 +63,7 @@ public class MemberView {
 		System.out.println("주민등록번호 입력 ");
 		System.out.print(">> ");
 		String memberSsn = sc.next();
+		sc.nextLine();
 		
 		System.out.println("주소 입력 ");
 		System.out.print(">> ");
@@ -102,14 +104,31 @@ public class MemberView {
 		
 	}
 	
-	public void memberPrintAll() {
+	public void memberPrintAll(ArrayList<Member> mList) {
 		System.out.println("==전체 회원 조회 메뉴==");
 		
+		mList.stream().forEach(m->
+			System.out.println(
+					"\n====="
+					+"\n회원 ID : " + m.getMemberId()
+					+"\n회원 이름 : " + m.getMemberName()
+					+"\n회원 주소 : " + m.getMemberAddress()
+					+"\n회원 연락처 : " + m.getMemberPhone()
+					+"\n회원 이메일 : " + m.getMemberEmail()
+					+"\n회원 가입 일자 : " + m.getJoinDate()
+					+"\n====="
+					)
+				);
 	}
 	
 	public void memberPrintById() {
 		System.out.println("==회원 조회 메뉴==");
 		
+	}
+	
+	public void printResult(String message) {
+		System.out.println("=====처리결과=====");
+		System.out.println(message);
 	}
 	
 	

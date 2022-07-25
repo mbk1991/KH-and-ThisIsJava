@@ -16,6 +16,7 @@ public class Run {
 			switch (input) {
 			case '1':
 				member = view.memberInsertMenu();
+				mCtrl.insertCtrl(member);
 				
 				
 				break;
@@ -28,8 +29,7 @@ public class Run {
 				
 				break;
 			case '4':
-				view.memberPrintAll();
-				
+				mCtrl.printAllCtrl();
 				break;
 			case '5':
 				view.memberFindByIdMenu();
