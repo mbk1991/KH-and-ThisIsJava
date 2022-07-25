@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import kh.or.iei.student.model.vo.Student;
 
@@ -23,7 +24,7 @@ public class StudentDAO {
 		// 5. 결과값 받기 SELECT -> resultSet객체 반환 / INSERT,UPDATE,DELETE -> result int 타입
 		// 반환(1,0)
 		// 6. 자원해제(close)
-
+	
 		String query = "INSERT INTO STUDENT_TBL VALUES(" + "'" + student.getStudentId() + "'," + "'"
 				+ student.getStudentPwd() + "'," + "'" + student.getStudentName() + "'," + "'" + student.getGender()
 				+ "'," + "" + student.getAge() + "," + "'" + student.getEmail() + "'," + "'" + student.getPhone() + "',"
