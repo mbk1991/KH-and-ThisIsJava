@@ -40,4 +40,19 @@ public class MemberController {
 		return result;
 	}
 
+	public boolean pwdCheck(String inputIdForDelete, String inputPassword) {
+		String dbPwd = mDao.memberPwdCheckDB(inputIdForDelete);
+		if(inputPassword.equals(dbPwd)) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	public int memberDelete(String inputIdForDelete) {
+		int result = mDao.memberDeleteDB(inputIdForDelete);
+		return result;
+	}
+
+
 }

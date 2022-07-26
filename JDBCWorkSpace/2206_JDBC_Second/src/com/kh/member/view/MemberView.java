@@ -123,6 +123,13 @@ public class MemberView {
 				hobby);
 		return member;
 	}
+
+	public String inputPwd() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("=====비밀번호 입력 메뉴=====");
+		System.out.print("비밀번호 입력 >>");
+		return sc.next();
+	}
 	
 	
 	

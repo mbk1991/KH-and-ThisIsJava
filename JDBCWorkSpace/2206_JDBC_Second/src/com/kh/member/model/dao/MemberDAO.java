@@ -216,26 +216,24 @@ public class MemberDAO {
 	}
 
 	public int memberUpdateDB(Member member) {
-		String sql = "UPDATE MEMBER_TBL SET MEMBER_PWD =?,"
-				+ " MEMBER_NAME =?, GENDER =?, AGE =?,"
-				+ " EMAIL =?, PHONE =?, ADDRESS =?, HOBBY =?"
-				+ "  WHERE MEMBER_ID = ?";
-		
+		String sql = "UPDATE MEMBER_TBL SET MEMBER_PWD =?," + " MEMBER_NAME =?, GENDER =?, AGE =?,"
+				+ " EMAIL =?, PHONE =?, ADDRESS =?, HOBBY =?" + "  WHERE MEMBER_ID = ?";
+
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(url, user, password);
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1,member.getMemberPwd());
-			pstmt.setString(2,member.getMemberName());
-			pstmt.setString(3,member.getGender()+"");
-			pstmt.setInt(4,member.getAge());
+
+			pstmt.setString(1, member.getMemberPwd());
+			pstmt.setString(2, member.getMemberName());
+			pstmt.setString(3, member.getGender() + "");
+			pstmt.setInt(4, member.getAge());
 			pstmt.setString(5, member.getEmail());
-			pstmt.setString(6,member.getPhone());
-			pstmt.setString(7,member.getAddress());
+			pstmt.setString(6, member.getPhone());
+			pstmt.setString(7, member.getAddress());
 			pstmt.setString(8, member.getHobby());
 			pstmt.setString(9, member.getMemberId());
-			
+
 			result = pstmt.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
@@ -245,6 +243,61 @@ public class MemberDAO {
 		} finally {
 		}
 
+		return result;
+	}
+
+	public String memberPwdCheckDB(String inputIdForDelete) {
+		String sql = "SELECT MEMBER_PWD FROM MEMBER_TBL WHERE MEMBER_ID = ?";
+		String dbPwd = null;
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(url, user, password);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, inputIdForDelete);
+
+			rset = pstmt.executeQuery();
+			while (rset.next()) {
+				dbPwd = rset.getString(1);
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rset.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return dbPwd;
+	}
+
+	public int memberDeleteDB(String inputIdForDelete) {
+		String sql = "DELETE FROM MEMBER_TBL WHERE MEMBER_ID = ?";
+
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(url, user, password);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, inputIdForDelete);
+			result = pstmt.executeUpdate();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		return result;
 	}
 }
