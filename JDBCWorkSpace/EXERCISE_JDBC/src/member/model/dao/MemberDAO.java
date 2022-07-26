@@ -13,7 +13,8 @@ public class MemberDAO {
 	// sql디벨로퍼의 계정 속성을 보면 접속세부정보를 확인할 수 있다.
 	// oracle.jdbc.driver.OracleDriver";
 	// jdbc:oracle:thin:@localhost:1521:xe
-
+	// 어 Class.forName(DRIVER)가 없는데 된다. 왜지?
+	
 	private final String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	private final String user = "MEMBER";
 	private final String password = "MEMBER";

@@ -24,7 +24,7 @@ public class StudentDAO {
 		// 5. 결과값 받기 SELECT -> resultSet객체 반환 / INSERT,UPDATE,DELETE -> result int 타입
 		// 반환(1,0)
 		// 6. 자원해제(close)
-	
+
 		String query = "INSERT INTO STUDENT_TBL VALUES(" + "'" + student.getStudentId() + "'," + "'"
 				+ student.getStudentPwd() + "'," + "'" + student.getStudentName() + "'," + "'" + student.getGender()
 				+ "'," + "" + student.getAge() + "," + "'" + student.getEmail() + "'," + "'" + student.getPhone() + "',"
@@ -63,17 +63,17 @@ public class StudentDAO {
 		ResultSet rset = null;
 		String query = "SELECT * FROM STUDENT_TBL";
 		ArrayList<Student> sList = null;
-		
+
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(url, user, password);
 			stmt = conn.createStatement();
 			rset = stmt.executeQuery(query);
 			sList = new ArrayList<Student>();
-			
-			while(rset.next()) {
+
+			while (rset.next()) {
 				Student student = new Student();
-				
+
 				student.setStudentId(rset.getString("STUDENT_ID"));
 				student.setStudentPwd(rset.getString("STUDENT_PWD"));
 				student.setStudentName(rset.getString("STUDENT_NAME"));
@@ -84,19 +84,19 @@ public class StudentDAO {
 				student.setAddress(rset.getString("ADDRESS"));
 				student.setHobby(rset.getString("HOBBY"));
 				student.setEnrollDate(rset.getDate("ENROLL_DATE"));
-				
+
 				sList.add(student);
 				System.out.println("Dao.showAll메소드 : " + student.getStudentName());
-				
+
 			}
-			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		System.out.println(sList);
-		
+
 		return sList;
 	}
 
@@ -105,15 +105,14 @@ public class StudentDAO {
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rset = null;
-		String sql = "SELECT * FROM STUDENT_TBL WHERE STUDENT_ID = '"+ id +"'";
-		
-		
+		String sql = "SELECT * FROM STUDENT_TBL WHERE STUDENT_ID = '" + id + "'";
+
 		try {
 			conn = DriverManager.getConnection(url, user, password);
 			stmt = conn.createStatement();
 			rset = stmt.executeQuery(sql);
-			
-			while(rset.next()) {
+
+			while (rset.next()) {
 				student.setStudentId(rset.getString("STUDENT_ID"));
 				student.setStudentPwd(rset.getString("STUDENT_PWD"));
 				student.setStudentName(rset.getString("STUDENT_NAME"));
@@ -125,13 +124,134 @@ public class StudentDAO {
 				student.setHobby(rset.getString("HOBBY"));
 				student.setEnrollDate(rset.getDate("ENROLL_DATE"));
 			}
-			
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
-		
+
 		return student;
+	}
+
+	public ArrayList<Student> selectStudentsByName(String studentName) {
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Student> sList = null;
+		String sql = "SELECT * FROM STUDENT_TBL WHERE STUDENT_NAME LIKE '%" + studentName + "%'";
+
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(url, user, password);
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(sql);
+			sList = new ArrayList<Student>();
+			while (rset.next()) {
+				Student student = new Student();
+				student.setStudentId(rset.getString("STUDENT_ID"));
+				student.setAge(rset.getInt("AGE"));
+				student.setGender(rset.getString("GENDER").charAt(0));
+				student.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				sList.add(student);
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sList;
+	}
+
+	public int deleteStudent(String studentId) {
+		Connection conn = null;
+		Statement stmt = null;
+		int result = 0;
+		String sql = "DELETE FROM STUDENT_TBL WHERE STUDENT_ID = '" + studentId + "'";
+
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(url, user, password);
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(sql);
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public int checkStudentId(String inputId) {
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String sql = "SELECT COUNT(*) AS COUNT FROM STUDENT_TBL WHERE STUDENT_ID = '"+inputId+"'";
+		
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(url, user, password);
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				result = rset.getInt("COUNT");
+			}
+			
+		    
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rset.close();
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+
+	public int updateStudent(Student student) {
+		Connection conn = null;
+		Statement stmt = null;
+		//ResultSet rset = null;
+		int result = 0;
+		String sql = "UPDATE STUDENT_TBL SET STUDENT_PWD ='"+student.getStudentPwd()+"', EMAIL = '"+student.getEmail()+"', PHONE = '"+student.getPhone()+"',ADDRESS = '"+student.getAddress()+"',HOBBY = '"+student.getHobby()+"'  WHERE STUDENT_ID = '"+student.getStudentId()+"'";
+		
+		try {
+			Class.forName(DRIVER);
+			try {
+				conn = DriverManager.getConnection(url, user, password);
+				stmt = conn.createStatement();
+				result = stmt.executeUpdate(sql);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		System.out.println("DAO result :" +result);
+		return result;
 	}
 }

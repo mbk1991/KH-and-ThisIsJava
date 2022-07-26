@@ -83,4 +83,29 @@ public class StudentView {
 				+ "\n학생 이메일 : " + s.getEmail() + "\n학생 전화번호 : " + s.getPhone() + "\n학생 주소 : " + s.getAddress()
 				+ "\n학생 취미 : " + s.getHobby() + "\n==========");
 	}
+
+	public String inputName() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("조회할 이름 입력 : ");
+		return sc.next();
+	}
+
+	public Student modifyStudent() {
+		Scanner sc = new Scanner(System.in);
+		Student student = new Student();
+		System.out.println("=====수정할 정보 입력=====");
+		System.out.println("비밀번호 : ");
+		student.setStudentPwd(sc.next());
+		System.out.println("이메일 : ");
+		student.setEmail(sc.next());
+		System.out.println("전화번호 : ");
+		student.setPhone(sc.next());
+		System.out.println("주소 : ");
+		sc.nextLine();
+		student.setAddress(sc.nextLine());
+		System.out.println("취미 : ");
+		student.setHobby(sc.next());
+		
+		return student;
+	}
 }

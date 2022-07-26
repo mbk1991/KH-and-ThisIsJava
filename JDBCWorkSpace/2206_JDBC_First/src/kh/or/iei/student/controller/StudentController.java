@@ -46,4 +46,31 @@ public class StudentController {
 		System.out.println("=====시스템 메시지=====");
 		System.out.println("처리 실패");
 	}
+
+	public ArrayList<Student> printStudentByName(String studentName) {
+		StudentDAO sDao = new StudentDAO();
+		ArrayList<Student> sList = sDao.selectStudentsByName(studentName);
+		return sList;
+	}
+
+	public int removeStudent(String studentId) {
+		StudentDAO sDao = new StudentDAO();
+		int result = sDao.deleteStudent(studentId);
+		
+		return result;
+	}
+
+	public int checkStudentId(String inputId) {
+		StudentDAO sDao = new StudentDAO();
+		int result =  sDao.checkStudentId(inputId);
+		return result;
+	}
+
+	public int modifyStudent(Student student) {
+		StudentDAO sDao = new StudentDAO();
+		int result = sDao.updateStudent(student);
+		System.out.println("컨트롤러 result :" +result);
+		
+		return result;
+	}
 }
