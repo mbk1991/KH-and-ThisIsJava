@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import jdbcex.library.model.vo.Book;
 import jdbcex.library.model.vo.Lease;
+import jdbcex.library.model.vo.Library;
 import jdbcex.library.model.vo.User;
 
 public class LibraryDAO {
@@ -23,6 +24,7 @@ public class LibraryDAO {
 	Statement stmt = null;
 	PreparedStatement pstmt = null;
 	ResultSet rset = null;
+	ArrayList<Library> superList = null;
 	ArrayList<Book> bList = null;
 	ArrayList<User> uList = null;
 	ArrayList<Lease> lList = null;
@@ -110,25 +112,38 @@ public class LibraryDAO {
 		return uList;
 	}
 
-	public ArrayList<Lease> selectAllLeaseFromDB() {
-		//문제의 요구사항이  대여번호, 회원아이디,회원이름,책이름 출력이었다.
-		String sql = "SELECT * FROM LIBRARY";
+	public ArrayList<Library> selectAllLeaseFromDB() {
+		//문제의 요구사항이  대여번호, 회원아이디,회원이름,책이름 출력이었다.조인하라는 것.
+		//리턴은 하나의 값만 할 수 있는데 여러 테이블을 조인한 경우의 값을 각각의 
+		//어레이리스트로 반환할 수가 없다. 결국은 상속을 써야 하는 것 같다.
+		//각각의 타입의 super타입으로?
+		//각각의 vo들의 필드값이 모두 저장되어있는 부모클래스 Library가 필요한건가?
+		//아니면 애초에 Library 하나만?
+		String sql = "SELECT * "
+				+ "FROM LIBRARY JOIN CUSTOMER USING(USER_ID) JOIN BOOK USING(BOOK_NO)";
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(url, user, password);
 			stmt = conn.createStatement();
 			rset = stmt.executeQuery(sql);
 
-			lList = new ArrayList<Lease>();
+			superList = new ArrayList<Library>();
 			while (rset.next()) {
 				int leaseNo = rset.getInt("LEASE_NO");
-				int bookNo = rset.getInt("BOOK_NO");
 				String userId = rset.getString("USER_ID");
+				String userName = rset.getString("USER_NAME");
 				Date leaseDate = rset.getDate("LEASE_DATE");
 				Date returnDate = rset.getDate("RETURN_DATE");
+				String bookName = rset.getString("BOOK_NAME");
 				
-				Lease lease = new Lease(leaseNo, bookNo, userId, leaseDate, returnDate);
-				lList.add(lease);
+				Lease lease = new Lease(leaseNo, userId, leaseDate, returnDate);
+				User user = new User();
+				user.setUserName(userName);
+				Book book = new Book();
+				book.setBookName(bookName);
+				superList.add(lease);
+				superList.add(book);
+				superList.add(user);
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -136,7 +151,7 @@ public class LibraryDAO {
 			e.printStackTrace();
 		}
 
-		return lList;
+		return superList;
 	}
 
 	public ArrayList<Book> selectBookByNoFromDB(String inputBookNo) {

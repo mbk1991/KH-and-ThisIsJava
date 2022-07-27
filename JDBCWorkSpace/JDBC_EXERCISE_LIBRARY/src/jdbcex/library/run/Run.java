@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import jdbcex.library.controller.LibraryController;
 import jdbcex.library.model.vo.Book;
 import jdbcex.library.model.vo.Lease;
+import jdbcex.library.model.vo.Library;
 import jdbcex.library.model.vo.User;
 import jdbcex.library.view.LibraryView;
 
@@ -13,7 +14,7 @@ public class Run {
 	public static void main(String[] args) {
 		LibraryView view = new LibraryView();
 		LibraryController lCtrl = new LibraryController();
-//		ArrayList<? extends Library> superList = null;
+		ArrayList<Library> superList = null;
 		ArrayList<Book> bList = null;
 		ArrayList<User> uList = null;
 		ArrayList<Lease> lList = null;
@@ -92,9 +93,9 @@ public class Run {
 				char lInput = view.leaseMenu();
 				switch (lInput) {
 				case '1': // 대여 관리 전체 조회
-					lList = lCtrl.selectAllLeaseControl();
-					if (!lList.isEmpty()) {
-						view.printLease(lList);
+					superList = lCtrl.selectAllLeaseControl();
+					if (!superList.isEmpty()) {
+						view.printLease(superList);
 					} else {
 						view.systemMessage("대여 정보 없음");
 					}

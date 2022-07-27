@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import jdbcex.library.model.dao.LibraryDAO;
 import jdbcex.library.model.vo.Book;
 import jdbcex.library.model.vo.Lease;
+import jdbcex.library.model.vo.Library;
 import jdbcex.library.model.vo.User;
 
 public class LibraryController {
 	LibraryDAO lDao = new LibraryDAO();
+	ArrayList<Library> superList = null;
 	ArrayList<Book> bList = null;
 	ArrayList<User> uList = null;
 	ArrayList<Lease> lList = null;
@@ -23,9 +25,9 @@ public class LibraryController {
 		return uList;
 	}
 
-	public ArrayList<Lease> selectAllLeaseControl() {
-		lList = lDao.selectAllLeaseFromDB();
-		return lList;
+	public ArrayList<Library> selectAllLeaseControl() {
+		superList = lDao.selectAllLeaseFromDB();
+		return superList;
 	}
 
 	public ArrayList<Book> selectBookByNoControl(String inputBookCode) {

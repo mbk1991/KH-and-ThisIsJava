@@ -13,9 +13,9 @@ public class LibraryView {
 	ArrayList<Book> bList = null;
 	ArrayList<User> uList = null;
 	ArrayList<Lease> lList = null;
-	
-	
-	
+	Book book = null;
+	User user = null;
+	Lease lease = null;
 
 	public char mainMenu() {
 		Scanner sc = new Scanner(System.in);
@@ -27,6 +27,7 @@ public class LibraryView {
 		System.out.print("메뉴 입력 >>");
 		return sc.next().charAt(0);
 	}
+
 	public char userMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\n=====회원관리 메뉴=====");
@@ -40,6 +41,7 @@ public class LibraryView {
 		System.out.print("메뉴 입력 >>");
 		return sc.next().charAt(0);
 	}
+
 	public char leaseMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\n=====대여관리 메뉴=====");
@@ -51,6 +53,7 @@ public class LibraryView {
 		System.out.print("메뉴 입력 >>");
 		return sc.next().charAt(0);
 	}
+
 	public char bookMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\n=====책관리 메뉴=====");
@@ -76,6 +79,7 @@ public class LibraryView {
 			System.out.println("----------");
 		});
 	}
+
 	public void printUser(ArrayList<User> uList) {
 		System.out.println("=====회원 전체 조회=====");
 		uList.stream().forEach(u -> {
@@ -90,41 +94,57 @@ public class LibraryView {
 			System.out.println("-----");
 		});
 	}
-	public void printLease(ArrayList<Lease> lList) {
-		System.out.println("=====대여 정보 전체 조회=====");
-		lList.stream().forEach(l->{
-			System.out.println("\n-----");
-			System.out.println("1.대여번호"+l.getLeaseNo());
-			System.out.println("2.도서번호"+l.getBookNo());
-			System.out.println("3.대여자ID"+l.getUserId());
-			System.out.println("4.대출일"+l.getLeaseDate());
-			System.out.println("5.반납일"+l.getReturnDate());
-			System.out.println("-----");
-			
-		});
-		
+
+	public void printLease(ArrayList<Library> superList) {
+
+		for (Library library : superList) {
+			book = null;
+			user = null;
+			lease = null;
+
+			if (library instanceof Book) {
+				book = (Book) library;
+			} else if (library instanceof User) {
+				user = (User) library;
+			} else if (library instanceof Lease) {
+				lease = (Lease) library;
+			}
+			if (book != null && user != null && lease != null) {
+				System.out.println("\n-----");
+				System.out.println("1.대여번호" + lease.getLeaseNo());
+				System.out.println("2.회원 ID" + user.getUserId());
+				System.out.println("3.회원 이름" + user.getUserName());
+				System.out.println("4.책 이름" + book.getBookName());
+				System.out.println("5.대여일" + lease.getReturnDate());
+				System.out.println("6.반납일" + lease.getReturnDate());
+				System.out.println("-----");
+			}
+
+		}
+
 	}
 
-	
-	
 	public String inputBookNoMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=====도서 번호 입력======");
 		System.out.print(">> ");
 		return sc.next();
 	}
+
 	public String inputBookNameMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=====도서 제목 입력======");
 		System.out.print(">> ");
 		return sc.next();
 	}
+
 	public String inputUserIdMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=====회원 ID 입력======");
 		System.out.print(">> ");
 		return sc.next();
 	}
+
 	public String inputUserNameMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("=====회원 이름 입력======");
@@ -132,44 +152,41 @@ public class LibraryView {
 		return sc.next();
 	}
 
-	
-	
-	
 	public void systemMessage(String message) {
 		System.out.println("!시스템 메시지!");
 		System.out.println("<" + message + ">");
 	}
-	
+
 	public Book inputBookMenu() {
 		Scanner sc = new Scanner(System.in);
 		String regexInt = "\\d+";
-		
+
 		System.out.println("=====도서 등록 메뉴=====");
 		System.out.println("1.도서 번호 > ");
 		String bookNoTemp = sc.next();
-		while(!Pattern.matches(regexInt,bookNoTemp)) {
+		while (!Pattern.matches(regexInt, bookNoTemp)) {
 			System.out.println("숫자만 입력");
 			bookNoTemp = sc.next();
 		}
 		int bookNo = Integer.parseInt(bookNoTemp);
-		
+
 		System.out.println("2.도서 제목 > ");
 		String bookName = sc.next();
 		System.out.println("3.도서 작가 > ");
-		String bookWriter= sc.next();
+		String bookWriter = sc.next();
 		System.out.println("4.도서 가격 > ");
 		String bookPriceTemp = sc.next();
-		while(!Pattern.matches(regexInt, bookPriceTemp)) {
+		while (!Pattern.matches(regexInt, bookPriceTemp)) {
 			System.out.println("숫자만 입력");
 			bookPriceTemp = sc.next();
 		}
 		int bookPrice = Integer.parseInt(bookPriceTemp);
-		
+
 		System.out.println("5.도서 출판사 > ");
 		String publisher = sc.next();
 		System.out.println("6.도서 장르 > ");
 		String genre = sc.next();
-		
+
 		Book book = new Book(bookNo, bookName, bookWriter, bookPrice, publisher, genre);
 		return book;
 	}

@@ -21,6 +21,9 @@ public class Lease extends Library{
 		this.returnDate = returnDate;
 	}
 
+	public Lease(int leaseNo2, String userId2, Date leaseDate2, Date returnDate2) {
+	}
+
 	public int getLeaseNo() {
 		return leaseNo;
 	}
