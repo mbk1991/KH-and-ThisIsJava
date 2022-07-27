@@ -2,6 +2,7 @@ package com.kh.member.view;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import com.kh.member.model.vo.Member;
 
@@ -77,10 +78,26 @@ public class MemberView {
 		String memberPwd = sc.next();
 		System.out.print("3.이름 입력 >>");
 		String memberName = sc.next();
-		System.out.print("4.성별 입력 >>");
-		char gender = sc.next().charAt(0);
+		System.out.print("4.성별 입력(남:M,여:F) >>");
+		char gender = sc.next().toUpperCase().charAt(0);
+		//성별조건 M.F
+		while(!(gender == 'M' || gender =='F')) {
+			System.out.println("다시 입력하세요.(M or F)");
+			gender = sc.next().toUpperCase().charAt(0);
+		}
 		System.out.print("5.나이 입력 >>");
-		int age = sc.nextInt();
+		String tempAge = sc.next();
+		//숫자만 입력해야겠지 문자를 입력하면 에러가 나올것임.
+		//String으로 받고 정규표현식으로 검토하고 숫자변환?
+		//
+		String regexAge = "\\d+";
+		while(!Pattern.matches(regexAge, tempAge)) {
+			//숫자가 아니면 다시 입력받기.
+			System.out.println("숫자만 입력하세요.");
+			tempAge = sc.next();
+		}
+		int age = Integer.parseInt(tempAge);
+		
 		System.out.print("6.이메일 입력 >>");
 		String email = sc.next();
 		System.out.print("7.전화번호 입력 >>");
