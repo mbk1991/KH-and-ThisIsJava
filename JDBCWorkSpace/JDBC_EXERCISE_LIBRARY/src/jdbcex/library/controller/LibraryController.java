@@ -12,18 +12,33 @@ public class LibraryController {
 	ArrayList<Book> bList = null;
 	ArrayList<User> uList = null;
 	ArrayList<Lease> lList = null;
-
-	public ArrayList<Book> selectAllControl(String tableName) {
-		//반환값의 타입이 문제이다.
-		if(tableName.equals("BOOK")) {
-			bList = lDao.selectAllFromDB(tableName); 
-		}else if(tableName.equals("CUSTOMER")) {
-			uList = lDao.selectAllFromDB(tableName);
-		}else if(tableName.equals("LIBRARY")) {
-			lList = lDao.selectAllFromDB(tableName);
-		}
-		
+	
+	public ArrayList<Book> selectAllBookControl() {
+		bList = lDao.selectAllBookFromDB();
 		return bList;
 	}
+
+	public ArrayList<User> selectAllUserControl() {
+		uList = lDao.selectAllUserFromDB();
+		return uList;
+	}
+
+	public ArrayList<Lease> selectAllLeaseControl() {
+		lList = lDao.selectAllLeaseFromDB();
+		return lList;
+	}
+
+	public ArrayList<Book> selectBookByNoControl(String inputBookCode) {
+		bList = lDao.selectBookByNoFromDB(inputBookCode);
+		return bList;
+	}
+
+	public int registBookControl(Book book) {
+		int result = lDao.insertBookToDB(book);
+		return result;
+	}
+
+
+
 
 }

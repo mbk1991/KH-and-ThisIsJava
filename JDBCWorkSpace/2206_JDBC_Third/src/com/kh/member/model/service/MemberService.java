@@ -35,6 +35,7 @@ public class MemberService {
 		Connection conn = jdbcTemplate.createConnection();
 		mList = mDao.memberSelectByNameDB(inputName, conn);
 		jdbcTemplate.close();
+		
 		return mList;
 	}
 
@@ -43,7 +44,7 @@ public class MemberService {
 		int result = mDao.memberInsertDB(member, conn);
 		jdbcTemplate.close();
 		return result;
-	}
+	}	
 
 	public int updateMemberService(Member member) {
 		Connection conn = jdbcTemplate.createConnection();
