@@ -1,12 +1,25 @@
 package jdbcex.library.run;
 
+import java.util.ArrayList;
+
+import jdbcex.library.controller.LibraryController;
+import jdbcex.library.model.vo.Book;
+import jdbcex.library.model.vo.Lease;
+import jdbcex.library.model.vo.User;
 import jdbcex.library.view.LibraryView;
 
 public class Run {
 
 	public static void main(String[] args) {
 		LibraryView view = new LibraryView();
-
+		LibraryController lCtrl = new LibraryController();
+//		ArrayList<? extends Library> superList = null;
+		ArrayList<Book> bList = null;
+		ArrayList<User> uList = null;
+		ArrayList<Lease> lList = null;
+		String tableName = null;
+		
+		
 		EXIT: while (true) {
 			char input = view.mainMenu();
 			switch (input) {
@@ -14,8 +27,16 @@ public class Run {
 				char bInput = view.bookMenu();
 				switch (bInput) {
 				case '1': // 책 전체 조회
-//컨트롤러가 다오에서 bookList를 가져와 뷰에 전달
-//dao의 전체조회기능은 재사용을 하고 싶음
+				//컨트롤러가 다오에서 bookList를 가져와 뷰에 전달
+//				//dao의 전체조회기능은 재사용을 하고 싶음
+					tableName = "BOOK";
+					bList = lCtrl.selectAllControl(tableName);
+					if(!bList.isEmpty()) {
+						view.printAllBook(bList);	
+					}else {
+						view.systemMessage("데이터가 없음");
+					}
+					
 					
 					
 					break;

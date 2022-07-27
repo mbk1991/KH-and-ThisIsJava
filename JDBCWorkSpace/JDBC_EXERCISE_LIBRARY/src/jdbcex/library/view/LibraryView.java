@@ -1,6 +1,10 @@
 package jdbcex.library.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import jdbcex.library.model.vo.Book;
+import jdbcex.library.model.vo.Library;
 
 public class LibraryView {
 
@@ -53,4 +57,25 @@ public class LibraryView {
 		return sc.next().charAt(0);
 	}
 
-}
+	public void systemMessage(String message) {
+		System.out.println("!시스템메시지!");
+		System.out.println("<"+message+">");
+	}
+
+	public void printAllBook(ArrayList<Book> bList) {
+		System.out.println("=====책 전체 조회=====");
+		bList.stream().forEach(
+				b->{
+					System.out.println("\n----------");
+					System.out.println("1.책번호 : "+b.getBookNo());
+					System.out.println("2.책제목 : "+b.getBookName());
+					System.out.println("3.작가 : "+b.getBookWriter());
+					System.out.println("4.가격 : "+b.getBookPrice());
+					System.out.println("5.출판사 : "+b.getPublisher());
+					System.out.println("6.장르 : "+b.getGenre());
+					System.out.println("----------");
+				}
+			);
+		}
+	}
+
