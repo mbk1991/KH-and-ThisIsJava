@@ -1,6 +1,7 @@
 package com.kh.member.model.service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.kh.member.common.JDBCTemplate;
@@ -20,6 +21,12 @@ public class MemberService {
 	public ArrayList<Member> printAllService(){
 		Connection conn = jdbcTemplate.createConnection();
 		mList = mDao.memberSelectAllDB(conn);
+		try {
+			conn.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		jdbcTemplate.close();
 		return mList;
 	}
@@ -27,6 +34,12 @@ public class MemberService {
 	public ArrayList<Member> printByIdService(String inputId) {
 		Connection conn = jdbcTemplate.createConnection();
 		mList = mDao.memberSelectByIdDB(inputId,conn);
+		try {
+			conn.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		jdbcTemplate.close();
 		return mList;
 	}
@@ -42,6 +55,12 @@ public class MemberService {
 	public int insertMemberService(Member member) {
 		Connection conn = jdbcTemplate.createConnection();
 		int result = mDao.memberInsertDB(member, conn);
+		try {
+			conn.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		jdbcTemplate.close();
 		return result;
 	}	

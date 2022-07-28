@@ -1,47 +1,25 @@
 package com.kh.member.model.dao;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Properties;
 
 import com.kh.member.model.vo.Member;
 
 public class MemberDAO {
-
-//	private final String url = "jdbc:oracle:thin:@localhost:1521:xe";
-//	private final String user = "STUDENT";
-//	private final String password = "STUDENT";
-//	private final String DRIVER = "oracle.jdbc.driver.OracleDriver";
-	
-	
-	
-	
 
 	Statement stmt = null;
 	PreparedStatement pstmt = null;
 	ResultSet rset = null;
 	int result = 0;
 	ArrayList<Member> mList = null;
-	private Properties prop;
-	
-	public MemberDAO() {
-		try {
-			prop = new Properties();
-			prop.load(new FileReader("resources/query.properties"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
 
 	public ArrayList<Member> memberSelectAllDB(Connection conn) {
-		String sql = prop.getProperty("selectAll");
+		String sql = "SELECT * FROM MEMBER_TBL";
 		try {
 			stmt = conn.createStatement();
 			rset = stmt.executeQuery(sql);
@@ -68,7 +46,7 @@ public class MemberDAO {
 			try {
 				rset.close();
 				stmt.close();
-//				conn.close();
+				conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -77,8 +55,8 @@ public class MemberDAO {
 		return mList;
 	}
 
-	public ArrayList<Member> memberSelectByIdDB(String inputId,Connection conn) {
-		String sql = prop.getProperty("selectById");
+	public ArrayList<Member> memberSelectByIdDB(String inputId, Connection conn) {
+		String sql = "SELECT * FROM  MEMBER_TBL WHERE MEMBER_ID = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, inputId);
@@ -100,7 +78,7 @@ public class MemberDAO {
 				mList.add(member);
 			}
 
-		} catch (SQLException e) {
+		}catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -116,7 +94,7 @@ public class MemberDAO {
 	}
 
 	public ArrayList<Member> memberSelectByNameDB(String inputName,Connection conn) {
-		String sql = prop.getProperty("selectByName");
+		String sql = "SELECT * FROM MEMBER_TBL WHERE MEMBER_NAME = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, inputName);
@@ -152,7 +130,7 @@ public class MemberDAO {
 		return mList;
 	}
 
-	public int memberInsertDB(Member member, Connection conn) {
+	public int memberInsertDB(Member member,Connection conn) {
 		String sql = "INSERT INTO MEMBER_TBL VALUES(?,?,?,?,?,?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -184,7 +162,7 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int memberIdCheckDB(String inputIdForUpdate, Connection conn) {
+	public int memberIdCheckDB(String inputIdForUpdate,Connection conn) {
 		String sql = "SELECT COUNT(*) FROM MEMBER_TBL WHERE MEMBER_ID = ?";
 
 		try {
@@ -212,7 +190,8 @@ public class MemberDAO {
 	}
 
 	public int memberUpdateDB(Member member,Connection conn) {
-		String sql = prop.getProperty("updateMember");
+		String sql = "UPDATE MEMBER_TBL SET MEMBER_PWD =?," + " MEMBER_NAME =?, GENDER =?, AGE =?,"
+				+ " EMAIL =?, PHONE =?, ADDRESS =?, HOBBY =?" + "  WHERE MEMBER_ID = ?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
