@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>첫번째 폼</h1>
+    <!-- 폼 태그는 데이터를 전송할 때 사용됨 -->
+    <form action="/member/login.do">
+        <fieldset>   
+            <legend>로그인 정보</legend>
+            ID: <input type = "text"><br>
+            PW: <input type = "password"><br>
+            <input type="submit" value ="로그인">
+            <input type="reset" value = "취소">
+            <input type="week">
+            <input type="button">
+            <input type="color">
+            <input type="url">
+        </fieldset>
+    </form>
+
+    <h1>두번째 폼</h1>
+    <form action="/member/check/do">
+        input태그의 속성들 <br>
+        <!-- 텍스트 입력 -->
+        text :  <input type="text"><br>
+        <!-- 비밀번호 입력 -->
+        password : <input type="password"><br>
+        <!-- 입력값을 action으로 제출 -->
+        submit : <input type="submit"><br>
+        <!-- 입력값을 초기화 -->
+        reset : <input type="reset"><br>
+        <hr>
+        <!-- 체크박스 기능 -->
+        checkbox : <input type="checkbox"><br>
+        <!-- 라디오버튼 기능 -->
+        radio : <input type="radio" name="" id=""> <br>
+        <!-- 이벤트 등을 위한 버튼 -->
+        button : <input type="button" value = "버튼">
+        <hr>
+        <!-- 파일 첨부 기능 -->
+        file : <input type="file"><br>
+    </form>
+
+    <h1>세번째 폼</h1>
+    <!-- 로그인 폼 만들기 -->
+    <form action="">
+        ID : <input type="text" readonly size="30" placeholder="이메일"> <br>
+        PW : <input type="password" maxlength="8" size="30" placeholder="비밀번호"><br>
+        NAME : <input type="text" placeholder="이름을 입력하세요"><br>
+        <input type="submit" value="로그인">
+        <input type="reset" value = "취소">
+    </form>
+
+    <h1>네번째 폼</h1>
+    <form action="/student/check.do" method="get">
+        <fieldset>
+            <legend>로그인(GET)</legend>
+            ID: <input type="text" placeholder="아이디" name="user-id"> <br>
+            PW: <input type="password" placeholder="비밀번호" name="user-pw"> <br>
+            <input type="submit" value="로그인">
+            <input type="reset" value="취소">
+        </fieldset>
+    </form>
+
+    <form action="/student/check.do" method="post">
+        <fieldset>
+            <legend>로그인(POST)</legend>
+            ID: &nbsp; <input type="text" placeholder="아이디" name="user-id"> <br>
+            PW: <input type="password" placeholder="비밀번호" name="user-pw"> <br>
+            <input type="submit" value="로그인">
+            <input type="reset" value="취소">
+        </fieldset>
+    </form>
+
+    <h1>다섯번째 폼</h1>
+    <form action="">
+        <fieldset>
+            <legend>좋아하는 음식(다중선택)</legend>
+
+           
+            
+            <label for="pizza-check">피자</label>
+            <input type="checkbox" name = "pizza" value = "p" id="pizza-check">
+            <label for="chicken-check">치킨</label>
+            <input type="checkbox" name = "chicken" value = "c" id="chicken-check"><br>
+            <input type="submit">
+
+        </fieldset>
+    </form>
+    <form action="/input/hobby.check">
+        <fieldset>
+         <legend>취미생활</legend>
+         <label> 코딩 <input type="radio" name="hobby" value="coding"></label>
+         <label> 수영 <input type="radio" name="hobby" value="swimming"></label>
+         <label>골프 <input type="radio" name="hobby" value="golf"></label>
+         <label>야구 <input type="radio" name="hobby" value="baseball"></label> <br>
+         <input type="submit">
+        </fieldset>
+    </form>
+
+<h1>여섯번째 폼(html5 속성)</h1>    
+    <form action="">
+        <input type="color"><br>
+        <input type="date"><br>
+        <input type="datetime-local"><br>
+        <input type="time"><br>
+        <input type="search" required><br>
+        <input type="email"><br>
+        <input type="week"><br>
+        <input type="range"><br>
+        <input type="submit">
+    </form>
+
+
+
+
+</body>
+</html>
