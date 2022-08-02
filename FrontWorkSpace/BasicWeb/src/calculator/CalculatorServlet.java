@@ -1,8 +1,8 @@
 package calculator;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,11 +41,22 @@ public class CalculatorServlet extends HttpServlet {
 			break;
 		}
 		
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
-		out.println("<h1> 결과 </h1><br>");
-		out.println(result);
+		request.setAttribute("first",num1);
+		request.setAttribute("second",num2);
+		request.setAttribute("operator", operator);
+		request.setAttribute("result", result);
+		
+		RequestDispatcher view =
+				request.getRequestDispatcher("/calculatro/claResult.jsp");
+		view.forward(request, response);
+						
+		
+		
+//		response.setCharacterEncoding("UTF-8");
+//		response.setContentType("text/html; charset=utf-8");
+//		PrintWriter out = response.getWriter();
+//		out.println("<h1> 결과 </h1><br>");
+//		out.println(result);
 		
 	
 	

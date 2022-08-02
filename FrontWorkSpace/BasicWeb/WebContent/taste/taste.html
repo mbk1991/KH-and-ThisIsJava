@@ -9,7 +9,8 @@
 	당신의 취향을 테스트합니다.<br>
 	데이터 입력 후 확인 버튼을 누르세요.<br><br>
 
-	<form action="/BasicWeb/taste/check.do" method="get">
+<!-- 	<form action="/BasicWeb/taste/check.do" method="get"> -->
+	<form action="./tasteResult.jsp" method="get">
 	이름은? <input type="text" name="person-name"><br><br>
 	좋아하는 색?
 	빨강<input type="radio" name="color" value="red">
@@ -25,7 +26,7 @@
 	</select>
 	<br><br>
 	좋아하는 음식은?(모두 고르세요)
-	<label>짜장면<input type="checkbox" name="food" value="짜장면"></label>
+	<label>짜장면<input type="checkbox" name="food" value="zzazang"></label>
 	<label>짬뽕<input type="checkbox" name="food" value="zzambbong"></label>
 	<label>탕수육<input type="checkbox" name="food" value="tang"></label>
 	<label>양장피<input type="checkbox" name="food" value="yang"></label>
