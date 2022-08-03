@@ -1,33 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   
 <%-- <% --%>
-// 	int firstNum=Integer.parseInt(request.getParameter("num1"));
-// 	int secondNum=Integer.parseInt(request.getParameter("num2"));
-// 	char operator = request.getParameter("operator").charAt(0);
-// 	int result = 0;
-// 	switch(operator){
-// 	case '+':
-// 		result = firstNum + secondNum;
-// 		break;
-// 	case '-':
-// 		result = firstNum - secondNum;
-// 		break;
-// 	case '*':
-// 		result = firstNum * secondNum;
-// 		break;
-// 	case '/':
-// 		result = firstNum / secondNum;
-// 		break;
-// 	}
+<!-- // 	int firstNum=Integer.parseInt(request.getParameter("num1")); -->
+<!-- // 	int secondNum=Integer.parseInt(request.getParameter("num2")); -->
+<!-- // 	char operator = request.getParameter("operator").charAt(0); -->
+<!-- // 	int result = 0; -->
+<!-- // 	switch(operator){ -->
+<!-- // 	case '+': -->
+<!-- // 		result = firstNum + secondNum; -->
+<!-- // 		break; -->
+<!-- // 	case '-': -->
+<!-- // 		result = firstNum - secondNum; -->
+<!-- // 		break; -->
+<!-- // 	case '*': -->
+<!-- // 		result = firstNum * secondNum; -->
+<!-- // 		break; -->
+<!-- // 	case '/': -->
+<!-- // 		result = firstNum / secondNum; -->
+<!-- // 		break; -->
+<!-- // 	} -->
 <%-- %> --%>
-<%
-	int firstNum = (int)request.getAttribute("first");
-	int secondNum = (int)request.getAttribute("second");
-	char op = (char)request.getAttribute("operator");
-	int result = (int)request.getAttribute("result");
+<%-- <% --%>
+<!-- // 	int firstNum = (int)request.getAttribute("first"); -->
+<!-- // 	int secondNum = (int)request.getAttribute("second"); -->
+<!-- // 	char op = (char)request.getAttribute("operator"); -->
+<!-- // 	int result = (int)request.getAttribute("result"); -->
 	
-%>
+<%-- %> --%>
 
 
     
@@ -39,8 +40,9 @@
 </head>
 <body>
 	<h1>계산 결과는 다음과 같습니다.</h1>
-	<%= firstNum %> <%=op %> <%=secondNum %>
-	= <%=result %>
+<%-- 	<%= firstNum %> <%=op %> <%=secondNum %> --%>
+<%-- 	= <%=result %> --%>
+	${first }  ${operator } ${second } = ${result }
 
 </body>
 </html>

@@ -47,7 +47,7 @@ public class CalculatorServlet extends HttpServlet {
 		request.setAttribute("result", result);
 		
 		RequestDispatcher view =
-				request.getRequestDispatcher("/calculatro/claResult.jsp");
+				request.getRequestDispatcher("/calculatro/calResult.jsp");
 		view.forward(request, response);
 						
 		
