@@ -1,0 +1,36 @@
+*{background-color: rgb(133, 226, 133);}
+
+#wrapper{
+    margin: 0 auto;
+    width: 1000px;
+}
+#header{
+    height: 150px;
+    background-color: red;
+}
+#contents{
+    height: 500px;
+}
+    #contents_layer1{
+        float: left;
+        height: 100%;
+        width: 15%;
+        background-color: olive;
+    }
+    #contents_layer2{
+        float: left;
+        height: 100%;
+        width: 60%;
+        background-color: orange;
+
+    }
+    #contents_layer3{
+        float: left;
+        height: 100%;
+        width: 25%;
+        background-color: aqua;
+    }
+#footer{
+    height: 150px;
+    background-color: yellow;
+}

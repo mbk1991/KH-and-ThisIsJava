@@ -1,0 +1,43 @@
+div{
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+#login-wrapper{
+    width: 200px;
+}
+#input{
+    height: 50px;
+}
+    #input-layer{
+        float: left;
+        height: 100%;
+        width: 70%;
+    }
+        #id-layer{
+            width: 100%;
+            height: 50%;
+        }
+            #input-id{
+                width: 100%;
+                height: 100%;
+            }
+        #pw-layer{
+            width: 100%;
+            height: 50%;
+        }    
+            #input-pw{
+                width: 100%;
+                height: 100%;
+            }
+    #button-layer{
+        float: left;
+        height: 100%;
+        width: 30%;
+    }
+        #submitbutton{
+            height: 100%;
+            width: 100%;
+        }
+#link-layer{
+    height: 20px;
+}

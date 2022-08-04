@@ -1,0 +1,33 @@
+*{background-color: rgb(102, 201, 102);}
+
+
+
+#wrapper{
+    /* 가운데 정렬 */
+    margin: 0 auto;
+    width: 1000px;
+
+}
+#header{
+    height: 150px;
+    background-color: yellow;
+}
+#contents{
+    height: 500px;
+}
+    #contents_layer1{
+        float: left;
+        height: 100%;
+        width: 20%;
+        background-color: navajowhite;
+    }
+    #contents_layer2{
+        float: left;
+        height: 100%;
+        width: 80%;
+        background: palevioletred;
+    }
+#footer{
+    height: 150px;
+    background-color: red;
+}
