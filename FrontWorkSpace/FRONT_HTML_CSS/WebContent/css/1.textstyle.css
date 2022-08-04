@@ -1,0 +1,30 @@
+/* 
+    CSS 단위 구성 
+    상대 크기 
+    1. em : 부모 요소의 크기가 기준(배수를 의미)
+    2. rem : 최상위 부모 요소의 크기 기준으로 배수
+    3. % : 기본 설정된 크기에서 상대적인 크기를 결정
+    절대 크기
+    1. px : 기본 지정된 크기
+    2. pt  : 기본 지정된 크기(포인트)
+    * 참조사이트 : http://pxtoem.com    
+*/
+
+#ff1{color: red;}
+#ff1{font-family: fantasy;}
+
+#size1{font-size: 30px;}
+#size2{font-size: 2em;}
+#size3{font-size: 150%}
+
+#fw1{font-weight:bold ;}
+#fw2{font-weight:lighter}
+#fw3{font-weight:bolder}
+#fv{font-variant: small-caps;}
+
+
+#fs1{font-style: italic;}
+#fs2{font-style: oblique;}
+
+#f1{font:italic bold 20px/20px "고딕체"}
+/* 순서가 있다. */

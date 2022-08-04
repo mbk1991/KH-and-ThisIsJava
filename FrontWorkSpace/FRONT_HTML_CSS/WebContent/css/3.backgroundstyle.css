@@ -1,0 +1,34 @@
+body{background-color: pink;}
+#div-bg{
+    width : 50%;
+    height : 100px;
+    background-color: green;
+}
+
+.div-test{
+    background-color: white;
+    margin: 30px;
+    padding: 50px;
+    width: 10%;
+    float: left;
+    border: 5px dashed black;
+}
+
+#div1{
+    background-clip: border-box;
+}
+#div2{
+    background-clip: padding-box;
+}
+#div3{
+    background-clip: content-box;
+}
+#bg-img{
+    width: 90%;
+    height: 500px;
+    border: 1px solid black;
+    background-image: url(../img/google.jpg);
+    /* background-repeat: repeat-y; */
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}

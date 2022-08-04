@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 part2</title>
+</head>
+<body>
+    <style>
+        /* 자손/후손 선택자 
+            :자손(>), 후손(공백)
+        */
+
+        div>h1{color: red;}
+        div>ul>li{color: red;}
+
+    </style>
+
+
+    <h1>자손/후손 선택자</h1>
+    <div>
+        <h1>자손입니다.</h1>
+        <h2></h2>
+        <ul>
+            <li>후손1입니다.</li>
+            <li>후손2입니다.</li>
+        </ul>
+    </div>
+
+    <h3>
+        자손선택자를 이용하여 h4 배경색 바꾸기
+        <br>후손선택자를 이용하여 li 글씨색 바꾸기
+        <br>자손선택자를 이용하여 li 배경색 바꾸기
+    </h3>
+
+    <div id="div-test">
+        <h4>div의 자손1 입니다.</h4>
+        <h4>div의 자손2 입니다.</h4>
+        <ul id="ul-test">
+            <li>ul의 자손입니다. 동시에 div의 후손입니다.</li>
+            <li>ul의 자손입니다. 동시에 div의 후손입니다.</li>
+        </ul>    
+    </div>
+
+<style>
+    #div-test>h4{background-color: gold;}
+    #div-test li{color:brown}
+    #div-test>ul>li{color:aqua}
+</style>
+
+<h1>동위선택자</h1>
+<style>
+    /* 동위선택자
+    :A+B A~B의 형태를 가짐
+    */
+    h5+p{color: red;}
+    h5~p{background-color: gold;}
+
+</style>
+
+
+<div>
+    <h4>자손1</h4>
+    <h5>자손2</h5>
+    <p>자손3</p>
+    <p>자손4</p>
+    <p>자손5</p>
+</div>
+
+<h1>일반구조선택자</h1>
+
+<style>
+    #div-test1>p:first-child{color:red}
+    #div-test1>p:nth-child(2n){background-color: gold;}
+    #div-test3>p:nth-child(3n){color: chartreuse;} 
+</style>
+
+<div>
+    <div id="div-test1">
+        <p>테스트1-1 입니다.</p>
+        <p>테스트1-2 입니다.</p>
+        <p>테스트1-3 입니다.</p>
+        <p>테스트1-4 입니다.</p>
+        <p>테스트1-5 입니다.</p>
+    </div>
+    <div id="div-test2">
+        <p>테스트2-1 입니다.</p>
+        <p>테스트2-2 입니다.</p>
+        <p>테스트2-3 입니다.</p>
+    </div>     
+</div>
+<hr>
+<div id="div-test3">
+    <p>테스트1 입니다.</p>
+    <p>테스트2 입니다.</p>
+    <p>테스트3 입니다.</p>
+    <p>테스트4 입니다.</p>
+    <p>테스트5 입니다.</p>
+    <p>테스트6 입니다.</p>
+</div>
+
+<style>
+    /* 
+    형태 구조 선택자
+    - 태그 별로 구분하여 특정한 위치에 있는 태그 선택
+    1. :first-of-type
+    2. :last-of-type
+    3. nth-of-type(수열)
+    4. nth-last-of-type(2n) 
+    */
+    /* #div-test4>p:first-child{color: red;}
+    #div-test4>p:last-child{color: blue} */
+    /* p태그중 last가 선택이 안됨. */
+    /* 여러 태그가 섞여 있는 중에 p태그들만 찾아 내서 선택하기 */
+    #div-test4>p:last-of-type{color: blue;}
+
+</style>
+<h1>형태 구조 선택자</h1>
+<div id="div-test4">
+    <p>테스트 1p 입니다.</p>
+    <h4>테스트 h1 입니다.</h4>
+    <p>테스트 2p 입니다.</p>
+    <h4>테스트 h2 입니다.</h4>
+    <p>테스트 3p 입니다.</p>
+    <h4>테스트 h3 입니다.</h4>
+    <p>테스트 4p 입니다.</p>
+    <h4>테스트 h4 입니다.</h4>
+</div>
+
+
+
+
+    
+</body>
+</html>

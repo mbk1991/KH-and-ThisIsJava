@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- <style>
+		*{color:red}
+	</style> -->
+	<link rel="stylesheet" type="text/css" href="/ext/sample.css">
+
+</head>
+<>
+
+	<!--
+		스타일을 적용하는 방법
+		1. 내부 스타일 시트
+		2. 외부 스타일 시트
+		3. 인라인 스타일 시트
+	  -->
+	  <h1>h1태그에 텍스트 작성</h1>
+	<p style ="color : red;">p태그에 텍스트를 작성했습니다. 1</p>
+	<p>p태그에 텍스트를 작성했습니다. 2</p>
+	<p>p태그에 텍스트를 작성했습니다. 3</p>
+	<div>div태그에 텍스트 작성, 블록 요소</div>
+	<span>span태그에 텍스트 작성, 인라인 요소</span>
+
+<!-- 수업때문에 바디에 스타일태그를 적음 원래는 헤드에 적어야 한다. -->
+	  <style>
+		#p-tag1{ color : blue}
+		#p-tag2{ background-color: red;}
+		.c-tag1{ background-color: blueviolet;}
+		[type=text]{background-color: gold;}
+	  </style>
+
+	<h1>아이디/클래스 선택자</h1>
+    <p id="p-tag1">p태그에 있는 텍스트입니다.</p>
+    <p id="p-tag2">얘도 p태그에 있는 텍스트입니다.</p>
+    <h4 class="c-tag1">얘는 h4태그에 있는 텍스트입니다.</h4>
+
+	<h1>기본속성 선택자</h1>
+    <p class="c-tag1">p태그에 있는 텍스트입니다.</p>
+    <p>얘도 p태그에 있는 텍스트입니다.</p>
+    <h4 class="c-tag1">얘는 h4태그에 있는 텍스트입니다.</h4>
+
+	<input type="text">
+	<input type="text" >
+
+	<style>
+/* 바디에 스타일 태그 쓰는거 아님~ */
+		[name~=Test]{background-color: pink;}
+		[class|=class]{color: rgb(183, 255, 0);}
+		[id^=id]{color: red;}
+		[class$=c1] {color: blue;}
+		[class *= p]{color:darkcyan}
+	</style>
+
+	<h1>문자열 속성 선택자</h1>
+	
+    <p name="Test 1" id="i1" class="class-c1">Test1 글자입니다.</p>
+    <p name="Test 2" id="i2" class="c1">
+    Test2 글자입니다.</p>
+    <p name="Test 3" id="i3" class="c1">Test3 글자입니다.</p>
+    <p name="Test 4" id="i4" class="c2">Test4 글자입니다.</p>
+    <p name="Test 5" id="i5" class="c2">Test5 글자입니다.</p>
+    <p name="Test 6" id="i6" class="class-c2">Test6 글자입니다.</p>
+
+    <p name="Test 1" id="i1" class="p-class c1">Test1 글자입니다.</p>
+        <p name="Test 2" id="i2" class="class c1">
+        Test2 글자입니다.</p>
+        <p name="Test 3" id="i3" class="class c2">Test3 글자입니다.</p>
+        <p name="Test 4" id="id4" class="class c2">Test4 글자입니다.</p>
+        <p name="Test 5" id="id5" class="class c3">Test5 글자입니다.</p>
+        <p name="Test 6" id="id6" class="class-p c3">Test6 글자입니다.</p>
+
+
+
+</body>
+</html>
