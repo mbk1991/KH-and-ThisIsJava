@@ -19,14 +19,21 @@
             <div id="header-side"></div>
         </div>
         <div id="navigator">
-            <table id = "navi">
+            <ul id="menu">
+                <li><a href="">Home</a></li>
+                <li><a href="">Profile</a></li>
+                <li><a href="">Board</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+
+            <!-- <table id = "navi">
                 <tr>
                     <td>Home</td>
                     <td>Profile</td>
                     <td>Board</td>
                     <td>Contact</td>
                 </tr>
-            </table>
+            </table> -->
         </div>
         <div id="contents">
             <div id="contents-banner">
@@ -63,7 +70,22 @@
                 </div>
             </div>
             <div id="contents-side">
-                <div id="side-login"></div>
+                <div id="side-login">
+                    <div id="login_wrap">
+                        <form id="login_form" action="https://nid.naver.com/nidlogin.login" method="POST">
+                            <div id="id_pw_wrap">
+                                    <input type="text" id="id" placeholder="아이디" title="아이디" class="input_text" maxlength="41">
+                                    <input type="password" id="password" placeholder="비밀번호" title="비밀번호" class="input_text" maxlength="16">
+                                    <input type="submit" class="btn_login" id="login_btn" value="로그인">
+                                    </input><br>      
+                                    <a href="" class="login_link">회원가입</a>
+                                    <a href="" class="login_link">ID/PW찾기</a>
+                              
+                    
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div id="side-ad">
                     <img src="img/right_img.jpg" id="rightimg" alt="">
                 </div>
