@@ -1,6 +1,7 @@
 package com.kh.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import com.kh.common.JDBCTemplate;
 import com.kh.model.dao.MemberDAO;
@@ -19,5 +20,17 @@ public class MemberService {
 		Connection conn = jdbcTemplate.createConnection();
 		int result = mDao.insertMember(member,conn);
 		return result;
+	}
+
+	public int memberOneCheck(String memberId, String memberPwd) {
+		Connection conn = jdbcTemplate.createConnection();
+		int isMember = mDao.selectOneMember(memberId,memberPwd,conn);
+		return isMember;
+	}
+
+	public ArrayList<Member> selectAllMember() {
+		Connection conn = jdbcTemplate.createConnection();
+		ArrayList<Member> mList = mDao.selectAllmember(conn);
+		return mList;
 	}
 }

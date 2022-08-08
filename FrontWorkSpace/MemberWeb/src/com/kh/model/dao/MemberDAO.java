@@ -4,16 +4,21 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.kh.model.vo.Member;
 
 public class MemberDAO {
 	PreparedStatement pstmt = null;
+	Statement stmt = null;
 	ResultSet rset = null;
+	ArrayList<Member>mList = null;
+	
 	int result;
 
 	public int insertMember(Member member, Connection conn) {
-		String sql = "INSERT INTO MEMBER_TBL VALUES(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO MEMBER_TBL VALUES(?,?,?,?,?,?,?,?,?,SYSDATE)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getMemberId());
@@ -30,8 +35,64 @@ public class MemberDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+			}
 		}
-		return 0;
+		
+		return result;
+	}
+
+	public int selectOneMember(String memberId, String memberPwd, Connection conn) {
+		String sql = "SELECT COUNT(*) AS MEMBER_COUNT FROM MEMBER_TBL WHERE MEMBER_ID =? AND MEMBER_PWD = ?";
+		int isMember = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,memberId);
+			pstmt.setString(2,memberPwd);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				isMember = rset.getInt("MEMBER_COUNT");
+			}
+		} catch (SQLException e) {
+		} finally {
+			try {
+				rset.close();
+				pstmt.close();
+			} catch (SQLException e) {
+			}
+		}
+		
+		return isMember;
+	}
+//전체 회원조회
+	public ArrayList<Member> selectAllmember(Connection conn) {
+		String sql = "SELECT * FROM MEMBER_TBL";
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(sql);
+			mList = new ArrayList<Member>();
+			while(rset.next()) {
+				Member member = new Member();
+				member.setMemberId(rset.getString("MEMBER_ID"));
+				member.setMemberName(rset.getString("MEMBER_NAME"));
+				member.setMemberAge(rset.getInt("MEMBER_AGE"));
+				member.setMemberEmail(rset.getString("MEMBER_EMAIL"));
+				member.setMemberPhone(rset.getString("MEMBER_PHONE"));
+				member.setMemberAddress(rset.getString("MEMBER_ADDRESS"));
+				member.setMemberGender(rset.getString("MEMBER_GENDER"));
+				member.setMemberHobby(rset.getString("MEMBER_HOBBY"));
+				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				mList.add(member);
+			}
+			
+			
+		} catch (SQLException e) {
+		}
+		
+		return mList;
 	}
 
 }

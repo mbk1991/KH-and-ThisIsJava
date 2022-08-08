@@ -37,9 +37,9 @@ public class EnrollServlet extends HttpServlet {
 				memberGender, memberHobby);
 		int result = memberService.insertMember(member);
 		if(result >0) {
-			
+			response.sendRedirect("/member/enrollSuccess.html");
 		}else {
-			
+			response.sendRedirect("/member/enrollError.html");
 		}
 	}
 

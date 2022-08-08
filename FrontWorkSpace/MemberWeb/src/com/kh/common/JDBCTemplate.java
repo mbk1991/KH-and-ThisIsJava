@@ -30,6 +30,8 @@ public class JDBCTemplate {
 			if(conn == null || conn.isClosed()) {
 				Class.forName(driver);
 				conn = DriverManager.getConnection(url, user, password); 
+//				conn.setAutoCommit(false);
+			
 			}
 		} catch (SQLException e) {
 		} catch (ClassNotFoundException e) {
