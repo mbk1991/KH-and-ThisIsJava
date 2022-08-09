@@ -12,29 +12,29 @@ public class JDBCTemplate {
 	private static JDBCTemplate instance;
 	private static Connection conn;
 	private Properties prop;
-	private static String driver;
-	private static String url;
-	private static String user;
-	private static String password;
+	private static String driver = "oracle.jdbc.driver.OracleDriver";
+	private static String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	private static String user = "MEMBERWEB";
+	private static String password= "MEMBERWEB";
 
 	private JDBCTemplate() {
 		// 생성자에서 프로퍼티를 이용하여 필드를 초기화해본다. 이렇게 하는지 맞는지는 모르겠음.
 		// 생성자 안에 예외처리를 만들어도 되는지 모르겠음.
-		if (prop == null) {
-			prop = new Properties();
-			try {
-				prop.load(new FileReader("/resources/jdbcInfo.properties"));
-				driver = prop.getProperty("DRIVER");
-				url = prop.getProperty("URL");
-				user = prop.getProperty("USER");
-				password = prop.getProperty("PASSWORD");
-
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+//		if (prop == null) {
+//			prop = new Properties();
+//			try {
+//				prop.load(new FileReader("jdbc.properties"));
+//				driver = prop.getProperty("DRIVER");
+//				url = prop.getProperty("URL");
+//				user = prop.getProperty("USER");
+//				password = prop.getProperty("PASSWORD");
+//
+//			} catch (FileNotFoundException e) {
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
 	}
 
 	public static JDBCTemplate getInstance() {
@@ -46,7 +46,7 @@ public class JDBCTemplate {
 	}
 
 	public Connection createConnection() throws FileNotFoundException, SQLException {
-		if (conn == null && conn.isClosed()) {
+		if (conn == null || conn.isClosed()) {
 			try {
 				Class.forName(driver);
 				conn = DriverManager.getConnection(url, user, password);
