@@ -9,6 +9,11 @@ public class Member {
 	private char adminCheck;
 	
 	public Member(){}
+	
+	public Member(String memberId, String memberPwd) {
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+	}
 
 	public Member(String memberId, String memberPwd, String memberName, String memberPhone, String memberEmail,
 			char adminCheck) {

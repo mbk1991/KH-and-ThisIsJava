@@ -16,11 +16,10 @@ public class MemberDAO {
 	Statement stmt;
 	ResultSet rset;
 	ArrayList<Member> mList;
-	Member member;
-	int result;
 
 	public int memberInsertDB(Member member, Connection conn) {
 		String sql = "INSERT INTO MEMBER_TABLE VALUES(?,?,?,?,?,DEFAULT)";
+		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getMemberId());
@@ -42,4 +41,42 @@ public class MemberDAO {
 		return result;
 	}
 
+	public int memberCheckDB(Member member, Connection conn) {
+		String sql = "SELECT ADMIN_CHECK FROM MEMBER_TABLE WHERE MEMBER_ID=? AND MEMBER_PWD=?";
+		int isMember = 0;
+		String adminCheck = "";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getMemberId());
+			pstmt.setString(2, member.getMemberPwd());
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				adminCheck = rset.getString(1);
+				if (adminCheck.equals("Y")) {
+					isMember = 2;
+				} else if (adminCheck.equals("N")) {
+					isMember = 1;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rset.close();
+				pstmt.close();
+				JDBCTemplate.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					rset.close();
+					pstmt.close();
+					JDBCTemplate.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return isMember;
+	}
 }

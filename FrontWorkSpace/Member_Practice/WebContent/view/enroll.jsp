@@ -23,6 +23,7 @@
 				<input type="submit" value="가입하기">			
 			</form>
 		</div>
+		<hr>
 	</div>
 	<div class="enroll-footer">
 		<ul>

@@ -14,9 +14,8 @@ public class MemberService {
 	MemberDAO mDao;
 	Connection conn;
 	ArrayList<Member> mList;
-	Member member;
 	int result;
-	
+
 	public MemberService() {
 		jdbcTemplate = JDBCTemplate.getInstance();
 		mDao = new MemberDAO();
@@ -25,8 +24,8 @@ public class MemberService {
 	public int memberInsert(Member member) {
 		try {
 			conn = jdbcTemplate.createConnection();
-			result = mDao.memberInsertDB(member,conn);
-			if(result > 0) {
+			result = mDao.memberInsertDB(member, conn);
+			if (result > 0) {
 				JDBCTemplate.commit();
 			}
 		} catch (FileNotFoundException e) {
@@ -35,8 +34,23 @@ public class MemberService {
 			JDBCTemplate.rollback();
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
 
+	public int memberCheck(Member member) {
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = mDao.memberCheckDB(member, conn);
+			if (result > 0) {
+				JDBCTemplate.commit();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			JDBCTemplate.rollback();
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

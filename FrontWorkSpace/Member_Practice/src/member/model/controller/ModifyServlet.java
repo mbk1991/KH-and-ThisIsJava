@@ -7,9 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.service.MemberService;
+
 @WebServlet("/modify.do")
 public class ModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	MemberService mService = new MemberService();
        
     public ModifyServlet() {
         super();

@@ -13,13 +13,14 @@ import member.model.vo.Member;
 @WebServlet("/enroll.do")
 public class EnrollServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	MemberService mService = new MemberService();
        
     public EnrollServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MemberService mService = new MemberService();
+		
 		Member member = new Member();
 		request.setCharacterEncoding("utf-8");
 		member.setMemberId(request.getParameter("id"));

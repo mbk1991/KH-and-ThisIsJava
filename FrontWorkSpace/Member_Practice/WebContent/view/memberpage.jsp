@@ -12,7 +12,15 @@
 		<h1>마이 페이지</h1>
 		<hr>
 	</div>
-	<div class="my-contents"></div>
-	<div class="my-footer"></div>
+	<div class="my-contents">
+	
+		<hr>
+	</div>
+	<div class="my-footer">
+		<ul>
+			<li><a href="/index.jsp">메인으로</a></li>
+			<li><a href="/logout.do">로그아웃</a></li>
+		</ul>
+	</div>
 </body>
 </html>
