@@ -114,9 +114,7 @@ public class MemberDAO {
 				String memberHobby = rset.getString("MEMBER_HOBBY");
 				Date enrollDate = rset.getDate("ENROLL_DATE");
 				member = new Member(memberId, memberPwd, memberName, memberAge, memberEmail, memberPhone, memberAddress,
-						memberGender, memberHobby ,enrollDate);
-				System.out.println(rset.getString("MEMBER_HOBBY"));
-				System.out.println("dao" + member);
+						memberGender, memberHobby, enrollDate);
 			}
 
 		} catch (SQLException e) {
@@ -125,4 +123,51 @@ public class MemberDAO {
 		return member;
 	}
 
+	public int updateMember(Member member, Connection conn) {
+		String sql = "UPDATE MEMBER_TBL SET MEMBER_PWD=?,MEMBER_EMAIL=?,MEMBER_PHONE=?,MEMBER_ADDRESS=?,MEMBER_HOBBY=? WHERE MEMBER_ID=?";
+		int result = 0;
+		try {
+			System.out.println("dao 여기는 실행되나?"); // 실행됨
+			System.out.println(member.getMemberId());// 실행됨
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getMemberPwd());
+			pstmt.setString(2, member.getMemberEmail());
+			pstmt.setString(3, member.getMemberPhone());
+			pstmt.setString(4, member.getMemberAddress());
+			pstmt.setString(5, member.getMemberHobby());
+			pstmt.setString(6, member.getMemberId());
+			result = pstmt.executeUpdate(); //여기서 에러남.
+			System.out.println("dao 여기는 되나?" + result); //실행안됨
+			System.out.println();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public int deleteMember(String memberId, Connection conn) {
+		pstmt = null;
+		int result = 0;
+		String query = "DELETE FROM MEMBER_TBL WHERE MEMBER_ID = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,memberId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 }

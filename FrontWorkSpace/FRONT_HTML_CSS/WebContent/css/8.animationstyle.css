@@ -52,3 +52,6 @@ img:hover{
     0%{border: 1px dashed black;}
     100%{ transform: rotateZ(360deg); border-radius: 50%; border:1px solide red;}
 }
+
+@keyframes rectani4{
+}

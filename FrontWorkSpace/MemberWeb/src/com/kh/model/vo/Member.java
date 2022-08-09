@@ -47,6 +47,7 @@ public class Member {
 		this.enrollDate = enrollDate;
 	}
 
+
 	public String getMemberId() {
 		return memberId;
 	}

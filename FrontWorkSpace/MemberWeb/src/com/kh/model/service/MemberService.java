@@ -11,19 +11,19 @@ import com.kh.model.vo.Member;
 public class MemberService {
 	private JDBCTemplate jdbcTemplate;
 	private MemberDAO mDao;
-	
+
 	public MemberService() {
 		jdbcTemplate = JDBCTemplate.getInstance();
 		mDao = new MemberDAO();
 	}
-	
+
 	public int insertMember(Member member) {
 		Connection conn;
 		int result = 0;
 		try {
 			conn = jdbcTemplate.createConnection();
-			result = mDao.insertMember(member,conn);
-			if(result > 0) {
+			result = mDao.insertMember(member, conn);
+			if (result > 0) {
 				JDBCTemplate.commit();
 			}
 		} catch (ClassNotFoundException e) {
@@ -39,7 +39,7 @@ public class MemberService {
 		int isMember = 0;
 		try {
 			conn = jdbcTemplate.createConnection();
-			isMember = mDao.selectOneMember(memberId,memberPwd,conn);
+			isMember = mDao.selectOneMember(memberId, memberPwd, conn);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -70,8 +70,8 @@ public class MemberService {
 		Member member = null;
 		try {
 			conn = jdbcTemplate.createConnection();
-			member = mDao.myInfoSelect(memberId,conn);
-			if(member!=null) {
+			member = mDao.myInfoSelect(memberId, conn);
+			if (member != null) {
 				JDBCTemplate.commit();
 			}
 		} catch (ClassNotFoundException e) {
@@ -83,5 +83,49 @@ public class MemberService {
 			JDBCTemplate.close();
 		}
 		return member;
+	}
+
+	public int updateMember(Member member) {
+		Connection conn;
+		int result = 0;
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = mDao.updateMember(member, conn);
+
+			System.out.println("서비스 result : " + result); // 출력안되고 먹통됨.dao의 문제
+			if (result > 0) {
+				JDBCTemplate.commit();
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JDBCTemplate.rollback();
+		} finally {
+			JDBCTemplate.close();
+		}
+		return result;
+	}
+
+	public int deleteMember(String memberId) {
+		Connection conn;
+		int result = 0;
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = mDao.deleteMember(memberId, conn);
+
+			System.out.println("서비스 result : " + result); // 출력안되고 먹통됨.dao의 문제
+			if (result > 0) {
+				JDBCTemplate.commit();
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JDBCTemplate.rollback();
+		} finally {
+			JDBCTemplate.close();
+		}
+		return result;
 	}
 }
