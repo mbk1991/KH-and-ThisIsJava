@@ -1,6 +1,7 @@
 package com.kh.model.service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.kh.common.JDBCTemplate;
@@ -17,20 +18,70 @@ public class MemberService {
 	}
 	
 	public int insertMember(Member member) {
-		Connection conn = jdbcTemplate.createConnection();
-		int result = mDao.insertMember(member,conn);
+		Connection conn;
+		int result = 0;
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = mDao.insertMember(member,conn);
+			if(result > 0) {
+				JDBCTemplate.commit();
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 
 	public int memberOneCheck(String memberId, String memberPwd) {
-		Connection conn = jdbcTemplate.createConnection();
-		int isMember = mDao.selectOneMember(memberId,memberPwd,conn);
+		Connection conn;
+		int isMember = 0;
+		try {
+			conn = jdbcTemplate.createConnection();
+			isMember = mDao.selectOneMember(memberId,memberPwd,conn);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JDBCTemplate.rollback();
+		}
 		return isMember;
 	}
 
 	public ArrayList<Member> selectAllMember() {
-		Connection conn = jdbcTemplate.createConnection();
-		ArrayList<Member> mList = mDao.selectAllmember(conn);
+		Connection conn;
+		ArrayList<Member> mList = null;
+		try {
+			conn = jdbcTemplate.createConnection();
+			mList = mDao.selectAllmember(conn);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close();
+		}
 		return mList;
+	}
+
+	public Member selectMyInfo(String memberId) {
+		Connection conn;
+		Member member = null;
+		try {
+			conn = jdbcTemplate.createConnection();
+			member = mDao.myInfoSelect(memberId,conn);
+			if(member!=null) {
+				JDBCTemplate.commit();
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JDBCTemplate.rollback();
+		} finally {
+			JDBCTemplate.close();
+		}
+		return member;
 	}
 }

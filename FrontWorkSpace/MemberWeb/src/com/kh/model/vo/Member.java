@@ -1,7 +1,6 @@
 package com.kh.model.vo;
 
 import java.sql.Date;
-import java.util.ArrayList;
 
 public class Member {
 	private String memberId;
@@ -30,6 +29,24 @@ public class Member {
 		this.memberGender = memberGender;
 		this.memberHobby = memberHobby;
 	}
+
+	
+
+	public Member(String memberId, String memberPwd, String memberName, int memberAge, String memberEmail,
+			String memberPhone, String memberAddress, String memberGender, String memberHobby, Date enrollDate) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		this.memberAge = memberAge;
+		this.memberEmail = memberEmail;
+		this.memberPhone = memberPhone;
+		this.memberAddress = memberAddress;
+		this.memberGender = memberGender;
+		this.memberHobby = memberHobby;
+		this.enrollDate = enrollDate;
+	}
+
 	public String getMemberId() {
 		return memberId;
 	}

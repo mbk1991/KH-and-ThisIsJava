@@ -31,13 +31,14 @@
 		</div>
 	</c:if>
 	<c:if test="${sessionScope.memberId ne null }">
-		${memberId }님 환영합니다.	
+		${memberId }님 환영합니다.	<br>
 		<a href ="/member/logout.do">로그아웃</a>
+		<a href ="/member/mypage.do?memberId=${memberId}" >마이페이지</a>
 	</c:if>
 		<div id=navi>
 			<ul>
 				<li><a href = "/member/enroll.html">회원가입</a></li>
-				<li><a href = "/member/view.do">회원조회</a></li>
+				<li><a href = "/member/view.do">전체 회원조회</a></li>
 			</ul>
 		</div>
 	</div>

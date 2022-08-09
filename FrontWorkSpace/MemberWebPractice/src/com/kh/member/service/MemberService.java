@@ -10,6 +10,7 @@ public class MemberService {
 	Connection conn = null;
 	JDBCTemplate jdbcTemplate = null;
 	MemberDAO mDao = null;
+	int result=3;
 	
 	public MemberService(){
 		jdbcTemplate = JDBCTemplate.getInstance();
@@ -19,7 +20,8 @@ public class MemberService {
 	
 	public int memberInsert(Member member) {
 		conn =	jdbcTemplate.createConnection(); 
-		int result = mDao.memberInsert(member, conn);
+	
+		result = mDao.memberInsertDB(member, conn);
 		System.out.println("service result" + result);
 		return result;
 	}

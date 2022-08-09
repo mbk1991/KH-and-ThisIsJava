@@ -1,6 +1,7 @@
 package com.kh.model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,8 +14,7 @@ public class MemberDAO {
 	PreparedStatement pstmt = null;
 	Statement stmt = null;
 	ResultSet rset = null;
-	ArrayList<Member>mList = null;
-	
+	ArrayList<Member> mList = null;
 	int result;
 
 	public int insertMember(Member member, Connection conn) {
@@ -41,7 +41,7 @@ public class MemberDAO {
 			} catch (SQLException e) {
 			}
 		}
-		
+
 		return result;
 	}
 
@@ -50,10 +50,10 @@ public class MemberDAO {
 		int isMember = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,memberId);
-			pstmt.setString(2,memberPwd);
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, memberPwd);
 			rset = pstmt.executeQuery();
-			while(rset.next()) {
+			while (rset.next()) {
 				isMember = rset.getInt("MEMBER_COUNT");
 			}
 		} catch (SQLException e) {
@@ -64,9 +64,10 @@ public class MemberDAO {
 			} catch (SQLException e) {
 			}
 		}
-		
+
 		return isMember;
 	}
+
 //전체 회원조회
 	public ArrayList<Member> selectAllmember(Connection conn) {
 		String sql = "SELECT * FROM MEMBER_TBL";
@@ -74,7 +75,7 @@ public class MemberDAO {
 			stmt = conn.createStatement();
 			rset = stmt.executeQuery(sql);
 			mList = new ArrayList<Member>();
-			while(rset.next()) {
+			while (rset.next()) {
 				Member member = new Member();
 				member.setMemberId(rset.getString("MEMBER_ID"));
 				member.setMemberName(rset.getString("MEMBER_NAME"));
@@ -87,12 +88,41 @@ public class MemberDAO {
 				member.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				mList.add(member);
 			}
-			
-			
+
 		} catch (SQLException e) {
 		}
-		
+
 		return mList;
+	}
+
+	public Member myInfoSelect(String memberIdInput, Connection conn) {
+		String sql = "SELECT * FROM MEMBER_TBL WHERE MEMBER_ID =?";
+		Member member = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberIdInput);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				String memberId = rset.getString("MEMBER_ID");
+				String memberPwd = rset.getString("MEMBER_ID");
+				String memberName = rset.getString("MEMBER_NAME");
+				int memberAge = Integer.parseInt(rset.getString("MEMBER_AGE"));
+				String memberEmail = rset.getString("MEMBER_EMAIL");
+				String memberPhone = rset.getString("MEMBER_PHONE");
+				String memberAddress = rset.getString("MEMBER_ADDRESS");
+				String memberGender = rset.getString("MEMBER_GENDER");
+				String memberHobby = rset.getString("MEMBER_HOBBY");
+				Date enrollDate = rset.getDate("ENROLL_DATE");
+				member = new Member(memberId, memberPwd, memberName, memberAge, memberEmail, memberPhone, memberAddress,
+						memberGender, memberHobby ,enrollDate);
+				System.out.println(rset.getString("MEMBER_HOBBY"));
+				System.out.println("dao" + member);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return member;
 	}
 
 }

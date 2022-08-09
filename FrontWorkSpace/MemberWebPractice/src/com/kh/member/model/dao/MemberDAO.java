@@ -14,7 +14,7 @@ public class MemberDAO {
 	ResultSet rset = null;
 	int result;
 
-	public int memberInsert(Member member, Connection conn) {
+	public int memberInsertDB(Member member, Connection conn) {
 		String sql = "INSERT INTO MEMBER_TBL2 VALUES(?,?,?,?,?,?,SYSDATE)";
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -24,6 +24,7 @@ public class MemberDAO {
 			pstmt.setString(4, member.getMemberBirth());
 			pstmt.setString(5, member.getEmail());
 			pstmt.setString(6, member.getPhone());
+			
 			result = pstmt.executeUpdate();
 			System.out.println("dao result" + result);
 			System.out.println(member.getMemberBirth());
