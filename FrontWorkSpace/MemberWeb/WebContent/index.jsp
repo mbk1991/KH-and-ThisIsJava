@@ -33,7 +33,10 @@
 	<c:if test="${sessionScope.memberId ne null }">
 		${memberId }님 환영합니다.	<br>
 		<a href ="/member/logout.do">로그아웃</a>
-		<a href ="/member/mypage.do?memberId=${memberId}" >마이페이지</a>
+		<a href ="/member/mypage.do?memberId=${memberId}" >마이페이지</a><br>
+		<a href = "/notice/write.do">공지사항 작성</a>
+		<a href = "/notice/list.do">공지사항 목록</a>
+		
 	</c:if>
 		<div id=navi>
 			<ul>

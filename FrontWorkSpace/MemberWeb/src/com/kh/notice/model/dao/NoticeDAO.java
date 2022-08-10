@@ -43,26 +43,100 @@ public class NoticeDAO {
 	}
 
 	public ArrayList<Notice> selectAllNotice(Connection conn) {
-		String sql = "SELECT * FROM NOTICE_TBL";
+		String sql = "SELECT * FROM NOTICE_TBL ORDER BY NOTICE_NO DESC";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
 			nList = new ArrayList<Notice>();
-			while(rset.next()) {
+			while (rset.next()) {
 				Notice notice = new Notice();
+				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
+				notice.setSubject(rset.getString("SUBJECT"));
+				notice.setContents(rset.getString("CONTENTS"));
+				notice.setMemberId(rset.getString("MEMBER_ID"));
+				notice.setRegDate(rset.getDate("REG_DATE"));
+				nList.add(notice);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				rset.close();
 				pstmt.close();
-				JDBCTemplate.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return nList;
+	}
+
+	public Notice selectOneByNo(int noticeNo, Connection conn) {
+		String sql = "SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = ?";
+		Notice notice = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				notice = new Notice();
+				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
+				notice.setSubject(rset.getString("SUBJECT"));
+				notice.setContents(rset.getString("CONTENTS"));
+				notice.setMemberId(rset.getString("MEMBER_ID"));
+				notice.setRegDate(rset.getDate("REG_DATE"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rset.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return notice;
+	}
+
+	public int deleteNotice(int noticeNo, Connection conn) {
+		String sql = "DELETE FROM NOTICE_TBL WHERE NOTICE_NO = ?";
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,noticeNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public int updateNotice(Notice notice, Connection conn) {
+		String sql = "UPDATE NOTICE_TBL SET SUBJECT = ?, CONTENTS = ? WHERE NOTICE_NO = ?";
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, notice.getSubject());
+			pstmt.setString(2, notice.getContents());
+			pstmt.setInt(3, notice.getNoticeNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
 	}
 }

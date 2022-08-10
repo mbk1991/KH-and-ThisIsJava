@@ -9,5 +9,12 @@
 <body>
 	<h1>공지사항 서비스 요청 실패!</h1>
 	<a href="#">리스트로 이동</a>
+	
+	<div id="footer">
+		<hr>
+		<ul>
+			<li><a href="/index.jsp">메인으로</a></li>
+		</ul>
+	</div>
 </body>
 </html>
