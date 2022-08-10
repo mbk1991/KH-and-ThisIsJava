@@ -99,9 +99,10 @@ public class NoticeService {
 
 	public int updateNotice(Notice notice) {
 		Connection conn = null;
-		int result = nDao.updateNotice(notice,conn);
+		int result = 0;
 		try {
 			conn = jdbcTemplate.createConnection();
+			result = nDao.updateNotice(notice,conn);
 			if(result > 0) {
 				JDBCTemplate.commit();
 			}

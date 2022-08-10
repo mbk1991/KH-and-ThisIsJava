@@ -22,6 +22,8 @@ public class NoticeModifyServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		Notice notice = nService.selectOneByNo(noticeNo);
 		if (notice != null) {
@@ -34,7 +36,7 @@ public class NoticeModifyServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		request.setCharacterEncoding("utf-8");
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		String contents = request.getParameter("contents");
 		String subject = request.getParameter("subject");
@@ -43,7 +45,7 @@ public class NoticeModifyServlet extends HttpServlet {
 		notice.setSubject(subject);
 		notice.setContents(contents);
 		int result = nService.updateNotice(notice);
-		if(result < 0) {
+		if(result > 0) {
 			response.sendRedirect("/notice/detail.do");
 		}else {
 			request.getRequestDispatcher("/WEB-INF/views/notice/noticeFailed.jsp").forward(request,response);
