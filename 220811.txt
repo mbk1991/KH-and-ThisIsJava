@@ -118,3 +118,71 @@ sb.append 문자열을 반환함.
 개발자 도구의 console 탭에서 확인할 수 있다.
 
 자바스크립트를 이용한 프론트단에서 처리
+
+
+이클립스 프로젝트 불러올 때 에러
+"destination folder must be accessible"
+import를 통해 프로젝트를 불러와야 함.
+
+자바스크립트는 문법체크가 엄격하진 않음.
+똑같은 변수명을 선언해도 오류가 나지 않음.
+
+자바스크립트가 크롬에서 어떻게 동작하는지를 알면 이해할 수 있다.
+
+자바스크립트가 기본 문법은 쉽지만 태그를 다루는 순간 어려워진다고 함.
+
+변수, 숫자, 문자열, 형변환
+
+//문자열을 숫자로 바꾸는 두가지 방법
+    console.log("input1 + input2 =" + (input1 + parseInt(input2)));
+    console.log("input1 + input2 = " + (input1 + Number(input2)));
+// 두 방법의 차이는?
+    var numStr1 = "2016년도";
+    var numStr2 = "제2016년도";
+    console.log(Number(numStr1)); // NAN
+    console.log(parseInt(numStr1)); // 2016
+    console.log(Number(numStr2)); //NAN
+    console.log(parseInt(numStr2)); //NAN
+    // 제 2022년도에서 숫자를 뽑아내려면 정규표현식 사용
+
+자바스크립트와 HTML은 섞일 수가 없다.
+이 둘을 연결해주는 연결고리(인터페이스)가 DOM (DOCUMENT)이다. Document Object Model
+dom 문서객체는 자바스크립트가 아니다. 돔과 자바스크립트도 구분하는 것 같음.
+
+자바스크립트의 특이한 연산자 ===
+자료형까지 비교하는 비교연산자이다.
+== 은 자료형이 달라도 값이 같으면 true가 나옴.
+ppt
+1. 기획보고서
+ 1)팀 소개
+ 2)프로젝트명
+ 3)팀, 담당 소개
+ 4)기획 의도
+ 5)유사 사이트 분석
+    기존 사이트에서 기능상의 장단점 분석
+ 6)차별성( 개발목표)
+   불편함을 개선한 차별화된 기능, 
+ 7)주요기능
+ 8)개발환경
+ 9)일정
+2. 설계보고서
+ 1)유스케이스
+ 2)플로우 차트
+ 3)와이어프레임
+3. DB설계보고서
+ 1)논리 ERD
+ 2)물리 ERD
+4. Class설계보고서
+ 1)Class Diagram
+ 2)Sequence Diagram
+5. 발표보고서
+ 1)기획보고서
+ 2)UI설계보고서
+ 3)DB설계보고서
+ 4)기능구현, 문제해결?
+ 5)소감
+ 6)QnA
+
+와이어프레임
+
+
