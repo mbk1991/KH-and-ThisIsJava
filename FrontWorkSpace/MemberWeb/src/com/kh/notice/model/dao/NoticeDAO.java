@@ -47,8 +47,8 @@ public class NoticeDAO {
 		try {
 			int recordCountPerPage = 5;
 			int start = currentPage*recordCountPerPage - (recordCountPerPage-1);
-			int end = start + 4;
-//			int end = currentPage*recordCountPerPage;
+//			int end = start + 4;
+			int end = currentPage*recordCountPerPage;
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,start);
@@ -102,7 +102,37 @@ public class NoticeDAO {
 		}
 		//1 2 3 4 5 6
 		//1 2 3 4 5 [다음], [이전] 6 이 기능 구현.
-		int pagenaviCountPerPage = 5; // 한페이지에 나오는 최대 페이지의 갯수.
+		int pageNaviCountPerPage = 5; // 한페이지에 나오는 최대 페이지의 갯수.
+		int startNavi = ((currentPage-1)/pageNaviCountPerPage) * pageNaviCountPerPage + 1;
+		int endNavi = startNavi+pageNaviCountPerPage-1;
+		
+		if(endNavi > pageNaviTotalCount) {
+			endNavi = pageNaviTotalCount;
+		}
+		/// [이전] [다음] 기능을 만들기 위한 부분
+		boolean needPrev = true;
+		boolean needNext = true;
+		if(startNavi == 1) {
+			needPrev = false;
+		}
+		if(endNavi == pageNaviTotalCount) {
+			needNext = false;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		
+		if(needPrev) {
+			sb.append("<a href='/notice/list.do?currentPage= "+(startNavi-1)+">[이전]</a>");
+		}
+		
+		for(int i= startNavi; i<= endNavi; i++) {
+			sb.append("<a href=\"/notice/list.do?currentPage="+i+">"+i+"</a>");
+		}
+		
+		if(needNext) {
+			//6 7 8 9 10 [다음] 일 때 다음을 누르면 11 12 13 14 15 가 나와야 함.
+			sb.append("<a href='/notice/list.do?currentPage= "+(endNavi+1)+">[이전]</a>");
+		}
 		
 		return null;
 	}
@@ -114,7 +144,6 @@ public class NoticeDAO {
 		int result = 0;
 		try {
 			stmt = conn.createStatement();
-			rset = stmt.executeQuery(query);
 			if(rset.next()) {
 				result = rset.getInt("TOTALCOUNT");
 			}

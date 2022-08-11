@@ -40,6 +40,10 @@ public class NoticeService {
 	}
 
 	public ArrayList<Notice> selectAllNotice(int currentPage) {
+		//1. Map사용
+		//2. VO사용
+		//VO를 사용하여 2개 데이터를 넘겨줄 수 있다.
+		
 		try {
 			conn = jdbcTemplate.createConnection();
 			nList = nDao.selectAllNotice(conn,currentPage);

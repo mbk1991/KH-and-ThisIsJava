@@ -30,7 +30,7 @@
 		 </c:forEach>
 		 <tr>
 		 	<td colspan="4">
-		 		<a href="/notice/list.do?currentPage=1">1</a> <a href="/notice/list.do?currentPage=2">2</a> <a href="/notice/list.do?currentPage=3">3</a> <a href="/notice/list.do?currentPage=4">4</a> <a href="/notice/list.do=currentPage=5">5</a> <a href="/notice/list.do=currntPage=6">다음</a>
+<!-- 		 		<a href="/notice/list.do?currentPage=1">1</a> <a href="/notice/list.do?currentPage=2">2</a> <a href="/notice/list.do?currentPage=3">3</a> <a href="/notice/list.do?currentPage=4">4</a> <a href="/notice/list.do=currentPage=5">5</a> <a href="/notice/list.do=currntPage=6">다음</a> -->
 		 	</td>
 		 </tr>
 	</table>
