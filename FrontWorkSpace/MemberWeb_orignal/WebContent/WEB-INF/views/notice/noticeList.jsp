@@ -18,7 +18,7 @@
 		</tr>
 		<c:forEach items="${nList }" var="notice" varStatus="i">
 			<tr>
-				<td>${i.count }</td>
+				<td>${notice.noticeNo }</td>
 <!-- 				어떻게 하면 내림차순으로 나오게 할 수 있을까? -->
 <%-- 				<td>${notice.noticeNo }</td> --%>
 				<td><a href="/notice/detail.do?noticeNo=${notice.noticeNo }">${notice.subject }</a></td>

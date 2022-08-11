@@ -90,9 +90,9 @@ public class NoticeDAO {
 		// 28/10 = 2 +1 -> 3 (페이지의 갯수)
 		int pageNaviTotalCount = 0;
 		if(recordTotalCount % recordCountPerPage != 0) {
-			pageNaviTotalCount = recordTotalCount / recordCountPerPage + 1;
+			pageNaviTotalCount = (recordTotalCount / recordCountPerPage) + 1;
 		}else {
-			pageNaviTotalCount = recordTotalCount / recordCountPerPage;
+			pageNaviTotalCount = (recordTotalCount / recordCountPerPage) ;
 		}
 		
 		if(currentPage < 1) {
@@ -122,28 +122,29 @@ public class NoticeDAO {
 		StringBuilder sb = new StringBuilder();
 		
 		if(needPrev) {
-			sb.append("<a href='/notice/list.do?currentPage= "+(startNavi-1)+">[이전]</a>");
+			sb.append("<a href='/notice/list.do?currentPage="+(startNavi-1)+"'> [이전] </a>");
 		}
 		
 		for(int i= startNavi; i<= endNavi; i++) {
-			sb.append("<a href=\"/notice/list.do?currentPage="+i+">"+i+"</a>");
+			sb.append("<a href=\"/notice/list.do?currentPage="+i+"\"> "+i+" </a>");
 		}
 		
 		if(needNext) {
 			//6 7 8 9 10 [다음] 일 때 다음을 누르면 11 12 13 14 15 가 나와야 함.
-			sb.append("<a href='/notice/list.do?currentPage= "+(endNavi+1)+">[이전]</a>");
+			sb.append("<a href='/notice/list.do?currentPage="+ (endNavi+1) +"'> [다음] </a>");
 		}
 		
-		return null;
+		return sb.toString();
 	}
 	
 	//게시물의 전체 갯수를 가져오는 메소드
 	public int totalCount(Connection conn) {
 		//재사용을 위하여 따로 메소드를 만듦.
-		String query = "SELECT COUNT(*) AS TOTALCUONT FROM NOTICE_TBL";
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM NOTICE_TBL";
 		int result = 0;
 		try {
 			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
 			if(rset.next()) {
 				result = rset.getInt("TOTALCOUNT");
 			}

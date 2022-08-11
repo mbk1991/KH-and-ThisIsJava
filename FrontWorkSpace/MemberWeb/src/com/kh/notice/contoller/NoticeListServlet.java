@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.kh.notice.model.vo.Notice;
+import com.kh.notice.model.vo.PageData;
 import com.kh.notice.service.NoticeService;
 
 @WebServlet("/notice/list.do")
@@ -18,6 +19,7 @@ public class NoticeListServlet extends HttpServlet {
 	NoticeService nService = new NoticeService();
 	ArrayList<Notice> nList;
 	Notice notice;
+	PageData pagedata;
        
     public NoticeListServlet() {
         super();
@@ -28,9 +30,13 @@ public class NoticeListServlet extends HttpServlet {
 		if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
-		nList = nService.selectAllNotice(currentPage);
+		pagedata = nService.selectAllNotice(currentPage);
+		nList = pagedata.getNoticeList();
+		String pageNavi = pagedata.getPageNavi();
+		
 		if(!nList.isEmpty()) {
 			request.setAttribute("nList",nList);
+			request.setAttribute("pageNavi",pageNavi);
 			request.getRequestDispatcher("/WEB-INF/views/notice/noticeList.jsp").forward(request, response);;
 		}else {
 			request.getRequestDispatcher("/WEB-INF/views/notice/noticeFailed.html");

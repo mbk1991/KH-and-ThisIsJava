@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import com.kh.common.JDBCTemplate;
 import com.kh.notice.model.dao.NoticeDAO;
 import com.kh.notice.model.vo.Notice;
+import com.kh.notice.model.vo.PageData;
 
 public class NoticeService {
 	//1.DB연결
@@ -39,13 +40,19 @@ public class NoticeService {
 		return result;
 	}
 
-	public ArrayList<Notice> selectAllNotice(int currentPage) {
+	public PageData selectAllNotice(int currentPage) {
 		//1. Map사용
 		//2. VO사용
 		//VO를 사용하여 2개 데이터를 넘겨줄 수 있다.
 		
+		PageData pagedata = new PageData();
+		String pageNavi = null;
+		
 		try {
 			conn = jdbcTemplate.createConnection();
+			
+			pageNavi = nDao.getPageNavi(conn,currentPage); 
+			
 			nList = nDao.selectAllNotice(conn,currentPage);
 			if(nList!=null) {
 				JDBCTemplate.commit();
@@ -59,7 +66,10 @@ public class NoticeService {
 			JDBCTemplate.close();
 		}
 		
-		return nList;
+		pagedata.setNoticeList(nList);
+		pagedata.setPageNavi(pageNavi);
+		
+		return pagedata;
 	}
 
 	public Notice selectOneByNo(int noticeNo) {

@@ -35,7 +35,7 @@ public class NoticeListServlet extends HttpServlet {
 		NoticeService nService = new NoticeService();
 		int currentPage = 1;
 		if(request.getParameter("currentPage") != null) {
-			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			currentPage = Integer.parseInt(request.getParameter("currentPage")); // 이 currentPage는 어디서 가져오는걸까?
 		}
 		PageData pd = nService.selectAllList(currentPage);
 		ArrayList<Notice> nList = pd.getNoticeList();

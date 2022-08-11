@@ -85,6 +85,13 @@ public class NoticeDAO {
 		// 28/10 = 2 + 1 -> 3
 		// 28/5 = 5 + 1 -> 6
 		// 25/5 = 5 
+		
+		//currntPage : 현재 페이지 -> 게시글 넘버
+		//pageNaviTotalCount : 네비게이션에 표시할 갯수 -> 전체 페이지를 한 페이지에 표시할 갯수로 나눈 몫 + 1
+		//recordCountPerPage :한 페이지에 표시할 게시물 갯수 -> 개발자 임의 선택
+		//recordTotalCount : 전체 게시물의 갯수 -> 메소드를 통해 구한다.
+		
+		
 		int pageNaviTotalcount = 0;
 		if(recordTotalCount % recordCountPerPage != 0) {
 			pageNaviTotalcount = recordTotalCount / recordCountPerPage + 1;

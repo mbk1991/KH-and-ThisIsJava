@@ -19,7 +19,8 @@ public class JDBCTemplate {
 	// JDBCTemplate 인스턴스 싱글톤 패턴 적용
 	
 	public Connection createConnection() throws ClassNotFoundException, SQLException {
-		String url = "jdbc:oracle:thin:@sonof.iptime.org:8912:xe";
+//		String url = "jdbc:oracle:thin:@sonof.iptime.org:8912:xe";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "MEMBERWEB";
 		String password = "MEMBERWEB";
 		String driver = "oracle.jdbc.driver.OracleDriver";
