@@ -24,7 +24,11 @@ public class NoticeListServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		nList = nService.selectAllNotice();
+		int currentPage = 1;
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		nList = nService.selectAllNotice(currentPage);
 		if(!nList.isEmpty()) {
 			request.setAttribute("nList",nList);
 			request.getRequestDispatcher("/WEB-INF/views/notice/noticeList.jsp").forward(request, response);;

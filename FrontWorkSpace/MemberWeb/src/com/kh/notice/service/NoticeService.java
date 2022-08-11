@@ -39,10 +39,10 @@ public class NoticeService {
 		return result;
 	}
 
-	public ArrayList<Notice> selectAllNotice() {
+	public ArrayList<Notice> selectAllNotice(int currentPage) {
 		try {
 			conn = jdbcTemplate.createConnection();
-			nList = nDao.selectAllNotice(conn);
+			nList = nDao.selectAllNotice(conn,currentPage);
 			if(nList!=null) {
 				JDBCTemplate.commit();
 			}
