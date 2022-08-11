@@ -1,0 +1,51 @@
+유효성 검사 등의 내용은 
+자바스크립트로 처리.
+부가적인 기능은 기본 기능 숙지 후에 
+
+페이징 처리를 해볼 예정
+
+노트북 어댑터 안가져와서 학원에 작업환경 셋팅을 해야함.
+1. 이클립스 설치상태
+2. 깃허브 프로젝트 clone 및 pull
+3. 오라클, sql디벨로퍼, 톰캣 설치
+
+-db는 새로 만들어야 하나
+
+
+페이징처리)
+쿼리문을 수정해야 함.
+SELECT *n FROM NOTICE_TBL;
+
+ROWNUM
+ROWNUMBER 
+를 이용하여 순번을 매기고 숫자를 끊어서 가지고 온다.
+쿼리문을 통해 처리.
+
+SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC) AS NUM, NOTICE_TBL.* FROM NOTICE_TBL;
+
+문법이 낯설다.
+
+NUM을 기준으로 WHERE 조건절로 바로 사용할 수 없고 
+인라인뷰를 써야한다.
+
+------------------------------
+SELECT *
+FROM(
+SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC) AS NUM, NOTICE_TBL.* FROM NOTICE_TBL)
+WHERE NUM BETWEEN 6 AND 10;
+------------------------------
+비트윈의 인자를 위치홀더로 사용하고
+currntPage = n 으로 쿼리를 전달한다.
+서블릿에서 currentPage 처리를 해주어야함. 
+
+페이징 처리하는 값.
+int recordCountPerPage = 5;
+int start = currentPage*recordCountPerPage - (recordCountPerPage-1);
+
+
+페이지 네비기능을 윟아여
+DAO 에 getPageNavi 메소드를 만들고
+전체 게시물의 갯수를 구할 수 있는 
+totalCount메소드도 생성함. 
+
+페이지의 갯수를 구하는 식. 몫 + 1
