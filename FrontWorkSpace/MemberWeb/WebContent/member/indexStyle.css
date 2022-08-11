@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+#header{
+	background-color : green;
+}
+
+li{
+	float:left;	
+	width : 30%;
+	list-style: none;
+	text-shadow: 10px 15px 10px green;
+}
+
+#header{
+	width:300px;
+}
+#contents{
+	width:300px;
+}
+

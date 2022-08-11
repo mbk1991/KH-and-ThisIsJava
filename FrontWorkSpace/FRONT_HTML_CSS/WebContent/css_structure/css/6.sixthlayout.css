@@ -1,0 +1,93 @@
+*{background-color: rgb(129, 225, 129);}
+
+#wrapper{
+    margin: 0px auto;
+    width: 80%;
+    
+}
+div{
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+#header{
+    height: 80px;
+}
+    #header-layer1{
+        float: left;
+        height: 100%;
+        width: 15%;
+    }
+    #header-layer2{
+        float: left;
+        height: 100%;
+        width: 60%;
+    }
+    #header-layer3{
+        float: left;
+        height: 100%;
+        width: 25%;
+    }
+#navigator{
+    height: 20px;
+}
+#contents{
+    height: 300px;
+}
+    #contents-layer1{
+        float: left;
+        height: 100%;
+        width: 15%;
+    }
+    #contents-layer2{
+        float: left;
+        height: 100%;
+        width: 60%;
+    }
+    #contents-layer3{
+        float: left;
+        height: 100%;
+        width: 25%;
+    }
+        #login_area{
+            width: 100%;
+            height: 25%;
+        }
+        #ad_area{
+            width: 100%;
+            height: 30%;
+        }
+        #chat_area{
+            width: 100%;
+            height: 30%;
+        }
+#footer{
+    height: 80px;
+}
+
+
+#content{
+    border: 1px solid rgb(218, 212, 212);
+    height: 100%;
+    width: 50%;
+}
+
+#login_wrap{
+    margin: 0 auto;
+    box-sizing: border-box;
+    height: 150px;
+    width: 50%;
+}
+#id_pw_wrap{
+    padding: 10px 10px;
+}
+.input_text{
+    width: 100%;
+}
+#btn_login_wrap{
+    padding: 10px 10px;
+    width: 90%;
+}
+#login_btn{
+    padding: 10px 10px;
+    width: 100%;
+}

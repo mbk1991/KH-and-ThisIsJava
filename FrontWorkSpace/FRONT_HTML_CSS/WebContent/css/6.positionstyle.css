@@ -1,0 +1,114 @@
+.positioning{
+    border: 1px solid black;
+}
+
+.outer{
+    position: relative;
+}
+
+.first{
+    width: 300px;
+    height: 300px;
+    background-color: gold;
+    position: relative;
+
+}
+.second{
+    width: 200px;
+    height: 200px;
+    background-color: green;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+   
+}
+.third{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+.fixed-area{
+    width: 100px;
+    height: 100px;
+    background-color: salmon;
+    position: fixed;
+}
+
+.z-test{
+    width: 150px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+.wrap{
+    position: relative;
+}
+
+.z-test1{
+    background-color: red;
+    position: absolute;
+    left: 120px;
+    top: 120px;
+    z-index: 3;
+}
+.z-test2{
+    background-color: orange;
+    position: absolute;
+    left: 60px;
+    top: 60px;
+    z-index: 2;
+}
+.z-test3{
+    background-color: green;
+    position: relative;
+    z-index: 1;
+}
+
+.float-test{
+    border: 1px solid black;
+    width: 100px;
+    height: 50px;
+    float: left;
+}
+
+.block{
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    color: white;
+}
+.area1{
+    background-color: red;
+}
+.area2{
+    background-color: orange;
+}
+.area3{
+    background-color: yellow;
+}
+.area4{
+    background-color: green;
+}
+.area5{
+    background-color: blue;
+}
+.area6{
+    background-color: navy;
+}
+.area7{
+    background-color: purple;
+}
+
+.block-test1{
+    display:inline;
+}
+.block-test2{
+    display:inline-block;
+}
+.block-test3{
+    display:block;
+}

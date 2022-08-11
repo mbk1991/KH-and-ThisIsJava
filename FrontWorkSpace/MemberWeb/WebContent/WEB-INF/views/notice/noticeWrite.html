@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ 	<h1>공지사항 작성</h1>
+ 	<form action="/notice/write.do" method="post">
+	 	<input type="text" name="subject" size="100" placeholder="제목을 입력하세요."><br>
+	 	<textarea name="contents" rows="30" cols="100" placeholder="내용을 입력하세요."></textarea><br>
+	 	<input type="submit" value="완료">
+	 	<input type="reset" value="취소">
+  </form>
+  
+	<div id="footer">
+		<ul>
+			<li><a href="/index.jsp">메인으로</a></li>
+		</ul>
+	</div>
+</body>
+</html>
