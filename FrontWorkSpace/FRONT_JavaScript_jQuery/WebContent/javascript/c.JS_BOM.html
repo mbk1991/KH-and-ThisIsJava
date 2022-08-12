@@ -17,6 +17,62 @@
           console.log(pCheck);
 
       }
+      window.onload = function(){
+          var btn1 = document.getElementById("btn-1");
+          btn1.onclick = function(){
+            confirm("네이버로 이동합니다.");
+
+            window.open("http://naver.com");
+          }
+
+          var btn2 = document.getElementById("btn-2")
+          btn2.onclick = function(){
+            confirm("다음으로 이동합니다.");
+            window.open("http://daum.net","다음카카오","width=300,height=500,menubar=no,toolbar=no");
+          }
+
+          var btn3 = document.getElementById("btn-3")
+          btn3.onclick = function(){
+            //alert("연결확인");
+            //window.open(); // 이 창은 하나의 객체이기도 하다.
+            var myWindow = window.open();
+            myWindow.alert("확인 3초 후에 이 페이지는 종료됩니다.");
+            window.setTimeout(function() {
+                myWindow.close();
+            }, 3000);
+          }
+
+          var intervalId;
+          var btn4 = document.getElementById("btn-4");
+          btn4.onclick = function(){
+            var area1 = document.getElementById("area1");
+            intervalId = window.setInterval(function(){
+                var date = new Date();
+                area1.innerHTML = date.getHours()
+                +' : '+date.getMinutes()+" : "+date.getSeconds();
+
+            },1000);
+            
+          }
+
+          var btn5 = document.getElementById("btn-5");
+          btn5.onclick = function(){
+            // alert("test");
+            var count = 10;
+            var intervalId = window.setInterval(function(){
+                var area2 = document.getElementById("area2");
+                area2.innerHTML = count--;
+                window.setTimeout(function(){
+                    clearInterval(intervalId);
+                },10000)
+            },1000)
+          }
+
+          // 10초 카운트다운 만들기. area2에 만들기. 
+
+
+
+      }
 
     //   init();
     </script>
@@ -68,6 +124,25 @@
     <button onclick="location.replace('http://www.google.com')">구글로 이동2</button>
 
 
+    <script>
+        //  alert("confirm");
+        // function init(){
+        //     window.alert("원래는 window.alert");
+        //     var confirmCheck = window.confirm("확인(true)/ 취소(false)");
+        //     console.log(confirmCheck);
+        //     var pCheck = window.prompt("값을 입력해주세요.아무거나..");
+        //     console.log(pCheck);
+  
+        // }
+        // var btn1 = document.getElementById("btn-1");
+        // btn1.onclick = function(){
+        //   confirm("확인");
+        // }
+  
+      //   init();
+      </script>
+
+    
 
 </body>
 </html>
