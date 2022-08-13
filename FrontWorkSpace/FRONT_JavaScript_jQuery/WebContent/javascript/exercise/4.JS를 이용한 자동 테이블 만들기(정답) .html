@@ -22,8 +22,41 @@
 
 
 <script>
+    var tableNo = 1;
     function table_make() {
+   
+        //1. input태그에서 입력받은 value값을 변수에 저장한다.
+        var rowNum = document.getElementById("rowNum").value;
+        var colNum = document.getElementById("colNum").value;
+
+        //2.테이블을 추가하기 위하여 body요소를 bodyTag변수에 대입한다.
+        //  테이블 태그를 생성하고 id속성을 부여해본다.
+        var bodyTag = document.getElementsByTagName("body")[0];
+        var tableTag = document.createElement("table");
+        tableTag.id = ("table" + tableNo);  // 이런식으로는 안되나? 되네
         
+        //3.버튼 클릭 시 기본적으로 바디에 테이블태그를 추가한다.
+        bodyTag.append(tableTag);
+
+        //4.생성한 테이블의 id값으로 해당 테이블을 변수에 대입한다.
+        var thisTable = document.getElementById("table"+tableNo);
+        //5.이중for문을이용하여 상위요소에 하위요소를 추가해준다.
+        for(var i=0; i<rowNum; i++){
+            var thisTr = document.createElement("tr");
+            thisTable.append(thisTr);
+            for(var k=0; k<colNum; k++){
+                thisTr.append(document.createElement("td"));
+            }
+
+        }
+        
+
+        
+
+    
+      
+
+        tableNo ++;
     }
 </script>
 
