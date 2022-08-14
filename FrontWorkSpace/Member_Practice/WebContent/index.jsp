@@ -13,9 +13,9 @@
 		<hr>
 	</div>
 	<div class="main-contents">
-		<c:if test="${sessionScope.memberId == null }">
+		<c:if test="${sessionScope.id == null }">
 			<div id="login-wrap">
-				<form action="/login.do">
+				<form action="/login.do" method="post">
 					<fieldset>
 						<legend>로그인</legend>
 						<input type="text" name="id"><br>
@@ -25,13 +25,14 @@
 				</form>
 			</div>
 		</c:if>
-		<c:if test="${sessionScope.memberId != null }">
+		<c:if test="${sessionScope.id != null }">
 			<div id="mymenu-wrap">
-				${sessionScope.memberId }님 환영합니다.	
+				${sessionScope.id }님 환영합니다.	
 				<ul>
-					<li><a href="/view/memberpage.jsp">마이페이지</a></li>
-					<c:if test="${sessionScope.adminCheck != null }">
-						<li><a href="/view/adminpage.jsp">관리자페이지</a></li>
+					<li><a href="/mypage.do">마이페이지</a></li>
+					<li><a href="/logout.do">로그아웃</a>
+					<c:if test="${sessionScope.adminCheck == 'Y' }">
+						<li><a href="/admin.do">관리자페이지</a></li>
 					</c:if>
 				</ul>
 			</div>
@@ -40,8 +41,8 @@
 	</div>
 	<div class="main-footer">
 		<ul>
-			<li><a href="/view/enroll.jsp">회원가입</a></li>
-			<li><a href="/view/allMemberList.jsp">전체회원조회</a></li>
+			<li><a href="/enroll.do">회원가입</a></li>
+			<li><a href="/alllist.do">전체회원조회</a></li>
 		</ul>
 	</div>
 </body>

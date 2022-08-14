@@ -38,19 +38,21 @@ public class MemberService {
 		return result;
 	}
 
-	public int memberCheck(Member member) {
+	public String loginCheck(String id, String pwd) {
+		String checkResult = "";
+		System.out.println("서비스: id, pwd "+ id+" : "+ pwd);
 		try {
 			conn = jdbcTemplate.createConnection();
-			result = mDao.memberCheckDB(member, conn);
-			if (result > 0) {
-				JDBCTemplate.commit();
-			}
+			checkResult = mDao.loginCheckDB(id,pwd,conn);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
-			JDBCTemplate.rollback();
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close();
 		}
-		return result;
+		return checkResult;
 	}
+
+
 }

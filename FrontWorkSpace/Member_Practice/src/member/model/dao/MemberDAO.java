@@ -41,22 +41,16 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int memberCheckDB(Member member, Connection conn) {
+	public String loginCheckDB(String id,String pwd, Connection conn) {
 		String sql = "SELECT ADMIN_CHECK FROM MEMBER_TABLE WHERE MEMBER_ID=? AND MEMBER_PWD=?";
-		int isMember = 0;
 		String adminCheck = "";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, member.getMemberId());
-			pstmt.setString(2, member.getMemberPwd());
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
 				adminCheck = rset.getString(1);
-				if (adminCheck.equals("Y")) {
-					isMember = 2;
-				} else if (adminCheck.equals("N")) {
-					isMember = 1;
-				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -77,6 +71,33 @@ public class MemberDAO {
 				}
 			}
 		}
-		return isMember;
+		return adminCheck;
 	}
+
+//	public int loginCheckDB(String id, String pwd, Connection conn) {
+//		String sql = "SELECT COUNT(*) AS COUNT FROM MEMBER_TABLE WHERE MEMBER_ID=? AND MEMBER_PWD=?";
+//		int checkResult = 0;
+//		
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1,id);
+//			pstmt.setString(2,pwd);
+//			rset = pstmt.executeQuery();
+//			while(rset.next()) {
+//				checkResult = rset.getInt("COUNT");
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			try {
+//				rset.close();
+//				pstmt.close();
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		
+//		return checkResult;
+//	}
 }

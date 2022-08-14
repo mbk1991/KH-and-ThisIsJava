@@ -20,7 +20,11 @@ public class EnrollServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.getRequestDispatcher("/WEB-INF/view/enroll.jsp").forward(request,response);
+	
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Member member = new Member();
 		request.setCharacterEncoding("utf-8");
 		member.setMemberId(request.getParameter("id"));
@@ -34,10 +38,6 @@ public class EnrollServlet extends HttpServlet {
 		}else {
 			response.sendRedirect("/view/membererror.jsp");
 		}
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

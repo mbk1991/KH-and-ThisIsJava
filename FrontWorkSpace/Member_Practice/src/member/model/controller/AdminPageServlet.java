@@ -7,24 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.model.service.MemberService;
-
-@WebServlet("/logout.do")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/admin.do")
+public class AdminPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	MemberService mService = new MemberService();
        
-    public LogoutServlet() {
+    public AdminPageServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().invalidate();
-		request.getRequestDispatcher("WEB-INF/view/worksuccess.jsp").forward(request,response);
+		request.getRequestDispatcher("WEB-INF/view/adminpage.jsp").forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

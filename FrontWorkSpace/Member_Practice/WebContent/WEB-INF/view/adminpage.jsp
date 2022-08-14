@@ -15,6 +15,7 @@
 	<div class="admin-contents">
 		<ul>
 			<li><a href="/alllist.do">회원 전체 조회</a></li>
+			<li><a href="/notice.do">관리자 공지사항</a></li>
 		</ul>
 		<hr>
 	</div>
