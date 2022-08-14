@@ -33,7 +33,7 @@ public class EnrollServlet extends HttpServlet {
 		member.setMemberPhone(request.getParameter("phone"));
 		member.setMemberEmail(request.getParameter("email"));
 	
-		if(mService.memberInsert(member)>0) {
+		if(mService.memberCreate(member)>0) {
 			response.sendRedirect("/view/worksuccess.jsp");
 		}else {
 			response.sendRedirect("/view/membererror.jsp");

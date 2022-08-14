@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import member.model.common.JDBCTemplate;
 import member.model.dao.MemberDAO;
 import member.model.vo.Member;
+import member.model.vo.NoticePageData;
 
 public class MemberService {
 	JDBCTemplate jdbcTemplate;
@@ -21,7 +22,7 @@ public class MemberService {
 		mDao = new MemberDAO();
 	}
 
-	public int memberInsert(Member member) {
+	public int memberCreate(Member member) {
 		try {
 			conn = jdbcTemplate.createConnection();
 			result = mDao.memberInsertDB(member, conn);
@@ -40,10 +41,9 @@ public class MemberService {
 
 	public String loginCheck(String id, String pwd) {
 		String checkResult = "";
-		System.out.println("서비스: id, pwd "+ id+" : "+ pwd);
 		try {
 			conn = jdbcTemplate.createConnection();
-			checkResult = mDao.loginCheckDB(id,pwd,conn);
+			checkResult = mDao.loginCheckDB(id, pwd, conn);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -54,5 +54,24 @@ public class MemberService {
 		return checkResult;
 	}
 
+	public NoticePageData noticeRead(int currentPage) {
+		NoticePageData npd = null;
+		try {
+			conn = jdbcTemplate.createConnection();
+			npd = mDao.noticeAllSelectDb(currentPage, conn);
+			if (npd != null) {
+				JDBCTemplate.commit();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			JDBCTemplate.rollback();
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close();
+		}
+
+		return npd;
+	}
 
 }
