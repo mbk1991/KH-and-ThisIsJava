@@ -13,8 +13,30 @@
 <button onclick="table_make();">테이블 생성</button>
 
 <script>
+
+    var i = 1;
     function table_make() {
+        var rowNum = document.getElementById("rowNum").value;
+        var colNum = document.getElementById("colNum").value;
         
+        var thisTable = document.createElement("table");
+        thisTable.border ="1px";
+        
+        document.getElementsByTagName("body")[0].append(thisTable);
+        
+        for(var i=1; i<=rowNum; i++){
+            var thisTr = document.createElement("tr");
+            thisTable.append(thisTr);
+            for(var k=1; k<=colNum; k++){
+                var thisTd = document.createElement("td");
+                thisTd.innerHTML= i+"-"+k
+                thisTr.append(thisTd);
+            }
+        }
+
+        
+
+        i++;
     }
 </script>
     
