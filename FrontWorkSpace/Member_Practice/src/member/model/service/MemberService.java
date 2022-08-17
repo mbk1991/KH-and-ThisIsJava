@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import member.model.common.JDBCTemplate;
 import member.model.dao.MemberDAO;
 import member.model.vo.Member;
+import member.model.vo.Notice;
 import member.model.vo.NoticePageData;
 
 public class MemberService {
@@ -72,6 +73,24 @@ public class MemberService {
 		}
 
 		return npd;
+	}
+
+	public Notice noticeDetailRead(int noticeNo) {
+		Notice notice = null;
+		try {
+			conn = jdbcTemplate.createConnection();
+			notice = mDao.noticeDetailSelectDB(noticeNo,conn);
+			if(notice != null) {
+				JDBCTemplate.commit();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JDBCTemplate.rollback();
+		}
+		
+		return notice;
 	}
 
 }

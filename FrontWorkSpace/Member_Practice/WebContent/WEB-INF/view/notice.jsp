@@ -27,7 +27,7 @@
 					<c:forEach items="${nList }" var="notice" >
 					<tr>
 						<td>${notice.noticeNo }</td>
-						<td>${notice.subject }</td>
+						<td><a href="/notice/detail.do?noticeNum=${notice.noticeNo }">${notice.subject }</a></td>
 						<td>${notice.memberId }</td>
 						<td>${notice.regDate }</td>
 					</tr>

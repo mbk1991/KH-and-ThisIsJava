@@ -182,4 +182,34 @@ public class MemberDAO {
 		return totalNoticeCount;
 		
 	}
+
+	public Notice noticeDetailSelectDB(int noticeNo, Connection conn) {
+		String sql = "SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = ?";
+		Notice notice = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				notice = new Notice(
+						rset.getInt("NOTICE_NO"),
+						rset.getString("SUBJECT"),
+						rset.getString("CONTENTS"),
+						rset.getString("MEMBER_ID"),
+						rset.getDate("REG_DATE")
+						);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rset.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return notice;
+	}
 }
