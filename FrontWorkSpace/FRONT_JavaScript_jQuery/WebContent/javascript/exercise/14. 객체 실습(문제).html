@@ -17,6 +17,52 @@
     }
 </style>
 
+
+<script>
+    var member = new Object();
+    var memberArr = new Array();
+
+    function insertMember(){
+        
+        member.name = window.prompt("이름?");
+        member.age = window.prompt("나이?");
+        member.address = window.prompt("주소?");
+     
+    }
+    function printMember(){
+
+        if(member.name == null){
+            alert("입력부터하세요.");
+        }
+        var printTag = document.querySelector("#print");
+        for(var info in member){
+            printTag.innerHTML += info+":"+member[info]+"<br>";
+        }
+    }
+
+    var objectArr = new Array();
+    function student(){
+        for(var i =0; i<3; i++){
+            var std = new Object();
+            std.name = window.prompt((i+1)+ "학생 이름?");
+            std.age = window.prompt((i+1)+"학생 나이?");
+            std.address = window.prompt((i+1)+"학생 주소?");
+            objectArr.push(std);
+        }
+        console.log(objectArr);
+        
+        var tableTag = document.querySelector("#memberInfo");
+
+        for(var i=0; i<3; i++){
+            document.getElementsByName("name")[i].innerHTML = objectArr[i].name;
+            document.getElementsByName("age")[i].innerHTML = objectArr[i].age;
+            document.getElementsByName("addr")[i].innerHTML = objectArr[i].address;
+        }
+    }
+
+
+</script>
+
  <h1> 객체 실습 문제 </h1>
     
 문제1. <br>

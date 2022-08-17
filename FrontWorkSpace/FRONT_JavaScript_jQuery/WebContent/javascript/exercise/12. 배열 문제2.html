@@ -7,6 +7,25 @@
 </head>
 
 <body>
+  <script>
+    function print2Test(){
+            var arr = document.querySelector("#stringla4").innerHTML.split(" ");
+            var remove = document.querySelector("#remove").value;
+            var add = document.querySelector("#add").value;
+            console.log(remove);
+            console.log(add);
+           
+            for(var i in arr){
+                if(arr[i] == remove)
+                arr.splice(arr.indexOf(remove),1);
+            }
+            if(add != ""){
+                arr.push(add);
+            }
+            document.querySelector("#print4").innerHTML = arr.join(" ");
+  
+    }
+  </script>
 
 
  <h1> 배열 실습 문제 2</h1>
