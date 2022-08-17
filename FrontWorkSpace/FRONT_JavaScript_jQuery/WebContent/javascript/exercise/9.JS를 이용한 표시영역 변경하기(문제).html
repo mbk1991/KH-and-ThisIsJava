@@ -58,7 +58,25 @@
 	<script type="text/javascript">
 	//요구한 내용을 변수, 연산자, 제어문 등을 사용하여 실행되게 하시오.	
 		function showDiv(element) {
-			
+			// console.log(element); element가 radio 인점 확인.
+			var titleTag = document.getElementById("titleBox");
+			var dateTag = document.getElementById("dateBox");
+			var writeTag = document.getElementById("writerBox");
+			if(element.value == "title"){
+				titleTag.style.display = "block";
+				dateTag.style.display = "none";
+				writeTag.style.display = "none";
+			}
+			if(element.value == "date"){
+				titleTag.style.display = "none";
+				dateTag.style.display = "block";
+				writeTag.style.display = "none";
+			}
+			if(element.value == "writer"){
+				titleTag.style.display = "none";
+				dateTag.style.display = "none";
+				writeTag.style.display = "block";
+			}
 		}
   	</script>
 </body>

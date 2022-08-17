@@ -11,6 +11,7 @@
     <persistedState key="aggregateWorkingSetId" value="Aggregate for window 1655268237698"/>
     <persistedState key="show_in_time" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;show_in_time/>"/>
     <tags>topLevel</tags>
+    <tags>shellMaximized</tags>
     <children xsi:type="basic:PartSashContainer" xmi:id="_mRl1ggtdEe2vY5HTp0Sg_g" selectedElement="_mRl1gwtdEe2vY5HTp0Sg_g" horizontal="true">
       <children xsi:type="advanced:PerspectiveStack" xmi:id="_mRl1gwtdEe2vY5HTp0Sg_g" elementId="org.eclipse.ui.ide.perspectivestack" containerData="7500" selectedElement="_mRl1ngtdEe2vY5HTp0Sg_g">
         <children xsi:type="advanced:Perspective" xmi:id="_mRl1hAtdEe2vY5HTp0Sg_g" elementId="org.eclipse.jst.j2ee.J2EEPerspective" selectedElement="_mRl1hQtdEe2vY5HTp0Sg_g" label="Java EE" iconURI="platform:/plugin/org.eclipse.jst.j2ee.ui/icons/full/cview16/j2ee_perspective.gif">
@@ -92,7 +93,7 @@
               </children>
             </children>
             <children xsi:type="basic:PartSashContainer" xmi:id="_mRl1iwtdEe2vY5HTp0Sg_g" containerData="7500" selectedElement="_mRl1jAtdEe2vY5HTp0Sg_g">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_mRl1jAtdEe2vY5HTp0Sg_g" containerData="7000" selectedElement="_mRl1jQtdEe2vY5HTp0Sg_g" horizontal="true">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_mRl1jAtdEe2vY5HTp0Sg_g" containerData="7000" selectedElement="_mRl1jgtdEe2vY5HTp0Sg_g" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_mRl1jQtdEe2vY5HTp0Sg_g" elementId="org.eclipse.ui.editorss" containerData="7000" ref="_mRmfCwtdEe2vY5HTp0Sg_g"/>
                 <children xsi:type="basic:PartStack" xmi:id="_mRl1jgtdEe2vY5HTp0Sg_g" elementId="topRight" containerData="3000" selectedElement="_mRl1jwtdEe2vY5HTp0Sg_g">
                   <children xsi:type="advanced:Placeholder" xmi:id="_mRl1jwtdEe2vY5HTp0Sg_g" elementId="org.eclipse.ui.views.ContentOutline" ref="_mRmfOQtdEe2vY5HTp0Sg_g" closeable="true">
@@ -1298,7 +1299,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_mRnD3wtdEe2vY5HTp0Sg_g" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_FBVKkAuxEe2wY4CEN6WGdA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_mRo8xgtdEe2vY5HTp0Sg_g"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_3WNlgB1jEe2-PZLQ_xEi5g" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_mRo8xgtdEe2vY5HTp0Sg_g"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_mRnD7AtdEe2vY5HTp0Sg_g" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -1338,7 +1339,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_mRnERAtdEe2vY5HTp0Sg_g" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_FBgwwAuxEe2wY4CEN6WGdA" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_mRo8aQtdEe2vY5HTp0Sg_g"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_3WUTMB1jEe2-PZLQ_xEi5g" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_mRo8aQtdEe2vY5HTp0Sg_g"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_mRnETgtdEe2vY5HTp0Sg_g" elementId="org.eclipse.jdt.ui.CompilationUnitEditor" visible="false">
         <tags>Draggable</tags>

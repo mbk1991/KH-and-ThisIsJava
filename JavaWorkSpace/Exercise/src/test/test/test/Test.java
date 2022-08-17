@@ -2,9 +2,14 @@ package test.test.test;
 
 public class Test {
 	public static void main(String[] args) {
-		animationAct("left");
-		animationAct("middle");
-		animationAct("right");
+		
+		boolean injo = (1+1+1+1) > 4;
+		System.out.println(injo);
+		
+		
+//		animationAct("left");
+//		animationAct("middle");
+//		animationAct("right");
 	}
 
 	public static void animationAct(String choice) {
