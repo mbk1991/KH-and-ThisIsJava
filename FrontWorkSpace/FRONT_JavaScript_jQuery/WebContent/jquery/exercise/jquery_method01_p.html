@@ -4,10 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>jQuery method 실습</title>
+    <script src = "../js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
     <script>
+        window.onload = function(){
+            document.getElementById("btn").onclick = function(){
+                var tbodyTag = document.getElementsByTagName("tbody");
+                var trTag = tbodyTag.getElementsByTagName("tr");
+                console.log(trTag[0]);
+                
+
+
+
+            }
+        }
         
 
     </script>
