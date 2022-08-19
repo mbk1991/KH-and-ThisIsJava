@@ -9,18 +9,45 @@
 
 <body>
     <script>
-        window.onload = function(){
-            document.getElementById("btn").onclick = function(){
-                var tbodyTag = document.getElementsByTagName("tbody");
-                var trTag = tbodyTag.getElementsByTagName("tr");
-                console.log(trTag[0]);
-                
+        //5개의 tr 1~4번 인덱스
+        //그 안의 3개씩의 td 0~2번 인덱스
+        // $(function(){
+        //     var tdArr = $("td");
+        //     console.log(tdArr);
+        //     var span1 = $("#span1");
+        //     $.each(tdArr,function(index,item){
+        //         console.log($(item).text());
+
+        //         if(index%3 == 0){
+        //             if(index==0){}
+        //             span1.append($(item).text() +",");
+        //         }else if(index%3 == 1){
+        //             span1.append($(item).text() +",");
+        //         }else if(index%3 == 2){
+        //             span1.append($(item).text() +"<br>");
+        //         }
+        //     });
+        // });
 
 
+        //강사님 방식
+        $(function(){
 
-            }
-        }
-        
+            $("#btn").on("click",function(){
+                var trArrs = $("tr");
+                var resultStr = "";
+                $.each(trArrs, function(index,item){
+                    if(index > 0){
+                        var name = $(item).children().eq(0).text();
+                        var age = $(item).children().eq(1).text();
+                        var addr = $(item).children().eq(2).text();
+                        resultStr += name +","+age + "," + addr + "<br>";
+                    }
+                });
+                $("#span1").html(resultStr);
+            });
+
+        });
 
     </script>
 

@@ -4,6 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>jQuery method 실습</title>   
+		<script src = "../js/jquery-3.6.0.min.js"></script>
 		<style>
 			.title {
 				background-color : black;
@@ -21,6 +22,55 @@
 		</style>
 	</head>
 	<script>
+		$(function(){
+
+			//나의 풀이
+			// $("#btn2").on("click",function(){
+			// 	alert("확인");
+			// 	var trArrs = $("tr");
+			// 	$.each(trArrs,function(index,item){
+			// 		if(index == 0){
+			// 			$(item).attr("class","title");
+			// 		}else{
+
+			// 			$(item).children().eq(0).attr("class","name");
+			// 			$(item).children().eq(1).attr("class","age");
+			// 			$(item).children().eq(2).attr("class","addr");
+
+			// 		}
+
+			// 	});
+			// });
+
+			//강사님 풀이
+		    //필터를 이용해서 값을 넣는다.
+			//자바의 스트림과 비슷해보인다.
+			var names = $("td").filter(function(index){
+				return index%3 == 0;
+			});
+			var ages = $("td").filter(function(index){
+				return index%3 == 1;
+			});
+			var addrs = $("td").filter(function(index){
+				return index%3 == 2;
+			});
+
+			$("#btn2").on("click",function(){
+				$("tr").first().addClass("title");
+				names.addClass("name");
+				ages.addClass("age");
+				addrs.addClass("addr");
+			});
+
+			$("#reset").on("click",function(){
+				$("tr").first().removeClass("title");
+				names.removeClass("name");
+				ages.removeClass("age");
+				addrs.removeClass("addr");
+			});
+
+
+		});
 		
 	</script>
 	<body>

@@ -4,29 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-    //누르면 해당 태그를 문자열로 배열에 저장하고
-    //다 없어진 후에는 배열을 eval()함수로 처리?
-    //div5에서 없애는 방법?
-
-
     <script>
-        var clickArr = new Array();
-        function clickDiv(color){
-            clickArr.push(document.querySelector("#"+color).outerHTML);
-            // console.log(clickArr);
-            var div5Tag = document.querySelector("#div5");
-            document.getElementById(color).remove();
-            console.log(clickArr);
+        // var clickArr = new Array();
+        // function clickDiv(color){
+        //     clickArr.push(document.querySelector("#"+color).outerHTML);
+        //     // console.log(clickArr);
+        //     var div5Tag = document.querySelector("#div5");
+        //     document.getElementById(color).remove();
+        //     console.log(clickArr);
 
-            if(div5Tag.childElementCount == 0){
-                for(var i=0; i<clickArr.length; i++){
-                    div5Tag.innerHTML += clickArr[i];
-                }   
+        //     if(div5Tag.childElementCount == 0){
+        //         for(var i=0; i<clickArr.length; i++){
+        //             div5Tag.innerHTML += clickArr[i];
+        //         }   
+        //         clickArr = new Array();
+        //     }
+        // }
+            //한번은 되는데 두 번 하면 증식함..
+
+        //강사님 수업  // 반복을 하려면 변수초기화를 해야하는 것이었음!!
+        
+        // var count  = 0;
+        // var clickArrs = new Array(5);
+        // var str = "";
+        // function clickDiv(color){
+        //     // console.log(color);
+        //     clickArrs[count] = document.querySelector("#"+color);
+        //     clickArrs[count].style.display = "none";
+        //     count++;
+        //     if(count==5){
+        //         for(var i=0; i<5; i++){
+        //             clickArrs[i].style.display = "block";
+        //             str += clickArrs[i].outerHTML;
+        //         }
+        //         document.querySelector("#div5").innerHTML = str;
+        //         str ="";
+        //         count=0;
+
+        //     }
+        // }
+
+        //j쿼리 버전
+        var count = 0;
+        var clickArrs = new Array(5);
+        var str = "";
+        function clickDiv(color){
+            clickArrs[count] = $("#"+color);
+            clickArrs[count].css("display","none");
+            count++
+            if(count==5){
+                for(var i =0; i<5; i++){
+                    clickArrs[i].css("display","block");
+                    str+=clickArrs[i][0].outerHTML;
+                }
+                $("div5").html(str);
+                str = "";
+                count = 0;
             }
         }
+
+
 
     </script>
 

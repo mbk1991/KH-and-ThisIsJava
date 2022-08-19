@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery이벤트2</title>
+    
+    <script src = "./js/jquery-3.6.0.min.js"></script>
+
+    <style>
+        #div1{
+            border:3px solid black;
+            height:100px;
+            width:100px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <script>
+        $(function(){
+
+            $("#btn1").on("click",function(){
+                // var level = parseInt($("span").eq(0).text());
+                // $("span").eq(0).text(level+1);
+                update(0);
+            });
+      
+            $("#btn2").on("click",function(){
+                update(1);
+            });
+
+            $("#btn3").on("click",function(){
+                update(2);
+            });
+            //같은기능인 경우 함수로 만들어 사용할 수 있다.
+
+            function update(val){
+                var level = parseInt($("span").eq(val).text());
+                $("span").eq(val).text(level+1);
+            }
+
+            $("#lastBtn").on("click",function(){
+                //트리거로 해당 요소의 클릭이벤트를 실행시킨다.
+                $("#btn1").trigger("click");
+                $("#btn2").trigger("clickㄴ");
+                $("#btn3").trigger("click");
+
+                // 함수를 호출해버리는 방식.
+                // update(0);
+                // update(1);
+                // update(2);
+
+            });
+
+            //클릭이벤트를 연결하여 버튼2로 버튼1의 이벤트를 활성화하고
+            //버튼3으로 버튼1의 이벤트를 비활성화하는 기능.
+
+            $("#btn-2").on("click",function(){
+                $("#btn-1").text("Click");
+                $("#btn-1").on("click",function(){
+                    $("#h1").append("oh!");
+                });
+            });
+
+            $("#btn-3").on("click",function(){
+                $("#btn-1").text("nothing..");
+                $("#btn-1").off("click");
+            });
+
+    
+            //on에서는 마우스 를 올리고 내릴 때 색상이 변함
+            // off에서는 동작을 안함.
+
+            $("#btnOnOff").on("click",function(){
+                // if($(this).text() == "off"){
+
+                //     $(this).text("on");
+                //     $("#div1").on("mouseover",function(){
+                //         $("#div1").css("background-color","red");
+                //     });
+                //     $("#div1").on("mousedown",function(){
+                //         $("div1").css("background-color","white");
+                //     });
+            
+                // }else{
+                //     $(this).text("off");
+                // }
+                    //뭔가 잘 안됨.
+                    var btnText = $(this).text();
+                    if($(this).text() != "on"){
+                        $(this).text("on");
+                        $("#div1").on("mouseenter",function(){
+                            $(this).css("background-color","red");
+                        });
+                        $("#div1").on("mouseleave",function(){
+                            $(this).css("background-color","white");
+                        });
+                    }else{
+                        $(this).text("off");
+                        $("#div1").off("mouseenter");
+                    }
+            });
+
+            //h1클릭이벤트를 만들고
+            //h1의 자식인 span클릭 이벤트를 만들었을 때.
+            //자식의 클릭이벤트만 눌렀는데 부모의 클랙이벤트도 작동함.
+            //이벤트가 작동하면 이벤트객체가 생김. 함수에 e(관습적)
+            //으로 이벤트 매개변수를 설정해준다.
+
+            $("#h1-click").on("click",function(){
+                alert("h1클릭");
+            });
+
+            $("#span-click").on("click",function(e){
+                alert("span클릭");
+                e.stopPropagation();
+                // return false;
+            });
+
+            //하이퍼링크의 이벤트를 없애는 방법.
+            $("a").on("click",function(event){
+                // event.preventDefault();
+                alert("클릭이벤트가 발생하였습니다.");
+
+                return false;
+                
+            });
+        });
+
+
+    </script>
+
+
+
+
+    <h1>이벤트2</h1>
+    <p>
+        사용자가 마우스를 클릭하거나 마우스를 움직여 특정화면 위로 가져가거나 키보드를 누르는 행위를 이벤트라고 부름
+        <br>jQuery에서는 event객체를 통해서 이벤트를 제어함.
+    </p>
+    <h3>이벤트 강제 발생(trigger)</h3>
+    <button id="btn1">레벨업</button>
+    기사 : <span>0</span> Level <br>
+    <button id="btn2">레벨업</button>
+    궁수 : <span>0</span> Level <br>
+    <button id="btn3">레벨업</button>
+    마법사 : <span>0</span> Level <br>
+    <button id="lastBtn">All</button><br>
+
+    <h3>이벤트 연결</h3>
+    <p>
+        on() 메소드 : 이벤트 연결
+        <br>
+        off() 메소드 : on()으로 연결된 이벤트 제거
+    </p>
+    <button id="btn-1">nothing..</button>
+    <button id="btn-2">click add</button>
+    <button id="btn-3">click remove</button>
+    <h1 id="h1"></h1>
+
+    <div id="div1">
+
+    </div>
+    <button id="btnOnOff">off</button>
+
+    <h3>이벤트 버블링 막기 및 기본 이벤트 제거</h3>
+    <p>
+        stopPropagation() : 이벤트 전달 제거 <br>
+        preventDefault() : 기본 이벤트 제거
+    </p>
+    <h1 id="h1-click">
+        <span id="span-click">click</span>
+    </h1>
+    <h1>
+        <a href="http://www.iei.or.kr">kh정보교육원</a>
+    </h1>
+
+
+    
+</body>
+</html>

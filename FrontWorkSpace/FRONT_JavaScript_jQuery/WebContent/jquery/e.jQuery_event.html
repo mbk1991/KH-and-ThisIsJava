@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery이벤트</title>
+    <script src = "./js/jquery-3.6.0.min.js"></script>
+    <style>
+        [id^="user"]{
+            /* background-color: gray; */
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        $(function(){
+
+            //document를 jQuery객체로 만들어 마우스 움직임을 체크함.
+            $(document).on("mousemove",function(){
+                //이벤트 객체에 ,x좌표와  y좌표를 표시할 수 있다.
+                //이벤트 객체는 이벤트 발생시 생겨나는 객체.
+                $("#span1").html("<br>" + event.pageX + ", "+ event.pageY);
+
+            });
+            //마우스를 올리는 이벤트
+            $("#div-hover").on("mouseover",function(){
+                $(this).css("background-color","pink");
+            });
+            //마우스로 클릭하는 이벤트
+            $("#click").on("click",function(){
+                $(this).css("color","red");
+            });
+            //마우스로 더블클릭하는 이벤트
+            $("#dblclick").on("dblclick",function(){
+                $("#dblclick").css("background-color","gold");
+            });
+            //마우스로 클릭했다가 클릭을 놓는 것
+            //마우스 클릭
+            $("#div-updown").on("mousedown",function(){
+                $(this).css("background-color","red");
+            });
+            //마우스 클릭 놓기
+            $("#div-updown").on("mouseup",function(){
+                $(this).css("background-color","white");
+            });
+
+            //text를 사용할 때 keyup, keydown, keypress(한글인식안됨)
+
+
+            $("textarea").on("keydown",function(){
+                console.log("눌렸어요!");
+            });
+            
+            //초과시 알러트 발생하는게 잘 안되네;
+            var inputCount = 150;
+            $("textarea").on("keyup",function(){
+                if(inputCount > 0){
+                    console.log("떼었어요!");
+                    inputCount -= $(this).val().length;
+                   $("#noti").html("작성가능한 글자수 : " + inputCount);
+                }else{
+                    alert("입력가능한 글자수를 초과하였습니다.")
+                }
+            });
+
+            //로그인 입력양식 이벤트
+            //로그인 제출버튼을 눌렀을 때 이것을 서버로 넘길지 말지 정할 수 있다.
+            //여기서 정규표현식을 쓰는 것인가?
+            //input태그에 HTML5가 제공하는 리콰이어드 기능으로 대체할 수 있다.
+            //required
+
+            $("#my-form").on("submit",function(){
+                var idTag = $("#userId");
+                var pwTag = $("#userPw");
+                if(idTag.val() == ""){
+                    alert("ID를 입력해주세요.");
+                    return false;
+                }else if(pwTag.val() == ""){
+                    alert("비밀번호를 입력해주세요.");
+                    return false;
+                }
+                return true;
+            });
+
+            $("#userId").on("focus",function(){
+                $(this).css("background-color", "purple");
+            });
+            $("#userId").on("focusout",function(){
+                $(this).css("background-color","white");
+            });
+
+            // $("#userId").on("blur",function(){
+            //     $(this).css("background-color","red");
+            // });
+
+
+            //전체체크를 누르면 다른 체크박스를 다 체크하고 싶은것.
+            //회원가입 동의할 때 쓰는 그것인가보다.
+            $("#allCheck").on("change",function(){
+                var checkTags = $("#check-item").children();
+                // var checkTags = document.querySelector("#check-item").children(); // 이건 안됨..
+                if($(this).is(":checked")){
+                    checkTags.attr("checked","checked");
+                    // checkTags.prop("checked",true);
+
+
+                }else{
+                    checkTags.removeAttr("checked");
+
+                }
+
+            });
+            //라디오버튼 테스트.
+            $("[type=radio]").on("change",function(){
+                console.log("checked");
+            });
+            $("select").on("change",function(){
+                console.log("Change")
+            });
+
+        });
+
+    </script>
+
+    <h1>이벤트</h1>
+    <p>
+        사용자가 마우스를 클릭하거나 마우스를 움직여 특정화면 위로 가져가거나 키보드를 누르는 행위를 이벤트라고 부름
+        <br>jQuery에서는 event객체를 통해서 이벤트를 제어함.
+    </p>
+    <h3>마우스오버 이벤트</h3>
+    <div id="div-hover" style="border:3px solid black;width:100px;height:100px"></div>
+    <h3>클릭 / 더블클릭 이벤트</h3>
+    <p id="click">click</p>
+    <p id="dblclick">double click</p>
+    <p></p>
+    <h3>마우스업/다운 이벤트</h3>
+    <div id="div-updown" style="border:3px solid black;width:100px;height:100px"></div>
+    <h3>마우스이동 이벤트</h3>
+    <h1>
+        Mouse is a coordinate :
+        <span id="span1"></span>
+    </h1>
+
+    <h3>키업/키프레스/키다운 이벤트</h3>
+    <div>
+        <p>글 작성</p>
+        <h1 id="noti">작성가능한 글자수 : 150</h1>
+        <textarea name="" id="" cols="60" rows="5"></textarea>
+    </div>
+    <h1>입력 양식(form) 이벤트</h1>
+    <h3>submit / focus / blur</h3>
+    <form id="my-form" action="result.html">
+        ID : <input type="text" name="userId" id="userId">
+        PW : <input type="password" name="userPw" id="userPw">
+        <input type="submit" value="제출">
+        <input type="reset" value="취소">
+    </form>
+
+
+    <h3>change</h3>
+    <p>
+        input태그의 type속성이 checkbox, radio인 input태그와 select태그의 상태 변경을 감지하는 이벤트
+    </p>
+    전체 : <input type="checkbox" name="allCheck" id="allCheck"> <br>
+    <div id="check-item">
+        <input type="checkbox" name="" id=""> A
+        <input type="checkbox" name="" id=""> B
+        <input type="checkbox" name="" id=""> C
+    </div>
+    남자 : <input type="radio" name="" id=""> <br>
+    <select name="" id="">
+        <option value="">1</option>
+        <option value="">2</option>
+        <option value="">3</option>
+    </select>
+
+
+    
+</body>
+</html>
