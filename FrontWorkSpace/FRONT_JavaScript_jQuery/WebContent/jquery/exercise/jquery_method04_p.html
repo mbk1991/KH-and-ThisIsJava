@@ -9,7 +9,24 @@
 
 	<body>
 		<script>
+			$(function(){
 			
+				var str = "";
+				$("input[type=checkbox]").on("change",function(){
+					if($(this).prop("checked")){
+						console.log($(this).parent().siblings().text());
+						str += $(this).parent().siblings().text();
+					}
+				});
+					
+				
+
+
+				$("#btn").on("click",function(){
+					$("#result").text(str);
+				});
+			});
+
 		</script>
 	
 
