@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery method 실습</title>
+    <script src = "../js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <script>
+<<<<<<< HEAD
+        //5개의 tr 1~4번 인덱스
+        //그 안의 3개씩의 td 0~2번 인덱스
+        // $(function(){
+        //     var tdArr = $("td");
+        //     console.log(tdArr);
+        //     var span1 = $("#span1");
+        //     $.each(tdArr,function(index,item){
+        //         console.log($(item).text());
+
+        //         if(index%3 == 0){
+        //             if(index==0){}
+        //             span1.append($(item).text() +",");
+        //         }else if(index%3 == 1){
+        //             span1.append($(item).text() +",");
+        //         }else if(index%3 == 2){
+        //             span1.append($(item).text() +"<br>");
+        //         }
+        //     });
+        // });
+
+
+        //강사님 방식
+        $(function(){
+
+            $("#btn").on("click",function(){
+                var trArrs = $("tr");
+                var resultStr = "";
+                $.each(trArrs, function(index,item){
+                    if(index > 0){
+                        var name = $(item).children().eq(0).text();
+                        var age = $(item).children().eq(1).text();
+                        var addr = $(item).children().eq(2).text();
+                        resultStr += name +","+age + "," + addr + "<br>";
+                    }
+                });
+                $("#span1").html(resultStr);
+            });
+
+        });
+=======
+        window.onload = function(){
+            document.getElementById("btn").onclick = function(){
+                var tbodyTag = document.getElementsByTagName("tbody");
+                var trTag = tbodyTag.getElementsByTagName("tr");
+                console.log(trTag[0]);
+                
+
+
+
+            }
+        }
+        
+>>>>>>> 635077360f0f879ac50b6d4a60763750cac75af9
+
+    </script>
+
+
+
+문제1. <br>
+학생정보 출력 버튼을 클릭시 테이블에 있는 학생 정보가 <br>
+fieldset 안에 출력되도록 만드시오! ($.each 사용) <br>
+<table border="1px">
+    <tr><th>이름</th><th>나이</th><th>주소</th></tr>
+    <tr><td>홍길동</td><td>20</td><td>서울시</td></tr>
+    <tr><td>김말똥</td><td>30</td><td>경기도</td></tr>
+    <tr><td>고길똥</td><td>40</td><td>강원도</td></tr>
+    <tr><td>김지똥</td><td>50</td><td>인천광역시</td></tr>  
+</table>
+
+<fieldset style="height:200px;width:500px;">
+    <legend>출력</legend>
+    <span id="span1"></span>
+</fieldset>
+
+<button id="btn">학생정보 출력</button>
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
