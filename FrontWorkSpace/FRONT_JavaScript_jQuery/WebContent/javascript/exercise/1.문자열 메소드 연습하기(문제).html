@@ -39,6 +39,26 @@
             });
         }
 
+        //문제3. 자바 스크립트 방식 / jQuery방식.
+        function memoPrint(){
+            // document.querySelector("#result3").innerHTML 
+            // = document.querySelector("#memo").value;
+
+            $("#result3").text($("#memo").val());
+        }
+        function memoUpper(){
+            // document.querySelector("#result3").innerHTML
+            // =document.querySelector("#result3").innerHTML.toUpperCase();
+            $("#result3").text($("#result3").text().toUpperCase());
+      
+        }
+        function memoLower(){
+            // document.querySelector("#result3").innerHTML
+            // =document.querySelector("#result3").innerHTML.toLowerCase();
+            $("#result3").text($("#result3").text().toLowerCase());
+        }
+
+
 
     </script>
 

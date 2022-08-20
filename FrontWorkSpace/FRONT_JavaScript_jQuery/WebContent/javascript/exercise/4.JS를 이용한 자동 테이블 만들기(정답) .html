@@ -5,6 +5,32 @@
 <title>학생정보 입력</title>
 </head>
 <body>
+    <script>
+        //1.자바스크립트 방식
+        
+        var i = 1;
+        function table_make(){
+            document.body.innerHTML += "<table></table>";
+            var thisTable = document.querySelector("#table");
+            var row = parseInt(document.querySelector("#rowNum"));
+            var col = parseInt(document.querySelector("#colNum"));
+
+            var tds="";
+            var trs="";
+            for(var i=0; i<3; i++){
+                tds += "<td></td>";
+            }
+            for(var i=0; i<3; i++){
+                trs += "<tr>"+tds+"</tr>";
+            }
+            thisTable.innerHTML += trs;
+
+            i++;
+        }
+
+    </script>
+
+
     <h1> 자동 테이블 만들기 </h1>
     <h5>    힌트 : 반복문은 자바랑 같습니다. 다만! 변수만 var 데이터형이라는걸 기억해주세요 </h5>
     
@@ -21,7 +47,7 @@
 </table> -->
 
 
-<script>
+<!-- <script>
     var tableNo = 1;
     function table_make() {
    
@@ -49,16 +75,9 @@
             }
 
         }
-        
-
-        
-
-    
-      
-
         tableNo ++;
     }
-</script>
+</script> -->
 
     
 </body>

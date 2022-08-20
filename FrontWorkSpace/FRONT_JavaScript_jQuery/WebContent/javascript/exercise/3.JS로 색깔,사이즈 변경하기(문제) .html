@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>HTML태그에 접근하기</title>
+<script src = "../js/jquery-3.6.0.min.js"></script>
 <style>
     div{
         border:1px solid black;
@@ -13,18 +14,60 @@
 </style>
 </head>
 <body>
+    <script>
+        //문제1.자바스크립트 방식  
+        //문제1.jQuery방식
+        function colorChange(){
+        //   document.querySelector("#div1").style.backgroundColor 
+        //   =document.querySelector("#selectColor").value ;
+            $("#div1").css("background-color",$("#selectColor").val());
+            
+            
+        }
+        
+        
+                //문제2.자바스크립트 방식
+                //문제2.jQuery방식
+    function halfSize(){
+        // var div2 = document.querySelector("#div2");
+        // div2.style.height = "50px";
+        // div2.style.width = "50px";
+
+        $("#div2").css("height","50px");
+        $("#div2").css("width","50px");
+    }
+    function defaultSize(){
+        // var div2 = document.querySelector("#div2");
+        // div2.style.height = "100px";
+        // div2.style.width = "100px";
+
+        $("#div2").css("height","100px");
+        $("#div2").css("width","100px");
+    }
+    function doubleSize(){
+        // var div2 = document.querySelector("#div2");
+        // div2.style.height = "200px";
+        // div2.style.width = "200px";
+
+        $("#div2").css("height","200px");
+        $("#div2").css("width","200px");
+    }
+
+
+    </script>
+
 
 <h3> 문제 1. 색상 선택후 변경 버튼을 클릭하면 색상이 변경되도록 만들어 보시오</h3>
 <div id="div1"> </div>
 
 <input type="color" id="selectColor">
 <button onclick="colorChange();">변경</button>
-<script>
+<!-- <script>
     function colorChange(){
         console.log(document.getElementById("selectColor").value);
         document.getElementById("div1").style.backgroundColor=document.getElementById("selectColor").value;
     }
-</script>
+</script> -->
 
 
 <hr><hr><br>
@@ -32,7 +75,7 @@
 
 <div id="div2"> </div>
 <button onclick="halfSize();">50x50</button> <button onclick="defaultSize();">원본(100x100)</button> <button onclick="doubleSize();">200x200</button>
-<script>
+<!-- <script>
     var div2 = document.getElementById("div2");
     function halfSize(){
         // alert("확인");
@@ -47,7 +90,7 @@
         div2.style.height="200px";
         div2.style.width="200px";
     }
-</script>
+</script> -->
 
 
 

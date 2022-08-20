@@ -3,9 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+	<script src ="../js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
+	<script>
+		// 1.자바스크립트 방식
+		// function calculator(op){
+		// 	var num1 = parseInt(document.querySelector("#num1").value);
+		// 	var num2 = parseInt(document.querySelector("#num2").value);
+		// 	var result;
+		// 	switch(op){
+		// 		case '+': result = num1 + num2; break;
+		// 		case '-': result = num1 - num2; break;
+		// 		case 'x': result = num1 * num2; break;
+		// 		case '/': result = num1 / num2; break;
+		// 		case '%': result = num1 % num2; break;
+		// 	}
+		// 	document.querySelector("#calc").innerHTML = result;
+		// }
+
+		// 2.jQuery 방식
+		function calculator(op){
+			var num1 = parseInt($("#num1").val());
+			var num2 = parseInt($("#num2").val());
+			var result;
+			if(op=='+'){
+				result = num1 + num2;
+			}else if(op=='-'){
+				result = num1 - num2;
+			}else if(op=='x'){
+				result = num1 * num2;
+			}else if(op=='/'){
+				result = num1 / num2;
+			}else if(op=='%'){
+				result = num1 % num2;
+			}
+			$("#calc").text(result);
+		}
+
+
+
+	</script>
+
+
+
+
+
 	<h2>간이 계산기 만들기</h2>
 	
        
@@ -17,7 +61,7 @@
 	<input type="button" value="/" onclick="calculator(this.value);"> 
 	<input type="button" value="%" onclick="calculator(this.value);"> <br><br>
     계산결과 : <span id="calc"></span>
-    <script>
+    <!-- <script>
 		function calculator(operator) {
 			var num1 = document.getElementById("num1").value;
 			var num2 = document.getElementById("num2").value;
@@ -34,7 +78,7 @@
 			alert(answer);
 		}
 
-	</script>
+	</script> -->
    <hr>
    Hint <br>
 	1. 함수에 인자값을 넘길 경우 함수 처리 방법 <br>  
