@@ -10,10 +10,39 @@
     }
 
 </style>
+<script src = "../js/jquery-3.6.0.min.js"></script>
 </head>
 
 
 <body>
+    <script>
+        // 문제1. 자바스크립트 방식
+        // function stringLength(){
+        //     document.querySelector("#result1").innerHTML 
+        //             = document.querySelector("#text1").value.length;
+        // }
+        // 문제1. jQuery방식
+        function stringLength(){
+            $("#result1").text($("#text1").val().length);
+        }
+
+        // //문제2. 자바스크립트 방식
+        // function stringSplit(){
+        //     var arrs = document.querySelector("#la1").innerHTML.split(",");
+        //     document.querySelector("#result2").innerHTML = arrs.join(" ");
+        // }
+        //문제2. jQuery 방식
+        function stringSplit(){
+            var arrs = $("#la1").text().split(",");
+            $.each(arrs,function(index,item){
+                $("#result2").append(item+" ");
+            });
+        }
+
+
+    </script>
+
+
 
 <h1> 문자열 메소드 문제</h1>
 
@@ -26,7 +55,7 @@
 </fieldset><br>
 <div id="result1"> </div>
 <button onclick="stringLength();"> 확인하기</button>
-<script>
+<!-- <script>
     function stringLength() {
         //alert("연결확인");
         var result1 = document.getElementById("result1");
@@ -34,7 +63,7 @@
         
 
     }
-</script>
+</script> -->
 <br><br>
 <hr><hr>
 <br><br>
@@ -47,7 +76,7 @@
 </fieldset><br>
 <div id="result2"> </div>
 <button onclick="stringSplit();"> 확인하기</button>
-<script>
+<!-- <script>
     function stringSplit() {
        // alert("연결확인");
        var la1 = document.getElementById("la1");
@@ -58,7 +87,7 @@
         }
         result2.innerHTML = str;
     }
-</script>
+</script> -->
 
 <br><br>
 <hr><hr>
@@ -79,7 +108,7 @@
 <button onclick="memoUpper();">대문자로 변경</button>
 <button onclick="memoLower();">소문자로 변경</button>
 
-<script>
+<!-- <script>
 
     var memo = document.getElementById("memo");
     var result3 = document.getElementById("result3");
@@ -101,7 +130,7 @@
     }
 
 
-</script>
+</script> -->
 
 
 
