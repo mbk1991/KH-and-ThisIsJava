@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>학생정보 입력</title>
+
+<script src="../js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <h1> 자동 테이블 만들기(숫자넣기) </h1>
@@ -13,6 +15,41 @@
 <button onclick="table_make();">테이블 생성</button>
 
 <script>
+    //1.자바스크립트 방식 . 테이블 만들고 숫자 넣기 
+    // var tableNum=1;
+    // function table_make(){
+    //     var row = document.querySelector("#rowNum").value;
+    //     var col = document.querySelector("#colNum").value;
+    //     var str = "";
+    //     str += "<table border=1px>";
+    //     for(var i=0; i<row; i++){
+    //         str += "<tr>";
+    //         for(var j=0; j<col; j++){
+    //             str += "<td>";
+    //             str += row +"-"+ col ;
+    //             str += "</td>";
+    //         }
+    //         str += "</tr>";
+    //     }    
+    //     str += "</table>";
+    //     document.body.innerHTML += str;
+    // }
+    //2.jQuery방식
+    function table_make(){
+        var row = $("#rowNum").val();
+        var com = $("#colNum").val();
+        var thisTable = $(document.body).append("<table>");
+        thisTable.append("<tr>");
+    }
+
+</script>
+
+
+
+
+
+
+<!-- <script>
 
     var i = 1;
     function table_make() {
@@ -22,7 +59,8 @@
         var thisTable = document.createElement("table");
         thisTable.border ="1px";
         
-        document.getElementsByTagName("body")[0].append(thisTable);
+        // document.getElementsByTagName("body")[0].append(thisTable);
+        document.body.append(thisTable);
         
         for(var i=1; i<=rowNum; i++){
             var thisTr = document.createElement("tr");
@@ -38,7 +76,7 @@
 
         i++;
     }
-</script>
+</script> -->
     
 </body>
 </html>
