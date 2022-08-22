@@ -9,21 +9,38 @@
 
 	<body>
 		<script>
-			$(function(){
+			// 나의 풀이. 문제가 있음. 체크를 푼 것이 사라지지 않음.
+			// $(function(){
 			
-				var str = "";
-				$("input[type=checkbox]").on("change",function(){
-					if($(this).prop("checked")){
-						console.log($(this).parent().siblings().text());
-						str += $(this).parent().siblings().text();
-					}
-				});
-					
-				
+			// 	var str = "";
+			// 	$("input[type=checkbox]").on("change",function(){
+			// 		if($(this).prop("checked")){
+			// 			console.log($(this).parent().siblings().text());
+			// 			str += $(this).parent().siblings().text() +"<br>";
+			// 		}
+			// 	});
 
+			// 	$("#btn").on("click",function(){
+			// 		$("#result").html(str);
+			// 	});
+			// 	str = ""
+			// });
 
+			// 강사님 풀이
+			//tr을 선택하고 checked를 찾는 방식.
+			$(function(){
 				$("#btn").on("click",function(){
-					$("#result").text(str);
+					var str = "";
+					var trTags=$("tr");
+					$.each(trTags,function(index,item){
+						var tdTags = $(item).children();
+						var inputTag = tdTags.eq(0).children();
+						if(index>0 && inputTag.is(":checked")){
+							str+= tdTags.eq(1).text() + " / " + tdTags.eq(2).text() + " / " + tdTags.eq(3).text() + "<br>";
+						}
+					});
+
+				$("#result").html(str);
 				});
 			});
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식 예제2</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <style>
+        .text *{
+            display: block;
+            border : 2px solid lightblue;
+            color: lightgray;
+            padding: 3px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 아이디는 영소문자로 시작하고 나머지는 모두 숫자인데 4~12자리가 되도록 하라
+        // 비밀번호는 최소6글자 이상, 최대 18글자이고 영문자,숫자,특수문자(!@#$*)만 허용하도록 하라
+        // 이름은 한글, 최소 2글자에서 4글자를 입력해야함
+        // 전화번호는 010/011/016/017/019 중 입력
+        // 가운데 자리는 3자리 끝자리는 4자리로 입력하세요.
+        // 회원가입버튼을 눌렀을 때 체크하도록.
+        // 타이핑을 하는 순간에 체크하는게 더 편리할텐데
+        // 실습에서는 회원가입을 눌렀을 때 체크하도록 하기.
+
+        window.onload=function(){
+            var submitBtn = document.querySelector("input[type=submit");
+            submitBtn.addEventListener("click",function(){
+                alert("회원가입 유효성 체크 진행");
+                var id = document.querySelector("#user-id");
+                var pw = document.querySelector("#user-pw");
+                var pwre = document.querySelector("#user-pwd-check");
+                var name = document.querySelector("#user-name");
+                var tel1 = document.querySelector("#tel1");
+                var tel2 = document.querySelector("#tel2");
+                var tem3 = document.querySelector("#tel3");
+            });
+        }
+
+    </script>
+    
+    <h1>회원가입 유효성 체크</h1>
+    <form id="member-regist" action="result.html" method="get">
+        ID : <input type="text" name="user-id" id="user-id" /><br />
+        PW : <input type="text" name="user-pw" id="user-pw" /><br />
+        PW_RE : <input type="text" name="user-pw-check" id="user-pw-check" /><br />
+        이름 : <input type="text" name="user-name" id="user-name" /><span id="name-span"></span><br>
+        전화번호 : <input type="text" name="tel1" size="3" id="tel1" maxlength="3" />-
+        <input type="text" name="tel2" id="tel2" size="3" maxlength="4" />-
+        <input type="text" name="tel3" id="tel3"  size="3"maxlength="4" /> <br>
+        <input type="submit" value="회원가입" />
+        <input type="reset" value="취소" />
+    </form>
+
+
+</body>
+</html>

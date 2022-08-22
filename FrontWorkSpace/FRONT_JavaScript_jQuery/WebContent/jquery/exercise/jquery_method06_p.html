@@ -8,15 +8,30 @@
 	</head>
 
 	<body>
+		
 		<script>
+			//나의 방식. 추가 삭제 버튼까지 들어가버림.
+			// function addFile(){
+			// 	var copy = $("div").eq(0).clone();
+			// 	$("body").append(copy);
+			// }
+			// function delFile(){
+			// 	$("div").eq(1).remove();
+			// }
+
+
+
+			//강사님 방식
+			//input태그 마지막놈에 붙이기. 
 			function addFile(){
-				var copy = $("div").eq(0).clone();
-				$("body").append(copy);
-
+				$("input").last().after("<input type='file'>");
 			}
-
 			function delFile(){
-				$("div").eq(1).remove();
+				$("input[type=file]").eq(1).remove();
+
+				//강사님방식
+				//if문으로 inputFile.length > 1 일 때 input태그의 마지막 요소를 삭제하는 방식.
+				// 방식은 다양하다.
 			}
 
 		</script>

@@ -11,12 +11,21 @@
 	<body>
 		<script>
 			function add(){
-				var title = $("input[name=title]").val();
-				var content = $("input[name=content]").val();
-				var owner = $("input[name=owner]").val();
+				//나의 풀이.
+				// var title = $("input[name=title]").val();
+				// var content = $("input[name=content]").val();
+				// var owner = $("input[name=owner]").val();
 				
-				$("tbody").append("<tr><td>"+title+"</td><td>"+content+"</td><td>"+owner+"</td></tr>");
+				// $("tbody").append("<tr><td>"+title+"</td><td>"+content+"</td><td>"+owner+"</td></tr>");
 
+
+				//강사님의 풀이
+				var inputTags = $("input");
+				var title = inputTags.eq(0).val();
+				var contents = inputTags.eq(1).val();
+				var writer = inputTags.eq(2).val();
+				$("table").append("<tr><td>1</td><td>2</td><td>3</td>");
+			
 			}
 
 
