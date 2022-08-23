@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형웹 실습</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .menu{
+            background: linear-gradient(to bottom,#c9c9c9, #3ea596);
+        }
+        .menu div{
+            padding: 0 0;
+        }
+        .menu div a:hover{
+            column-rule-color: #ffffff;
+            background-color: rgb(0, 6, 0);
+            color: white;
+        }
+        .menu div a{
+            text-decoration: none;
+            display: block;
+            color: #232323;
+        }
+        #main-img{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="jumbotron text-center" style="margin:0">
+        <h1>Responsive Web</h1>
+    </div>
+    <div class="row menu">
+        <div class="col-lg-4 col-md-4 text-center"><a href="#">Home</a></div>
+        <div class="col-lg-4 col-md-4 text-center"><a href="#">Service</a></div>
+        <div class="col-lg-4 col-md-4 text-center"><a href="#">About</a></div>
+    </div>
+
+    <!-- 반응형웹이 만들어질 수 있는 부분 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8"><img src="./images/web.png" alt="PC화면" id="main-img"></div>
+            <div class="col-md-4">
+                <table class="table">
+                    <tr><b>홈페이지제작</b></tr>
+                    <tr>
+                        <td><b>개발사</b></td>
+                        <td>KH Soft</td>
+                    </tr>
+                    <tr>
+                        <td><b>개발기간</b></td>
+                        <td>1개월</td>
+                    </tr>
+                    <tr>
+                        <td><b>금액</b></td>
+                        <td>1,000,000원</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4"><b>옵션선택</b></td>
+                        <td><input type="checkbox">PC페이지(+1,000,000원)</td>
+                    </tr>
+                    <tr>   
+                        <td><input type="checkbox">모바일페이지(+1,000,000원)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox">반응형페이지(+3,000,000원)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox">보안Coding페이지(+2,000,000원)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            
+                                <button class="btn btn-warning btn-lg">문의하기</button> 
+                                <button class="btn btn-primary btn-lg">결제하기</button>
+                    
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <button class="col-md-12 btn btn-info btn-lg" data-toggle="collapse" data-target="#detailView">상세보기</button>
+        </div>
+        <div id="detailView" class="collapse">
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="./images/PC_Page.png" alt="" style="width:100%">
+                </div>
+                <div class="col-md-6">
+                    <h2>PC 페이지</h2>
+                    <p>PC 화면 크기 최적화</p>
+                    <p>크로스 브라우징 지원</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="./images/mobile.png" alt="" style="width:100%">
+                </div>
+                <div class="col-md-6">
+                    <h2>모바일 페이지</h2>
+                    <p>어느기기에서든 잘 보임</p>
+                    <p>빠른 개발 가능</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="./images/responsiveweb.jpeg" alt="" style="width:100%">
+                </div>
+                <div class="col-md-6">
+                    <h2>반응형 페이지</h2>
+                    <p>가로/세로모드 몯무 지원</p>
+                    <p>누가봐도 편한 화면 제공</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="./images/secure_coding.jpg" alt="" style="width:100%">
+                </div>
+                <div class="col-md-6">
+                    <h2>보안Coding 페이지</h2>
+                    <p>뚫리지 않는 보안 코딩</p>
+                    <p>해커가 와도 소용없음</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+    </div>
+</body>
+</html>

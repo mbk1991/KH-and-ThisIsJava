@@ -19,7 +19,91 @@
 
 <body>
     <script>
-        
+        //자바스크립트 방식.
+        // window.onload=function(){
+            
+        //     var btnUp = document.querySelector("#btn-up");
+        //     btnUp.addEventListener("click",function(){
+        //         // alert("!");
+
+        //         var tbodyTags = document.querySelector("tbody");
+        //         console.log(tbodyTags.children);
+        //         tbodyTags[3] = tbodyTags[2];
+        //         console.log(tbodyTags.children);
+
+
+        //     });  
+        // }
+
+        //jQuery방식
+            $(function(){
+
+
+                $("#btn-up").on("click",function(){
+                    // alert("!");
+                    var trTags = $("table").first().children().filter("tbody").children();
+                    console.log(trTags);
+                    trTags.eq(3).after(trTags.eq(0));
+                });
+          
+
+
+                $("#btn-down").on("click",function(){
+                    // alert("!");
+                    var trTags = $("table").first().children().filter("tbody").children();
+                    console.log(trTags);
+                    trTags.eq(0).before(trTags.eq(3));
+                });
+
+                //6번째 td의 input이 눌리면 해당 tr 삭제.
+                // checked인 것 삭제하는건 delete버튼
+                $("#btn-delete").on("click",function(){
+                    // alert("!");
+                    var trTags = $("table").eq(1).children().filter("tbody").children();
+                    console.log(trTags);
+
+                    console.log(trTags.eq(0).children().eq(0).children().is(":checked"));
+
+                    $.each(trTags,function(index,item){
+                        if($(item).children().eq(0).children().is(":checked")){
+                            $(item).remove();
+                        }
+
+                    });
+                    // if(trTags.eq(0).children().eq(0).children().is(":checked")){
+                    //     trTags.eq(0).remove();
+                    // }
+                });
+
+                var rowDeleteBtn = $("table").eq(1).children().filter("tbody").children().eq(0).children().eq(5);
+                rowDeleteBtn.on("click",function(){
+                    $(this).parent().remove();
+                });
+
+
+                var rowDeleteBtn2 = $("table").eq(1).children().filter("tbody").children().eq(1).children().eq(5);
+                rowDeleteBtn2.on("click",function(){
+                    $(this).parent().remove();
+                });
+
+                var rowDeleteBtn3 = $("table").eq(1).children().filter("tbody").children().eq(2).children().eq(5);
+                rowDeleteBtn3.on("click",function(){
+                    $(this).parent().remove();
+                });
+
+                var rowDeleteBtn4 = $("table").eq(1).children().filter("tbody").children().eq(3).children().eq(5);
+                rowDeleteBtn4.on("click",function(){
+                    $(this).parent().remove();
+                });
+
+                
+
+
+
+
+            });
+
+
     </script>
 	<table border="1">
 		<caption><b>위아래 옮기기</b></caption>
