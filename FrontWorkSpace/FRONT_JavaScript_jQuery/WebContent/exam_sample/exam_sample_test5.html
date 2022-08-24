@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .vertical-menu {
+            width : 200px;
+        }
+        
+        .vertical-menu a {
+            background-color : blanchedalmond;
+            color : black;
+        }
+        
+        .vertical-menu a.active {
+            background-color: pink;
+            color : black;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <fieldset>
+        <form method="get" action="result.html">
+             
+           <p> 회원여부 :
+            <!--radio버튼은 name값 통일해야함 -->
+               <label> <input type="radio" name="isMember" value="yes" checked>회원</label>
+               <label><input type="radio" name="isMember" value="no">비회원</label><br>
+            </p>
+            <p> 취미(중복선택) :
+                <!-- check박스는 name을 다르게해야함. 안 그러면 체크하는 값이 덮어씌워짐. -->
+                <label><input type="checkbox" name="hobbyBook" value="book"> 독서 </label>
+                <label><input type="checkbox" name="hobbyMovie" value="movie" checked> 영화 </label>
+                <label><input type="checkbox" name="hobbyMusic" value="music"> 음악 </label>
+                <label><input type="checkbox" name="hobbySports" value="sports"> 스포츠 </label>         
+            </p>
+            
+            <p>
+                <!-- 셀렉트박스를 열어두는건 어떻게 하는 지 모름 size4로 사이즈를 변경하는것.
+                    selected로 초기 선택 가능.
+                -->
+                직업:
+                <select name="job" size="4">
+                    <option value="student" selected>학생</option>
+                    <option value="company">회사원</option>
+                    <option value="teacher">교사</option>
+                    <option value="sales">자영업</option>
+                    <option value="others">기타</option>
+                </select>
+            </p>
+            
+            <p>
+                <!-- 글자수 행과 열을 설정해줌 -->
+                남기고 싶은 말 : <br>
+                <textarea name="message" cols="70" rows="5" placeholder="150자 내외로 글을 남겨주세요."></textarea>
+            </p>
+            <input type="reset" value="초기화">
+            <input type="submit" value="전송">
+            
+        </form>
+    </fieldset>
+
+
+
+</body>
+</html>

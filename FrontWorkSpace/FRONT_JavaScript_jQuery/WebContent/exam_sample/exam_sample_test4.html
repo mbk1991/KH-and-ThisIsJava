@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시험대비샘플4</title>
+</head>
+
+<!-- padding을 설정하여 글자를 조금 띄어준다
+    하이퍼링크 밑줄을 text-decoration:none으로 지워준다 
+
+-->
+
+<style>
+    .vertical-menu {
+        width : 200px;
+    }
+    
+    .vertical-menu a {
+        /* background-color : blanchedalmond; */
+        color : black;
+        padding: 10px;
+        text-decoration:none;
+    }
+
+    .vertical-menu div:first-child{
+        background-color:pink;
+    }
+
+    .vertical-menu div:hover{
+        background-color: #ccc;
+    }
+
+    .vertical-menu div{
+        background-color: blanchedalmond;
+    }
+    
+    .vertical-menu a.active {
+        /* background-color: pink; */
+        color : black;
+    }
+</style>
+
+<body>
+<!-- 1.영역이 정해져 있지 않기 때문에 세로로 배치가 되지 않았다.각각의
+앵커태그들을 div영역태그로 감싸주어야 한다
+ 2. 마우스를 올리는 hover선택자가 설정되어있지 않다. 각각의 div태그에
+   마우스를 올릴경우 색상을 변경되도록 해야한다. -->
+    <h1>Vertical Menu</h1>
+    <div class="vertical-menu">
+        <div><a href="#" class="active">과목</a></div>
+        <div><a href="#">HTML</a></div>
+        <div><a href="#">CSS</a></div>
+        <div><a href="#">JAVASCRIPT</a></div>
+        <div><a href="#">JQUERY</a></div>
+    </div>
+
+    
+</body>
+</html>

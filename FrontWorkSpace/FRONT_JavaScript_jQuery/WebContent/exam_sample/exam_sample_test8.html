@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .btn {
+            border : 2px solid black;
+            background-color : white;
+            color : black;
+            padding : 14px 28px;
+            font-size : 16px;
+            cursor : pointer;        
+        }    
+        .submit {
+            border-color : #4CAF50;
+            color : green;
+        }    
+        .submit:hover {
+            background-color: #4CAF50;
+            color : white;
+        }
+        
+        .cancel {
+            border : #f44336;
+            color : red;
+        }
+        
+        .cancel:hover {
+            background: #f44336;
+            color : white;
+        }
+    </style>
+    
+
+</head>
+<body>
+    <!-- span태그이기 때문에 가로배치가 되는것 div태그로 영역을 정해주면 세로배치가 될 것임.
+     클래스를 설정을 해준다. -->
+
+
+    <h1>Buttons</h1>
+    <div id="submit_btn">
+        <button class="btn submit">Submit</button>
+    </div>
+    <div id="cancel_btn">
+        <button class="btn cancel">Cancel</button>
+    </div>
+
+    
+</body>
+</html>

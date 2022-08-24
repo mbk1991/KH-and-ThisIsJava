@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            padding : 10px
+        }
+    </style>
+    
+</head>
+<body>
+
+    <form>
+        <fieldset>
+            <!-- placeholder, required속성 type email, url변경 -->
+            <legend>납품자 정보</legend>
+            <ol>
+                <li><label for="name">납품자명 : </label>
+                <input type="text" name="name" id="name" placeholder="name" required>
+                </li>
+                <li><label>email : </label>
+                <input type="email" name="name" placeholder="email@example.com" required>
+                </li>
+                <li><label>홈페이지 : </label>
+                <input type="url" name="name" placeholder="http://" required>
+                </li>
+            </ol>
+        </fieldset>
+
+        <fieldset>
+            <legend>납품정보</legend>
+            <ol>
+                <!-- opt그룹으로 옵션 그룹화
+                min,max,step속성 추가, range타입 설정
+                    상품부분은 데이터리스트를 사용하는 것이었음.
+                    
+            -->
+                <li><label for="dogGoods">상품명 : </label>
+                <!-- <select name="product">
+                    <optgroup label="dogCake">
+                        <option value="dogCake">강아지케익</option> 
+                    </optgroup>
+                    <optgroup label="dogFood">
+                        <option value="dogFood">강아지사료</option>
+                    </optgroup>
+                    <optgroup label="dogSnack">
+                        <option value="dogSnack">강아지간식</option>
+                    </optgroup>
+                </select>                 -->
+
+                <input type="text" id="dogGoods"  list="product">
+                <datalist id="product">
+                    <option value="dogCake">강아지케익</option>
+                    <option value="dogFood">강아지사료</option>
+                    <option value="dogSnack">강아지간식</option>
+                </datalist>
+
+
+                </li>
+                <li><label for="number">납품수량 : </label>
+                <input type="number" step="10" min="10" max="100" name="number" placeholder="최소10이상">
+                </li>
+                <li><label for="range">납품등급 : </label>
+                <input type="range" step="2" min="0" max="10" name="range">
+                </li>
+            </ol>
+        </fieldset>
+        <input type="submit" value="전송">
+    </form>
+
+    
+</body>
+</html>

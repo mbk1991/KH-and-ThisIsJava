@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+
+    <a href="#seven">일곱번째 폼 이동</a>
+    <a href="#three">세번째 폼 이동</a>
+    <a href="#five">다섯번째 폼 이동</a>
     <h1>첫번째 폼</h1>
     <!-- 폼 태그는 데이터를 전송할 때 사용됨 -->
     <form action="/FRONT_HTML_CSS/member/login.do" method="get">
@@ -44,7 +48,7 @@
         <input type="email">
     </form>
 
-    <h1>세번째 폼</h1>
+    <h1 id="three">세번째 폼</h1>
     <!-- 로그인 폼 만들기 -->
     <form action="/FRONT_HTML_CSS/member/check.do" method="get">
         ID : <input type="text" name = "member-id" value = "khuser01" readonly size="30" placeholder="이메일"> <br>
@@ -75,7 +79,7 @@
         </fieldset>
     </form>
 
-    <h1>다섯번째 폼</h1>
+    <h1 id="five">다섯번째 폼</h1>
     <!-- 체크박스와 라디오버튼 -->
     <form action="">
         <fieldset>
@@ -116,6 +120,7 @@
         <input type="submit">
     </form>
 
+    <a id="seven"></a>
 <h1>일곱번째 폼</h1>
 <!-- 셀렉트박스 드롭다운 -->
 <form action="">
@@ -156,7 +161,8 @@
     <input type="submit" value="전송">
 </form>
 
-<h1>여덟번째 폼</h1>
+
+<h1 id="eight">여덟번째 폼</h1>
 <form action="">
 제목: <input type="text" size="50"  name=""><br>
 내용: <textarea name="" id="" cols="50" rows="10"></textarea>
