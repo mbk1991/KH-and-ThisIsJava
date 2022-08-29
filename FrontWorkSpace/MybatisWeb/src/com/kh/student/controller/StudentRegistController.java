@@ -1,6 +1,7 @@
 package com.kh.student.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +29,17 @@ public class StudentRegistController extends HttpServlet {
 		student.setStudentAddr("서울시 중구");
 		
 		int result = new StudentServiceImpl().registerStudent(student);
+		
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		if(result>0) {
+			out.println("<script>alert('학생 등록 완료!')</script>");
+		}else {
+			out.println("<script>alert('학생 등록 실패!')</script>");
+		}
+		out.flush();
+		out.close();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

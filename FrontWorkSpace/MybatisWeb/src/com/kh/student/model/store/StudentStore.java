@@ -8,4 +8,5 @@ public interface StudentStore {
 	
 	public int insertStudent(SqlSession session, Student student);
 	
+	public Student selectStudentByNo(SqlSession session, int studentNo);
 }

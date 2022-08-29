@@ -10,5 +10,6 @@ public interface StudentService {
 	
 
 	public int registerStudent(Student student); //추상메소드
+	public Student printStudentByNo(int studentNo);
 	
 }

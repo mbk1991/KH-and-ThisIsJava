@@ -13,4 +13,12 @@ public class StudentStoreLogic implements StudentStore {
 		int result = session.insert("StudentMapper.insertStudent",student);
 		return result;
 	}
+
+	@Override
+	public Student selectStudentByNo(SqlSession session, int studentNo) {
+		Student student = session.selectOne("StudentMapper.selectOneStudent", studentNo);
+		return student;
+	}
+	
+
 }

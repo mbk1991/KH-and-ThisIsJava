@@ -5,8 +5,19 @@
   
 <!-- mapper를 구분하기 위해 mapper에 namespace설정 -->
   <mapper namespace="StudentMapper">
+  	<resultMap type="com.kh.student.model.vo.Student" id="studentResultMap">
+  		<id property="studentNo" column="STUDENT_NO"/>
+  		<result property="studentName" column="STUDENT_NAME"/>
+  		<result property="studentTel" column="STUDENT_TEL"/>
+  		<result property="studentEmail" column="STUDENT_EMAIL"/>
+  		<result property="studentAddr" column="STUDENT_ADDR"/>
+  		<result property="regDate" column="REG_DATE"/>
+  	</resultMap> 
   	<insert id="insertStudent">
   		INSERT INTO STUDENT_TBL
   		VALUES(STD_NO_SEQ.NEXTVAL,#{studentName},#{studentTel},#{studentEmail},#{studentAddr},DEFAULT)
   	</insert>
+  	<select  id="selectOneStudent" resultMap="studentResultMap">
+  		SELECT * FROM STUDENT_TBL WHERE STUDENT_NO = #{studentNo}
+  	</select>
   </mapper>
