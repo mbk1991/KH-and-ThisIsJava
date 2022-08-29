@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- mapper를 구분하기 위해 mapper에 namespace설정 -->
+  <mapper namespace="StudentMapper">
+  	<insert id="insertStudent">
+  		INSERT INTO STUDENT_TBL
+  		VALUES(STD_NO_SEQ.NEXTVAL,#{studentName},#{studentTel},#{studentEmail},#{studentAddr},DEFAULT)
+  	</insert>
+  </mapper>
