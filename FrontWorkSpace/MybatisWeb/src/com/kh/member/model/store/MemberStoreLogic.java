@@ -41,7 +41,8 @@ public class MemberStoreLogic implements MemberStore {
 
 	@Override
 	public int updateMember(SqlSession session, Member member) {
-		return 0;
+		int result = session.insert("MemberMapper.updateMember",member);
+		return result;
 	}
 
 	@Override

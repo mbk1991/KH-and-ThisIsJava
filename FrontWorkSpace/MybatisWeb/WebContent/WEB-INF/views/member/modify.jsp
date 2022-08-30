@@ -12,7 +12,7 @@
 
 <h3>회원 정보 수정</h3>
 <form action="/member/modify.do" method="post">	
-	<input type="hidden" name="userId">	
+	<input type="hidden" name="userId" value="${member.memberId }">	
 	<table class="table">
 		<colgroup>
 			<col width="150">
@@ -21,13 +21,13 @@
 		<tr>
 			<td>비밀번호</td>
 			<td>
-				<input type="password" class="form-control" name="userPwd" >
+				<input type="password" class="form-control" name="userPwd" value="${member.memberPwd }">
 			</td>
 		</tr>
 		<tr>
 			<td>주소</td>
 			<td>
-				<input type="text" class="form-control" name="userAddr">
+				<input type="text" class="form-control" name="userAddr" value="${member.memberAddress }">
 			</td>
 		</tr>
 	</table>

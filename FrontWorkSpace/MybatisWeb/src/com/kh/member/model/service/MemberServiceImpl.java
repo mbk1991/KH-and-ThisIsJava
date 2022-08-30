@@ -47,7 +47,15 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int updateMember(Member member) {
-		return 0;
+		SqlSession session=SqlSessionTemplate.getSqlSession();
+		int result = new MemberStoreLogic().updateMember(session,member);
+		if(result>0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		session.close();
+		return result;
 	}
 
 	@Override

@@ -37,8 +37,12 @@
 							<td>${member.memberId}</td>
 							<td><a href="/member/detail.do?memberId=${member.memberId }">${member.memberName }</a></td>
 							<td>${member.memberAddress }</td>
-							<td><a class="btn btn-xs btn-warning" href="/member/modify.do">UPDATE</a></td>
-							<td><a class="btn btn-xs btn-danger" href="/member/delete.do">DELETE</a></td>
+							<c:if test="${sessionScope.member.memberId eq member.memberId }">
+								<td><a class="btn btn-xs btn-warning" href="/member/modify.do">UPDATE</a></td>
+							</c:if>
+							<c:if test="${sessionScope.member.memberId eq member.memberId }">
+								<td><a class="btn btn-xs btn-danger" href="/member/delete.do">DELETE</a></td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</tbody>
