@@ -12,17 +12,24 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member printMemberById(String memberId) {
-		return null;
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		Member member = new MemberStoreLogic().printMemberById(session,memberId);
+		session.close();
+		return member;
 	}
 
 	@Override
 	public Member printMemberLogin(String memberId, String memberPwd) {
-		return null;
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		Member member = new MemberStoreLogic().printMemberLogin(session, memberId, memberPwd);
+		return member;
 	}
 
 	@Override
 	public ArrayList<Member> printMemberList() {
-		return null;
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		ArrayList<Member> mList = new MemberStoreLogic().printMemberList(session);
+		return mList;
 	}
 
 	@Override
@@ -45,7 +52,13 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int deleteMember(String memberId) {
-		return 0;
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		int result = new MemberStoreLogic().deleteMember(session, memberId);
+		if(result>0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		return result;
 	}
-
 }

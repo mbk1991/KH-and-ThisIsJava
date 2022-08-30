@@ -46,7 +46,7 @@ public class MemberRegistController extends HttpServlet {
 			if (result > 0) {
 				// 회원가입 완료 alert창 띄우기
 				PrintWriter out = response.getWriter();
-				out.print("<script>alert('회원가입성공');</script>");
+				out.print("<script>alert('회원가입성공');location.href='/index.jsp';</script>");
 				out.flush();
 				out.close();
 			}

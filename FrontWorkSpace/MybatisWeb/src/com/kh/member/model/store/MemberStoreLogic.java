@@ -1,6 +1,7 @@
 package com.kh.member.model.store;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -10,17 +11,24 @@ public class MemberStoreLogic implements MemberStore {
 
 	@Override
 	public Member printMemberById(SqlSession session, String memberId) {
-		return null;
+		Member member = session.selectOne("MemberMapper.selectOneMember",memberId);
+		return member;
 	}
 
 	@Override
-	public int printMemberLogin(SqlSession session, String memberId, String memberPwd) {
-		return 0;
+	public Member printMemberLogin(SqlSession session, String memberId, String memberPwd) {
+		Member param = new Member();
+		param.setMemberId(memberId);
+		param.setMemberPwd(memberPwd);
+		Member member = session.selectOne("MemberMapper.selectMemberLogin",param);
+		return member;
 	}
 
 	@Override
 	public ArrayList<Member> printMemberList(SqlSession session) {
-		return null;
+		List<Member> mList = session.selectList("MemberMapper.selectAllMember");
+		
+		return (ArrayList<Member>)mList;
 	}
 
 	@Override
@@ -38,7 +46,7 @@ public class MemberStoreLogic implements MemberStore {
 
 	@Override
 	public int deleteMember(SqlSession session, String memberId) {
-		return 0;
+		int result = session.delete("MemberMapper.deleteMember", memberId);
+		return result;
 	}
-
 }
