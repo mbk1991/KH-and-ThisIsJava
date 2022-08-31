@@ -10,4 +10,6 @@ public interface LectureStore {
 	public int insertLecture(SqlSession session, Lecture lecture);
 	public List<Lecture> selectAllLecture(SqlSession session);
 	public Lecture selectOneLecture(SqlSession session, int lectureNo);
+	public int deleteLecture(SqlSession session,int lectureNo);
+	public int updateLecture(SqlSession session, Lecture lecture);
 }

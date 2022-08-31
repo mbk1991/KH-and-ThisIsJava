@@ -9,6 +9,7 @@
 <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
 <jsp:include page="../common/menuBar.jsp"></jsp:include><br><br>
 <div class="container-fluid">
 	<div class="row">
@@ -37,8 +38,8 @@
 							<td>${lecture.lectureInstructor}</td>
 							<td>${lecture.regDate }</td>
 							<td>${lecture.useYn}</td>
-							<td><a class="btn btn-xs btn-warning" href="/member/modify.do">UPDATE</a></td>
-							<td><a class="btn btn-xs btn-danger" href="/member/delete.do">DELETE</a></td>
+							<td><a class="btn btn-xs btn-warning" href="/lecture/modify.do?lectureNo=${lecture.lectureNo }">UPDATE</a></td>
+							<td><a class="btn btn-xs btn-danger"  onclick="lectureDelete(${lecture.lectureNo});">DELETE</a></td>
 						</tr>
 					</c:forEach>
 					
@@ -52,6 +53,15 @@
 </div>
 
 
+<script>
+	function lectureDelete(lectureNo){
+		var check = confirm("정말 삭제하시겠습니까?");
+		if(check){
+			location.href="/lecture/delete.do?lectureNo="+lectureNo;
+		}
+		return false;
+	}
+</script>
 
 
 </body>

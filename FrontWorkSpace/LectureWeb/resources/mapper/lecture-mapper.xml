@@ -24,5 +24,11 @@
 	<select id="selectOneLecture" resultMap="lectureResultMap">
 		SELECT * FROM LECTURE_TBL WHERE LECTURE_NO=#{lectureNo}
 	</select>
+	<delete id="deleteLecture">
+		DELETE FROM LECTURE_TBL WHERE LECTURE_NO=#{lectureNo}
+	</delete>
+	<update id="updateLecture">
+		UPDATE LECTURE_TBL SET LECTURE_NAME=#{lectureName},LECTURE_INSTRUCTOR=#{lectureInstructor},LECTURE_INTRODUCE=#{lectureIntroduce}  WHERE LECTURE_NO=#{lectureNo}   
+	</update>
 
 </mapper>

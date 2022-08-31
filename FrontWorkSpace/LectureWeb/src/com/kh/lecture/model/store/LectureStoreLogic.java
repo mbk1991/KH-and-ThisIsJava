@@ -25,4 +25,16 @@ public class LectureStoreLogic implements LectureStore {
 		Lecture lecture = session.selectOne("LectureMapper.selectOneLecture",lectureNo);
 		return lecture;
 	}
+
+	@Override
+	public int deleteLecture(SqlSession session, int lectureNo) {
+		int result = session.delete("LectureMapper.deleteLecture", lectureNo);
+		return result;
+	}
+
+	@Override
+	public int updateLecture(SqlSession session, Lecture lecture) {
+		int result = session.update("LectureMapper.updateLecture", lecture);
+		return result;
+	}
 }

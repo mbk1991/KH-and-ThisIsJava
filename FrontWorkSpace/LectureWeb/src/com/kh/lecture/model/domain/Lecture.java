@@ -31,6 +31,16 @@ public class Lecture {
 		this.useYn = useYn;
 	}
 
+	
+	
+	public Lecture(int lectureNo, String lectureName, String lectureInstructor, String lectureIntroduce) {
+		super();
+		this.lectureNo = lectureNo;
+		this.lectureName = lectureName;
+		this.lectureInstructor = lectureInstructor;
+		this.lectureIntroduce = lectureIntroduce;
+	}
+
 	@Override
 	public String toString() {
 		return "Lecture [강좌번호=" + lectureNo + ", 강좌명=" + lectureName + ", 강사명="

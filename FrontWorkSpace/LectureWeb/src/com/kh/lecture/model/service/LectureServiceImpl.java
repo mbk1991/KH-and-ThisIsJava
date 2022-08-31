@@ -14,9 +14,9 @@ public class LectureServiceImpl implements LectureService {
 	public int registLecture(Lecture lecture) {
 		SqlSession session = SqlSessionTemplate.getSqlSession();
 		int result = new LectureStoreLogic().insertLecture(session, lecture);
-		if(result > 0) {
+		if (result > 0) {
 			session.commit();
-		}else {
+		} else {
 			session.rollback();
 		}
 		return result;
@@ -26,7 +26,7 @@ public class LectureServiceImpl implements LectureService {
 	public List<Lecture> printAllLecture() {
 		SqlSession session = SqlSessionTemplate.getSqlSession();
 		List<Lecture> lecList = new LectureStoreLogic().selectAllLecture(session);
-		
+
 		return lecList;
 	}
 
@@ -36,5 +36,29 @@ public class LectureServiceImpl implements LectureService {
 		Lecture lecture = new LectureStoreLogic().selectOneLecture(session, lectureNo);
 		session.close();
 		return lecture;
+	}
+
+	@Override
+	public int deleteLecture(int lectureNo) {
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		int result = new LectureStoreLogic().deleteLecture(session, lectureNo);
+		if (result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		return result;
+	}
+
+	@Override
+	public int updateLecture(Lecture lecture) {
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		int result = new LectureStoreLogic().updateLecture(session, lecture);
+		if(result>0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		return result;
 	}
 }

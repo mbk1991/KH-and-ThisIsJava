@@ -9,4 +9,6 @@ public interface LectureService {
 	public int registLecture(Lecture lecture);
 	public List<Lecture> printAllLecture();
 	public Lecture printOneLecture(int lectureNo);
+	public int deleteLecture(int lectureNo);
+	public int updateLecture(Lecture lecture);
 }
