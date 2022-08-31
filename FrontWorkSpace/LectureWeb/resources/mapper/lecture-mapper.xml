@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="LectureMapper">
+	<resultMap type="com.kh.lecture.model.domain.Lecture" id="lectureResultMap">
+		<id 	property="lectureNo"		 column="LECTURE_NO"/>
+		<result property="lectureName" 		 column="LECTURE_NAME"/>
+		<result property="lectureInstructor" column="LECTURE_INSTRUCTOR"/>
+		<result property="lectureIntroduce"  column="LECTURE_INTRODUCE"/>
+		<result property="regDate" 			 column="REG_DATE"/>
+		<result property="useYn"			 column="USE_YN"/>
+	</resultMap>
+
+	<insert id="insertLecture">
+		INSERT INTO LECTURE_TBL VALUES(SEQ_LECTURENO.NEXTVAL, #{lectureName},#{lectureInstructor},#{lectureIntroduce},DEFAULT,DEFAULT)
+	</insert>
+	
+	<select id="selectAllLecture" 	resultMap="lectureResultMap">
+		SELECT * FROM LECTURE_TBL
+	</select>
+	
+	<select id="selectOneLecture" resultMap="lectureResultMap">
+		SELECT * FROM LECTURE_TBL WHERE LECTURE_NO=#{lectureNo}
+	</select>
+
+</mapper>
