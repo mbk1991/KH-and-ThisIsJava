@@ -40,6 +40,8 @@ public class LectureModifyController extends HttpServlet {
 				response.setContentType("text/html");
 				PrintWriter out = response.getWriter();
 				out.write("<script>alert('수정이 완료되었습니다.');location.href='/lecture/list.do';</script>");
+				out.flush();
+				out.close();
 			}
 		} catch (Exception e) {
 			request.setAttribute("msg",e.getMessage());
