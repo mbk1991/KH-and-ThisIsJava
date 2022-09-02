@@ -9,7 +9,6 @@ public class HelloRun {
 	public static void main(String[] args) {
 		ApplicationContext ctx = new GenericXmlApplicationContext("spring-context.xml");
 		//spring-context.xml 파일을 참조하여
-		
 		MessageBean bean
 		=(MessageBeanHello)ctx.getBean("messageBean");
 		bean.sayHello("Spring^^");
