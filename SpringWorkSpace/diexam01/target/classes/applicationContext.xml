@@ -5,4 +5,9 @@
 	<bean id="userBean" class="kr.or.connect.diexam01.UserBean"></bean>
 	<!-- 	id가 래퍼런스변수명 -->
 	<!-- 	싱글톤패턴이다 객체를 하나만 가지고 있는다.-->
+	<bean id="e" class="kr.or.connect.diexam01.Engine"></bean>
+	<bean id="c" class="kr.or.connect.diexam01.Car">
+		<property name="engine" ref="e"></property>
+	</bean>
+<!-- 	Car에 Engine을 set하려면 -->
 </beans>
