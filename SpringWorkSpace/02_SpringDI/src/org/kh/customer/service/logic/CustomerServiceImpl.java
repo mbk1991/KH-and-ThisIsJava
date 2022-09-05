@@ -23,6 +23,13 @@ public class CustomerServiceImpl implements CustomerService {
 
 	private CustomerStore cStore;
 	//세터를 이용한 의존성 주입. xml에서 setter인 것을 어떻게 인식하는거지?
+	
+	public CustomerServiceImpl() {}
+	
+	public CustomerServiceImpl(CustomerStore cStore) {
+		this.cStore = cStore;
+	}
+	
 	public void setStore(CustomerStore cStore) {
 		this.cStore = cStore;
 	}

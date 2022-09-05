@@ -3,8 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
+<!-- 	<bean id="customerService" class="org.kh.customer.service.logic.CustomerServiceImpl"> -->
+<!-- 		<property name="store" ref="customerStore" ></property> -->
+<!-- 	</bean> -->
+
 	<bean id="customerService" class="org.kh.customer.service.logic.CustomerServiceImpl">
-		<property name="store" ref="customerStore" ></property>
+		<constructor-arg ref="customerStore"></constructor-arg>
 	</bean>
 	<bean id="customerStore" class="org.kh.customer.store.logic.CustomerStoreLogic">
 	</bean>
