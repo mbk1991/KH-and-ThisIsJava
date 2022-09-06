@@ -18,8 +18,8 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public Member loginMember(Member member) {
-		// TODO Auto-generated method stub
-		return null;
+		Member mOne = mStore.selectLoginMember(session, member);
+		return mOne;
 	}
 
 	@Override

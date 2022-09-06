@@ -11,10 +11,22 @@ public class Member {
 	private String memberAddr;
 	private Date enrollDate;
 	private Date updateDate;
-//	private String mStatus;
+	private String mStatus;
 	
 	public Member() {}
 	
+	
+	
+	
+	public Member(String memberId, String memberPwd) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+	}
+
+
+	
+
 	public Member(String memberId, String memberPwd, String memberName, String memberEmail, String memberPhone,
 			String memberAddr, Date enrollDate, Date updateDate, String mStatus) {
 		super();
@@ -36,6 +48,22 @@ public class Member {
 		this.memberEmail = memberEmail;
 		this.memberPhone = memberPhone;
 	}
+	
+	
+
+	public String getmStatus() {
+		return mStatus;
+	}
+
+
+
+
+	public void setmStatus(String mStatus) {
+		this.mStatus = mStatus;
+	}
+
+
+
 
 	public String getMemberId() {
 		return memberId;
