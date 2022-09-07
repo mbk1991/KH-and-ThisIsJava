@@ -17,28 +17,34 @@ public class MemberServiceImpl implements MemberService{
 	private MemberStore mStore;
 
 	@Override
+	public int registerMember(Member member) {
+	
+		int result = mStore.insertMember(session,member);
+		return result;
+	}
+
+	@Override
 	public Member loginMember(Member member) {
 		Member mOne = mStore.selectLoginMember(session, member);
 		return mOne;
 	}
 
 	@Override
-	public int registerMember(Member member) {
-
-		int result = mStore.insertMember(session,member);
-		return result;
+	public Member printOneById(String memberId) {
+		Member member = mStore.selectOneById(session, memberId);
+		return member;
 	}
 
 	@Override
 	public int modyfyMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = mStore.updateMember(session, member);
+		return result;
 	}
 
 	@Override
 	public int removeMember(String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = mStore.deleteMember(session, memberId);
+		return result;
 	}
 
 }

@@ -16,6 +16,12 @@ public class MemberStoreLogic implements MemberStore{
 	}
 
 	@Override
+	public Member selectOneById(SqlSession session, String memberId) {
+		Member member = session.selectOne("MemberMapper.selectOneById",memberId);
+		return member;
+	}
+
+	@Override
 	public int insertMember(SqlSession session, Member member) {
 		int result= session.insert("MemberMapper.insertMember",member);
 		return result; // 커밋 롤백 자동
@@ -23,14 +29,17 @@ public class MemberStoreLogic implements MemberStore{
 
 	@Override
 	public int updateMember(SqlSession session, Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = session.update("MemberMapper.updateMember", member);
+		return result;
 	}
 
 	@Override
 	public int deleteMember(SqlSession session, String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+//		int result = session.delete("MemberMapper.deleteMember", memberId);
+		System.out.println("storeLogic동작확인");
+		int result = session.update("MemberMapper.deleteMember", memberId);
+		System.out.println("storeLogic 쿼리 후 동작확인");
+		return result;
 	}
 
 }
