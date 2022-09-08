@@ -20,7 +20,21 @@ public class BoardStoreLogic implements BoardStore {
 	@Override
 	public List<Board> selectAllBoard(SqlSession session) {
 		List<Board> bList =session.selectList("BoardMapper.selectAllBoard");
+//		System.out.println(bList.get(0).getBoardWriter());
 		return bList;
 	}
 
+	@Override
+	public int selectTotalCount(SqlSession session) {
+		int result = session.selectOne("BoardMapper.selectTotalCount");
+		return result;
+	}
+
+	@Override
+	public List<Board> selectAllBoard(SqlSession session,int offset, int limit){
+		
+		RowBound rowBound = new RowBound(offset,limit);
+		List<Board>bList = session.selectList
+	}
+	
 }

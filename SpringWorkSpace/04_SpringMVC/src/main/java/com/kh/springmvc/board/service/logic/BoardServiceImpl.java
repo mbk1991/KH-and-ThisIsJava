@@ -29,4 +29,10 @@ public class BoardServiceImpl implements BoardService{
 		return bList;
 	}
 
+	@Override
+	public int getTotalCount() {
+		int result = bStore.selectTotalCount(session);
+		return result;
+	}
+
 }

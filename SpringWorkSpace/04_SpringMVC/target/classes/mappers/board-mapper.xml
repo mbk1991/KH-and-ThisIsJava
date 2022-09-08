@@ -23,9 +23,12 @@
   	<insert id="insertBoard">
   		INSERT INTO BOARD_TBL VALUES(SEQ_BOARDNO.NEXTVAL,#{boardTitle},#{boardContents},#{boardWriter},#{boardFileName},#{boardFileRename},#{boardFilepath},DEFAULT,DEFAULT,DEFAULT,DEFAULT)
   	</insert>
-  	<select id="selectAllBoard">
-  		SELECT * FROM BOARD_TBL;
+  	<select id="selectAllBoard" resultMap="boardResultMap">
+  		SELECT * FROM BOARD_TBL
+  	</select>
+  	<select id="selectTotalCount" resultType="_int">
+  		SELECT COUNT(*) FROM BOARD_TBL WHERE B_STATUS = 'Y'
   	</select>
   	
-  
+ 
   </mapper>
