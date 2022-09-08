@@ -9,6 +9,7 @@
 
 	<typeAliases>
 		<typeAlias type="com.kh.springmvc.member.domain.Member" alias="Member"></typeAlias>
+		<typeAlias type="com.kh.springmvc.board.domain.Board" alias="Board"></typeAlias>
 	</typeAliases>
 
   <mappers>

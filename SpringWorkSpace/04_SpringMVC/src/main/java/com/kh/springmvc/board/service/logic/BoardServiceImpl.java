@@ -1,5 +1,7 @@
 package com.kh.springmvc.board.service.logic;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,12 @@ public class BoardServiceImpl implements BoardService{
 	public int registerBoard(Board board) {
 		int result = bStore.insertBoard(session, board);
 		return result;
+	}
+
+	@Override
+	public List<Board> printAllBoard() {
+		List<Board> bList = bStore.selectAllBoard(session);
+		return bList;
 	}
 
 }

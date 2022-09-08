@@ -1,5 +1,7 @@
 package com.kh.springmvc.board.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +17,10 @@ public class BoardController {
 	@Autowired
 	private BoardService bService;
 	
+
+	/*
+		@param 
+*/
 	@RequestMapping(value="/board/writeView.kh",method=RequestMethod.GET)
 	public String showboardWrite() {
 		return "board/boardWriteForm";
@@ -31,6 +37,15 @@ public class BoardController {
 			mv.addObject("msg",e.getMessage()).setViewName("common/errorPage");
 		}
 		
+		return mv;
+	}
+	@RequestMapping(value="/board/list.kh",method=RequestMethod.GET)
+	public ModelAndView boardListView(ModelAndView mv) {
+		List<Board> bList = bService.printAllBoard();
+		if(!bList.isEmpty()) {
+			mv.addObject("bList",bList);
+		}
+		mv.setViewName("board/listView");
 		return mv;
 	}
 }
