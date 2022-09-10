@@ -1,3 +1,22 @@
+--------------------------
+인코딩 설정 web.xml
+--------------------------
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 -------------------------
 마이바티스 스프링MVC셋팅
@@ -83,6 +102,9 @@
 19. 어노테이션을 이용한 parameter값 처리 및 vo클래스 설정.
  @RequestParam("memberId") String memberId 로 값을 주입하면서 매개변수로 사용.
  @ModelAttribute Member member
+sevlet-context.xml
+<context:component-scan base-package="com.kh.springmvc" />
+확인 필수
 
 12. DB 테이블 생성
 
@@ -104,10 +126,12 @@ spring에서 관리할 수 있게 하기 위함이다. + commons-dbcp를 사용�
     *value면 리터럴 ref면 객체를 주입.
   2) sqlSessionTemplate bean설정
    :이것을 통해  DB 연결을 만듦
+
+* bean등록 시 class는 프로젝트익스플로러에서 Libraries 하위 Maven Dependencies의 jar들을 보고 클래스 풀네임과 setter 및 생성자도 확인 할 수 있다.
  
 17. Service와 Store 로직 구현. 스프링 어노테이션을 이용한 DI를 이용하여 진행.
 
-18. store구현 후 src - main - mappers - resources - member - mapper.xml 생성.
+18. store구현 후 src \ main \ resources \ mappers \ member-mapper.xml 생성.
  : mapper.dtd. 붙여넣기.
 
 19. mapper.xml을 mybatis-config.xml에 등록 필수
@@ -193,3 +217,6 @@ offset과 limit 값을 이용하여 동작한다.  offset은 currentPage에 의�
   2)확장자는 오리지널 파일이름에서 subString하여 붙여준다.
 
 13. rename한 파일이름으로 저장을 한다.
+
+
+-----------------------------------

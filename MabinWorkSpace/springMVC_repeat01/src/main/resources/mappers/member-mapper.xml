@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="MemberMapper">
+  <resultMap type="com.kh.springmvc.member.domain.Member" id="memberResultMap">
+  	<id column="MEMBER_ID" property="memberId"/>
+  	<result column="MEMBER_PWD" property="memberPwd"/>
+  	<result column="MEMBER_NAME" property="memberName"/>
+  	<result column="MEMBER_EMAIL" property="memberEmail"/>
+  	<result column="MEMBER_PHONE" property="memberPhone"/>
+  	<result column="MEMBER_ADDR" property="memberAddr"/>
+  	<result column="ENROLL_DATE" property="enrollDate"/>
+  	<result column="UPDATE_DATE" property="updateDate"/>
+  	<result column="M_STATUS" property="mStatus"/>
+  
+  </resultMap>
+
+  <insert id="insertMember">
+  	INSERT INTO MEMBER_TBL 
+  	VALUES(#{memberId},#{memberPwd},#{memberName},#{memberEmail},#{memberPhone},#{memberAddr},DEFAULT,DEFAULT,DEFAULT)
+  </insert>
+  
+  <select id="selectLoginMember" resultMap="memberResultMap">
+  	SELECT * FROM MEMBER_TBL WHERE MEMBER_ID=#{memberId} AND MEMBER_PWD=#{memberPwd}
+  </select>
+  
+</mapper>

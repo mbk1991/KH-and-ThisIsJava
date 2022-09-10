@@ -54,7 +54,7 @@ public class BoardController {
 					file.mkdir();
 				}
 				uploadFile.transferTo(new File(savePath+"\\"+boardFileRename)); //파일을 buploadFile 경로에 저장하는 메소드.
-				String boardFilepath = savePath;   //파일 경로 설정 (절대(savePath/ 상대)
+				String boardFilepath = savePath+"\\"+boardFileRename;   //파일 경로 설정 (절대(savePath/ 상대)
 				
 				
 				board.setboardFileName(boardFilename);
