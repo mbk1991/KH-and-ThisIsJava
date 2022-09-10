@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="BoardMapper">
+   <resultMap type="com.kh.springmvc.board.domain.Board" id="BoardResultMap">
+   		<id column="BOARD_NO" property="boardNo"/>
+   		<result column="BOARD_TITLE" property="boardTitle"/>
+   		<result column="BOARD_CONTENTS" property="boardContents"/>
+   		<result column="BOARD_WRITER" property="boardWriter"/>
+   		<result column="BOARD_FILENAME" property="boardFileName"/>
+   		<result column="BOARD_RENAME" property="boardFileReName"/>
+   		<result column="BOARD_FILEPATH" property="boardFilePath"/>
+   		<result column="BOARD_COUNT" property="boardCount"/>
+   		<result column="B_CREATE_DATE" property="createDate"/>
+   		<result column="B_UPDATE_DATE" property="updateDate"/>
+   		<result column="B_STATUS" property="bStatus"/>
+   </resultMap>
+
+  <select id="selectAllBoard" resultMap="BoardResultMap">
+  		SELECT * FROM BOARD_TBL
+  </select>
+</mapper>

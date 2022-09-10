@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -75,6 +76,56 @@ public class MemberController {
 			session.invalidate();
 		}
 		return "/home";
+	}
+	
+	/*
+	 * 정보수정view 이동
+	 * @param mv,session
+	 * @return mv
+	 */
+	@RequestMapping(value="/member/modifyView.kh",method=RequestMethod.GET)
+	public ModelAndView memberModifyView(ModelAndView mv,
+			HttpSession session) {
+		Member loginMember = (Member)session.getAttribute("loginUser");
+		if(loginMember != null) {
+			mv.addObject("loginMember",loginMember).setViewName("/member/modify");
+		}else {
+			mv.setViewName("/home");
+		}
+		return mv;
+	}
+	
+	/*
+	 * 정보수정 버튼 로직
+	 * @param mv,member
+	 * @return mv
+	 */
+	@PostMapping("/member/modify.kh")
+	public ModelAndView memberModify(ModelAndView mv,
+			@ModelAttribute Member member) {
+		int result = mService.modifyMember(member);
+		if(result > 0) {
+			
+			mv.setViewName("/home");
+		}else {
+			mv.addObject("msg", "회원 수정에 실패하였습니다").setViewName("/home");
+		}
+		return mv;
+	}
+	
+	@RequestMapping(value="/member/remove.kh",method=RequestMethod.GET)
+	public ModelAndView memberRemove(ModelAndView mv,
+			HttpSession session) {
+		Member loginMember = (Member)session.getAttribute("loginUser");
+		String memberId = loginMember.getMemberId();
+		int result = mService.removeMember(memberId);
+		if(result > 0) {
+			session.invalidate();
+			mv.setViewName("/home");
+		}else {
+			mv.addObject("msg","회원 탈퇴에 실패하였습니다.").setViewName("/member/errorPage");
+		}
+		return mv;
 	}
 
 }
