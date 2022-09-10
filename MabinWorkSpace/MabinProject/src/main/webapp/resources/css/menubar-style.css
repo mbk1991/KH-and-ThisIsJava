@@ -1,0 +1,27 @@
+@charset "UTF-8";
+#header{
+	height: 100px;
+}
+
+#logo{
+	width=40%;
+}
+#site-title{
+	width=30%;
+}
+#login-wrap{
+	align
+	width=30%;
+	height: 100%;
+}
+.menu{
+	float:left;
+	width: 25%;
+	background: gray;
+	list-style: none;
+	
+}
+
+.menu:hover{
+	background: green;
+}

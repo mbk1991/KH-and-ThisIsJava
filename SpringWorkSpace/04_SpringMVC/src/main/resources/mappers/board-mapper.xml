@@ -16,19 +16,14 @@
   		<result property="bCreateDate" 		column="B_CREATE_DATE"/>
   		<result property="bUpdateDate" 		column="B_UPDATE_DATE"/>
   		<result property="bStatus" 			column="B_STATUS"/>
-  		
-  		
   	</resultMap>
-  
   	<insert id="insertBoard">
   		INSERT INTO BOARD_TBL VALUES(SEQ_BOARDNO.NEXTVAL,#{boardTitle},#{boardContents},#{boardWriter},#{boardFileName},#{boardFileRename},#{boardFilepath},DEFAULT,DEFAULT,DEFAULT,DEFAULT)
   	</insert>
   	<select id="selectAllBoard" resultMap="boardResultMap">
-  		SELECT * FROM BOARD_TBL
+  		SELECT * FROM BOARD_TBL WHERE B_STATUS = 'Y' ORDER BY BOARD_NO
   	</select>
   	<select id="selectTotalCount" resultType="_int">
   		SELECT COUNT(*) FROM BOARD_TBL WHERE B_STATUS = 'Y'
   	</select>
-  	
- 
   </mapper>

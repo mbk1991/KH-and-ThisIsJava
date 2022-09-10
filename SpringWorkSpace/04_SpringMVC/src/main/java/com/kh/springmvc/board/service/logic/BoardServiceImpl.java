@@ -24,15 +24,15 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<Board> printAllBoard() {
-		List<Board> bList = bStore.selectAllBoard(session);
+	public List<Board> printAllBoard(int currentPage, int limit) {
+		List<Board> bList = bStore.selectAllBoard(session,currentPage,limit);
 		return bList;
 	}
 
 	@Override
 	public int getTotalCount() {
-		int result = bStore.selectTotalCount(session);
-		return result;
+		int totalCount = bStore.selectTotalCount(session);
+		return totalCount;
 	}
 
 }

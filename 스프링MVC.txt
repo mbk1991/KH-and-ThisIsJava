@@ -1,0 +1,195 @@
+
+-------------------------
+마이바티스 스프링MVC셋팅
+--------------------------
+1. Spring Legacy Project 생성.
+ :springMVC로 설정.
+
+2. Server 생성.
+ :port번호 및 root '/' 설정
+
+3. 서버를 가동하여 homeController와 home.jsp 확인 (Encoding 설정이 되어있지 않다.)
+
+4. DispatcherServlet, HandlerMapping, ViewResolver를 체크한다.
+  1)디스패처서블릿에서 HandlerMapping을 통해 어떤 컨트롤러로 가야하는지 결정함.
+  DispatcherServlet은 web.xml에서 확인한다.
+  <servlet>태그를 보면 <servlet-name>태그에 appServlet으로 설정되어 있고
+ <servlet-class>태그에 DispatcherServlet 클래스가 적혀있다.
+ <init-param>태그에서는 appServlet(DispatcherServlet)이 servlet-context.xml을 참조하도록 되어 있다.
+ <servlet-mapping>태그에서는 <url-pattern>태그에서 '/' url이 appServlet과 매핑되도록 하고 있다.
+ 컨트롤러의 반환값은 ViewResolver로 보내준다.
+
+  2)ViewResolver는 servlet-context.xml에서 확인 가능하다.
+    컨트롤러의 반환값에 앞에는 "/WEB-INF/views/ 를 붙이고 뒤에는 ".jsp"를 붙여서 view를 선택한다.
+
+5. 패키지 생성. (controller, domain, service, store)
+
+6. service와 store 인터페이스 생성 및 추상메소드 구상.
+ store에는 SqlSession session 을 매개변수로 넣어줌. ( SqlSession 에러가 발생함)
+
+7.pom.xml설정 변경
+ 1) 자바버전 1.8 변경
+ 2) spring-context 5.2.18.RELEASE 버전 변경
+ *<properties> 태그의 하위태그로 <java-version>1.8</java-version> 프로퍼티를 설정하고
+  <dependency>의 하위태그인 <version>태그에 ${java-version} 처럼 사용할 수 있다->유지보수 및 가독성↑
+ 3)maven-compiler-plugin 의 <source> 및 <target> 1.8 변경.
+
+8.pom.xml 마이바티스를 위한 설정 변경 - maven repository
+ 1) ojdbc6.jar
+    :메이븐리포지토리에서 ojdbc6는 다운이 불가한 상태. 따로 다운이 가능한 곳에서 받아야함.
+    :<repositories> - <repository> 하위에 <id>oracle</id>
+     <url>http://www.datanucleus.org/downloads/maven2/</url>
+    <dependency> 추가. (groupId를 repository <id>값과 같게 함)
+
+ 2) mybatis
+    :메이븐리포지토리 검색 3.5.6
+ 3) spring-mybatis
+    :메이븐리포지토리 검색 1.3.2
+ 4) spring-jdbc
+    :★spring-webmvc 디펜던시를 복사 붙여넣기하고 webmvc만 jdbc로 변경해줌.
+ 5) common-dbcp
+    :메이븐리포지토리 검색 commons-dbcp 1.4
+    :필요할 때마다 연결을 생성하지 않고 논리적으로 Connectin pool을 생성하여 놓고 사용한다.
+
+->해당 설정들은 메이븐 로컬리포지토리에 존재하는지 확인해야함
+->메이븐 연동을 위해 Maven-Update Project를 실행한다.
+
+9.다시 SqlSession으로 돌아오면 import가 가능.
+
+10.service.logic / store.logic 패키지 생성
+
+11.인터페이스 구현 클래스 생성 후 어노테이션 부착
+ @Controller @Serivice , @Repository
+ 
+12. webapp 하위에 index.jsp 생성. 버튼클릭 시 다른 화면으로 이동하도록 설정.
+  ( '/'로 매핑되어 있는 home.jsp보다 index.jsp의 우선순위가 높다.)
+
+13.HomeController와 home.jsp 변경 index.jsp -> home.jsp로 이동하도록 만듦
+
+14. 현재 한글이 깨지는 상태. JSP에 pageEncoding="UTF-8" 설정
+ *logger.info();에 의하여 콘솔 창에 검은색 글씨가 출력됨.
+ *logger를 이용하면 System.out.println을 사용하지 않아도 확인할 수 있다.
+
+15.memberJoin 기능 구현
+
+16. WEB-INF - views - member- join.jsp 생성
+
+17. join.jsp에 접근할 수 있도록 controller 설정
+  :Controller의 반환값은 String이며 이것이 ViewResolver로 전달된다.
+  : ModelAndView로 대체 가능.
+
+18.@RequestMapping 어노테이션 설정으로 url과 전달방식 설정
+
+19. 어노테이션을 이용한 parameter값 처리 및 vo클래스 설정.
+ @RequestParam("memberId") String memberId 로 값을 주입하면서 매개변수로 사용.
+ @ModelAttribute Member member
+
+12. DB 테이블 생성
+
+13. mybatis 설정파일 생성
+ : src - main - resources - mybatis-config.xml
+ : mybatis DTD 붙여넣기. config.dtd 를 붙여넣어야 <configuration>등 태그 사용 가능.
+
+14. web.xml을 보면 contextConfigLocation이라는 이름으로 root-context.xml을 appServlet이 참조하고 있다.
+ springMVC 프로젝트를 만들면 appServlet은 servlet-context.xml과 root-context.xml 두 개의 xml을 참조하고 있다. 스프링 시큐리티등 추가 기능을 만들 때 xml을 만들어서 web.xml에 설정을 추가하면 된다.
+
+15. mybatis.xml에서 적었던 dataSource를 root-context.xml에 적어준다.이는 마이바티스에서 관리하던 것을
+spring에서 관리할 수 있게 하기 위함이다. + commons-dbcp를 사용하기 위해서는 bean으로 등록해야하기
+때문에 dataSource를 bean으로 등록한다.
+
+16. mybatis에서 빌더와 공장을 통해 session을 만들던 것을 bean으로 설정한다.
+ 1) sqlSession bean 설정
+    configLocation 에 mybatis-config.xml의 위치를 주입, "classpath:mybatis-config.xml" 
+    (classpath는 resources 경로를 나타냄)
+    *value면 리터럴 ref면 객체를 주입.
+  2) sqlSessionTemplate bean설정
+   :이것을 통해  DB 연결을 만듦
+ 
+17. Service와 Store 로직 구현. 스프링 어노테이션을 이용한 DI를 이용하여 진행.
+
+18. store구현 후 src - main - mappers - resources - member - mapper.xml 생성.
+ : mapper.dtd. 붙여넣기.
+
+19. mapper.xml을 mybatis-config.xml에 등록 필수
+<configuration> - <mappers> - <mapper/> resource="mappers/mapper.xml"
+
+20. 쿼리문 작성 #{} 는 getter메소드를 이용하여 가져온다. 커밋 롤백은 자동 처리.
+
+21. 컨트롤러에서 로직 처리. 
+ : 리다이렉트는 return "redirect:/home.kh"
+
+
+
+에러발생. Mapper에서 에러가 나는데 못 찾겠음.
+-------------------------------------------------------------------------------------------
+9월8일 강의 보기
+-------------------------
+페이징처리)
+1.전체 게시물의 개수 구하기 -> 쿼리문을 이용
+
+2.현재 페이지 구하기 -> 화면에서 @RequestParam으로 받는다.
+
+3. 현재페이지의 parameter를 전달할 페이징 화면 만들기.
+  *page 파라미터를 받지 않는 경우도 있으니 삼항연산자로 값을 처리해줌.
+
+4.전체 게시물의 갯수와 현재 페이지를 이용하여 필요한 값을 구한다.
+
+5.RowNumber와 BETWEEN을 이용하여 페이징처리를 하던 것을 마이바티스의 RowBounds기능으로 처리.
+ :store에서 쿼리메소드에 rowBounds 매개변수를 추가한다. rowBounds를 사용하기 위해서는 
+offset과 limit 가 필요함. service, store, controller를 수정해준다. offset은 currentPage값으로 계산한다.
+ :offset은 현재페이지 기준 시작 게시물 넘버 , limit은 한 페이지에 보여줄 게시물 개수
+
+6. selectAllBoard에 offset과 limit을 매개변수로 넣어준다. 자연스럽게 인터페이스도 수정을 해야한다.
+
+*RowBounds란 쿼리문을 변경하지 않고도 페이징을 처리할 수 있게 해주는 클래스이며
+offset과 limit 값을 이용하여 동작한다.  offset은 currentPage에 의해서 변하는 값이고 limit은 고정 값이다.
+
+7. listView에서 jstl을 이용한 화면 처리
+
+파일 첨부)
+파일을 바이너리코드로 변경해서 전송하는데 multipart/form-data 방식을 사용한다.
+읽은 파일을 resources폴더에 복사를 하는 과정을 거친다. (컨트롤러에서 처리) 
+(실무에서는 storage 서버를 구현하여 사용하나 실습에서는 폴더에 저장하는 정도로 진행)
+-> 라이브러리를 통해 사용. MulitipartRequest
+
+1. form태그의 인코딩타입 변경. encType=""
+
+2. pom.xml 파일 업로드 관련 라이브러리 추가.
+  1)commons-fileupload 1.3.3
+  2)common-io 2.6
+
+3. Alt + F5 메이븐프로젝트 업데이트
+
+4. input type="file" name="uploadFile" 설정
+
+5. 컨트롤러에서 uploadFile을 @RequestParam으로 가져온다.( MultipartFile 인터페이스 타입으로)
+
+6.저장할 경로(wepapp-resources) 를 가져오기 위하여 HttpServletRequest request 추가
+
+7. 파일 저장 경로 설정
+ 1) 경로 설정: String root =  request.getSession().getServletContext().getRealPath("resources");
+ 2) 경로 설정: String savePath = root + "\\buploadFiles";
+ 3) File객체 생성: File file = new File(savePath);  
+ 4) 폴더가 없으면 폴더를 생성
+
+8. 파일을 경로에 저장
+ 1) transferTo(file) 메소드 사용.
+ 2) Board객체에 파일이름과 파일저장경로를 setter를 이용하여 저장.
+
+9. 서버 설정 변경
+ Server Option -  Serve modules without publishing을 체크해야 한다.
+ 이클립스에서 사용하는 .metadata라는 경로가 있음.
+.metadata의 경로가 아닌 개발자가 셋팅한 절대경로를 기준으로 서버를 실행하도록 체크를 해주는 것이다.
+
+10. Multipart 파일업로드 관련 Bean 등록
+ root-context.xml <bean>등록
+ 1)org.springframework.web.multipart.commons.CommonsMultipartResolver
+ 2)<property> maxUploadSize 로 업로드 용량 설정 , maxInMemorySize로 업로드 메모리 사이즈 설정.
+
+11. uploadFile.transferTo(new File(savePath+"\\"+boardFilename)); 으로 경로에 파일명으로 업로드.
+
+12. 파일이름이 같은 경우 업로드가 되지 않기 때문에 FileRename이 필요하다.
+  1)모든 파일이 고유한 이름을 갖도록 해야하기 때문. ->시간이나 랜덤한 숫자로 .
+  2)확장자는 오리지널 파일이름에서 subString하여 붙여준다.
+
+13. rename한 파일이름으로 저장을 한다.

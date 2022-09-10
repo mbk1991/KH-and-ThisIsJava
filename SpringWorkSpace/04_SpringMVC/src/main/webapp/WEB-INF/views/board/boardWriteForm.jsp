@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1 align="center">게시글 등록 페이지</h1> <br><br>
-	<form action="/board/register.kh" method="post">
+	<form action="/board/register.kh" method="post" enctype="multipart/form-data">
 		<table align="center" boarder="1">
 			<tr>
 				<td>제목</td>
@@ -24,7 +24,7 @@
 			</tr>
 			<tr>
 				<td>첨부파일</td>
-				<td><input type="file" name=""></td>
+				<td><input type="file" name="uploadFile"></td>
 			</tr>
 			<tr>
 				<td colspan="2">

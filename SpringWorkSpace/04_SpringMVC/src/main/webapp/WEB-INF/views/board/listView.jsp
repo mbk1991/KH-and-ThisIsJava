@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 목록</title>
+<title>자유게시판</title>
 </head>
 <body>
 	<h1 align="center" >게시글 목록</h1>
@@ -32,12 +32,15 @@
 		</c:forEach>
 		<tr align="center" height="20">
 			<td colspan="6">
-				<a href="board/list.kh?page=1">1</a> 
-				<a href="board/list.kh?page=2">2</a>
-				<a href="board/list.kh?page=3">3</a>
-				<a href="board/list.kh?page=4">4</a>
-				<a href="board/list.kh?page=5">5</a>
-				<a href="board/list.kh?page=6">6</a>
+			<c:if test="${startNavi ne 1 }">
+			<a href="/board/list.kh?page=${startNavi-1 }">[이전]</a>
+			</c:if>
+			<c:forEach var="p" begin="${startNavi }" end="${endNavi }">
+				<a href="/board/list.kh?page=${p}">${p }</a>
+			</c:forEach> 
+			<c:if test="${endNavi ne maxPage }">
+			<a href="/board/list.kh?page=${endNavi+1 }">[다음]</a>
+			</c:if>
 			</td>
 		</tr> 
 		
