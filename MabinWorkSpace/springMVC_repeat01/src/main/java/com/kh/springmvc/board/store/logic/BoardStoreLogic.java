@@ -26,4 +26,10 @@ public class BoardStoreLogic implements BoardStore {
 		return countAllPost;
 	}
 
+	@Override
+	public int insertPost(SqlSession session, Board board) {
+		int result = session.insert("BoardMapper.insertPost", board);
+		return result;
+	}
+
 }

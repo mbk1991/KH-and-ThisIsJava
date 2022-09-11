@@ -48,7 +48,9 @@
 		</div>
 		<div id="nav">
 			<ul>
-				<li><a href="/board/freeboardList.kh">자유게시판</a></li>
+				<c:if test="${sessionScope.loginUser ne null }">
+					<li><a href="/board/freeboardList.kh">자유게시판</a></li>
+				</c:if>
 			</ul>
 		</div>
 	</div>

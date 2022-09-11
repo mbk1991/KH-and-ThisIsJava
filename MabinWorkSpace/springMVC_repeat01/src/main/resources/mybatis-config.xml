@@ -5,6 +5,10 @@
   
   
 <configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+
   <mappers>
     <mapper resource="mappers/member-mapper.xml"/>
     <mapper resource="mappers/board-mapper.xml"/>

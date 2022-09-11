@@ -27,4 +27,11 @@
   		SELECT COUNT(*) FROM BOARD_TBL
   </select>
   
+  <insert id="insertPost">
+  	INSERT INTO BOARD_TBL 
+  	VALUES(SEQ_BOARDNO.NEXTVAL,#{boardTitle},#{boardContents},#{boardWriter},
+  	#{boardFileName},#{boardFileReName},#{boardFilePath},
+  	DEFAULT,DEFAULT,DEFAULT,DEFAULT)
+  </insert>
+  
 </mapper>

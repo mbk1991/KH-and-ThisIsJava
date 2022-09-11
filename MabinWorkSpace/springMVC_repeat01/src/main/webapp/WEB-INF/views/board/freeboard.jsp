@@ -46,7 +46,7 @@
 		</table>	
 	</div>
 	<div id="footer">
-		<button onclick="location.href='#';">작성하기</button>
+		<button onclick="location.href='/board/registpostView.kh';">작성하기</button>
 	</div>
 </body>
 </html>

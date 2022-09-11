@@ -28,5 +28,11 @@ public class BoardServiceImpl implements BoardService {
 		int countAllPost = bStore.selectCountAllPost(session);
 		return countAllPost;
 	}
+
+	@Override
+	public int registPost(Board board) {
+		int result = bStore.insertPost(session,board);
+		return result;
+	}
 	
 }
