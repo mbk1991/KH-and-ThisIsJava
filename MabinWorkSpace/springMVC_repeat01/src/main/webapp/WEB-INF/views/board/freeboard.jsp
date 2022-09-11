@@ -29,6 +29,20 @@
 					<td>${board.createDate }</td>
 				</tr>
 			</c:forEach>
+			<tr>
+				<td colspan="4">
+					<c:if test="${naviStart>startPage }">
+						<a href="/board/freeboardList.kh?page=${naviStart-1 }">[이전]</a>
+					</c:if>
+					<c:forEach begin="${naviStart }" var="i" end="${naviEnd }" >
+						<a href="/board/freeboardList.kh?page=${i}">${i}</a>
+					</c:forEach>
+					<c:if test="${naviEnd<endPage }">
+						<a href="/board/freeboardList.kh?page=${naviEnd+1 }">[다음]</a>
+					</c:if>
+				</td>
+			</tr>
+			
 		</table>	
 	</div>
 	<div id="footer">

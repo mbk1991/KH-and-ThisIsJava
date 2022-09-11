@@ -20,6 +20,11 @@
    </resultMap>
 
   <select id="selectAllBoard" resultMap="BoardResultMap">
-  		SELECT * FROM BOARD_TBL
+  		SELECT * FROM BOARD_TBL ORDER BY B_CREATE_DATE DESC
   </select>
+  
+  <select id="selectCountPost" resultType="_int">
+  		SELECT COUNT(*) FROM BOARD_TBL
+  </select>
+  
 </mapper>

@@ -18,9 +18,15 @@ public class BoardServiceImpl implements BoardService {
 	private BoardStore bStore;
 
 	@Override
-	public List<Board> printBoardList() {
-		List<Board> bList = bStore.selectAllBoardList(session); 
+	public List<Board> printBoardList(int limit, int offset) {
+		List<Board> bList = bStore.selectAllBoardList(session,limit,offset); 
 		return bList;
+	}
+
+	@Override
+	public int countAllPost() {
+		int countAllPost = bStore.selectCountAllPost(session);
+		return countAllPost;
 	}
 	
 }
