@@ -32,5 +32,15 @@ public class BoardServiceImpl implements BoardService{
 		int totalCount = bStore.selectTotalCount(session);
 		return totalCount;
 	}
+	@Override
+	public Board printOneByNo(int boardNo) {
+		Board board = bStore.selectOneByNo(session,boardNo);
+		return board;
+	}
+	@Override
+	public int removeOneByNo(int boardNo) {
+		int result = bStore.deleteOneByNo(session, boardNo);
+		return result;
+	}
 
 }

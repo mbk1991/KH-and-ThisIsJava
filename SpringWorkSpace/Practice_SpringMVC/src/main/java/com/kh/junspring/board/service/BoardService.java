@@ -14,4 +14,11 @@ public interface BoardService {
 	// getTotalCount 
 	// BOARD_TBL <- SELECT COUNT(*) FROM BOARD_TBL WHERE B_STATUS = 'Y'
 	public int getTotalCount();
+	//printOneByNo
+	//BOARD_TBL <- SELECT * FROM BOARD_TBL WHERE BOARD_NO = 11
+	public Board printOneByNo(int boardNo);
+	//removeOneByNo
+	//BOARD_TBL <- DELETE FROM BOARD_TBL WHERE BOARD_NO = 22
+	public int removeOneByNo(int boardNo);
+	
 }

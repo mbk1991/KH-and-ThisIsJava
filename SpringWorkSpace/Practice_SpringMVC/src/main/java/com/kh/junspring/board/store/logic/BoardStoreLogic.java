@@ -40,4 +40,16 @@ public class BoardStoreLogic implements BoardStore{
 		return totalCount;
 	}
 
+	@Override
+	public Board selectOneByNo(SqlSession session,int boardNo) {
+		Board board = session.selectOne("BoardMapper.selectOneByNo", boardNo);
+		return board;
+	}
+
+	@Override
+	public int deleteOneByNo(SqlSession session, int boardNo) {
+		int result = session.delete("BoardMapper.deleteOneByNo", boardNo);
+		return result;
+	}
+
 }

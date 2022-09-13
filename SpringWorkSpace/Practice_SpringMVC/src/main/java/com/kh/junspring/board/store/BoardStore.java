@@ -12,4 +12,7 @@ public interface BoardStore {
 	// selectAllBoard
 	public List<Board> selectAllBoard(SqlSession session, int currentPage, int limit);
 	public int selectTotalCount(SqlSession session);
+	public Board selectOneByNo(SqlSession session,int boardNo);
+	public int deleteOneByNo(SqlSession session, int boardNo);
+
 }
