@@ -24,7 +24,7 @@
 			<c:forEach items="${bList}" var="board" varStatus="i">
 				<tr>
 					<td>${board.boardNo }</td>
-					<td>${board.boardTitle }</td>
+					<td><a href="">${board.boardTitle }</a></td>
 					<td>${board.boardWriter }</td>
 					<td>${board.createDate }</td>
 				</tr>

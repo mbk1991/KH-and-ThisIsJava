@@ -7,13 +7,13 @@
 <title>게시글 작성</title>
 
 <!-- include libraries(jQuery, bootstrap) -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 
-<!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<!-- <!-- include summernote css/js --> -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script> -->
 
 
 
@@ -37,13 +37,13 @@
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td><input type="text" name="boardWriter"></td>
+				<td><input type="text" name="boardWriter" readonly value="${loginUser.memberName }"></td>
 			</tr>
 			<tr>
 				<td>내용</td>
 <!-- 				<td><textarea name="boardContents"></textarea></td> -->
 				<td>
-					<textarea id="summernote" rows="5" name="boardContents" style="width:100%; height:250px;">
+					<textarea id="summernote" cols ="30" rows="50" name="boardContents" style="width:100%; height:250px;">
 					</textarea>
 				</td>
 

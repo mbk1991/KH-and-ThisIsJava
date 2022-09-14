@@ -14,4 +14,5 @@ public interface BoardService {
 	// getTotalCount 
 	// BOARD_TBL <- SELECT COUNT(*) FROM BOARD_TBL WHERE B_STATUS = 'Y'
 	public int getTotalCount();
+	public int modifyBoard(Board board);
 }

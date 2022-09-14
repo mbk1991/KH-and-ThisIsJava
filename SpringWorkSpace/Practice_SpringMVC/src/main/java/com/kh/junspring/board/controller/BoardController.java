@@ -85,7 +85,7 @@ public class BoardController {
 			,@RequestParam(value="page", required=false) Integer page
 			,HttpSession session) {
 		int currentPage = (page != null) ? page : 1;
-		int totalCount = bService.getTotalCount();
+		int totalCount = bService.getTotalCount("","");
 		int boardLimit = 10;
 		int naviLimit = 5;
 		int maxPage;
@@ -171,7 +171,99 @@ public class BoardController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/board/modify.kh",method=RequestMethod.POST)
+	public ModelAndView boardModify(ModelAndView mv,
+			@ModelAttribute Board board,
+			HttpSession session,
+			@RequestParam(value="reloadFile",required=false) MultipartFile reloadFile,
+			HttpServletRequest request) {
+		
+		try {
+			String boardFilename = reloadFile.getOriginalFilename();
+			if(reloadFile != null && !boardFilename.equals("")) {
+				//수정 1. 대체(replace)/ 2.삭제 후 등록 -> 삭제 후 등록으로 실습 진행.
+				String root = request.getSession().getServletContext().getRealPath("resources");
+				String savedPath = root + "\\buploadFiles";
+				File file = new File(savedPath+"\\" + "파일이름");
+				if(file.exists()) {
+					file.delete();
+				}
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+				String boardFileRename = sdf.format(new Date(System.currentTimeMillis()))+
+						"."+boardFilename.substring(boardFilename.lastIndexOf(".")+1);
+				reloadFile.transferTo(new File(savedPath + "\\" + boardFileRename));
+				board.setBoardFilename(boardFilename);
+				board.setBoardFileRename(boardFileRename);
+				board.setBoardFilepath(savedPath + "\\" + boardFileRename);
+			}
+			
+			
+			int result= bService.modifyBoard(board);
+			int currentPage = (int)session.getAttribute("currentPage");
+			mv.setViewName("redirect:/board/list.kh?page="+currentPage);
+		} catch (Exception e) {
+			mv.addObject("msg",e.getMessage()).setViewName("common/errorPage");
+		}
+		return mv;
+		
+	}
 	
+	@RequestMapping(value="/board/search.kh",method=RequestMethod.GET)
+	public ModelAndView boardSearchList(ModelAndView mv,
+			@RequestParam("searchCondition")String searchCondition,
+			@RequestParam("searchValue")String searchValue,
+			@RequestParam(value="page",required=false)Integer page ) {
+		try {
+			///////////////페이징처리
+			int currentPage = (page != null) ? page : 1;
+			int totalCount = bService.getTotalCount(searchCondition,searchValue);
+			int boardLimit = 10;
+			int naviLimit = 5;
+			int maxPage;
+			int startNavi;
+			int endNavi;
+			// 23/5 = 4.8 + 0.9 = 5(.7)
+			maxPage = (int)((double)totalCount/boardLimit + 0.9);
+			startNavi = ((int)((double)currentPage/naviLimit+0.9)-1)*naviLimit+1;
+			endNavi = startNavi + naviLimit - 1;
+			
+			if(currentPage < 1) {
+				currentPage = 1;
+			}
+			if(currentPage > maxPage) {
+				currentPage = maxPage;
+			}
+			if(maxPage < endNavi) {
+				endNavi = maxPage;
+			}
+			if(startNavi < 1) {
+				startNavi = 1;
+			}
+			
+			///////////////페이징처리
+			List<Board> bList = bService.printAllByValue(currentPage, boardLimit,searchCondition,searchValue);
+			//BOARD_TBL <- SELECT* FROM BOARD_TBL WHERE B_STATUS = 'Y' AND BOARD_TITLE LIKE '%'||#{searchValue}||'%'
+		    //			<- SELECT* FROM BOARD_TBL WHERE B_STATUS = 'Y' AND BOARD_TITLE LIKE '%'||#{searchValue}||'%'
+		    //			<- SELECT* FROM BOARD_TBL WHERE B_STATUS = 'Y' AND BOARD_TITLE LIKE '%'||#{searchValue}||'%'
+			 //	이렇게는 안되나?		<- SELECT* FROM BOARD_TBL WHERE B_STATUS = 'Y' AND #{searchCondition} LIKE '%'||#{searchValue}||'%'
+			if(!bList.isEmpty()) {
+				
+				///jsp에 조건문/
+				mv.addObject("currentPage",currentPage);
+				mv.addObject("startNavi", startNavi);
+				mv.addObject("endNavi", endNavi);
+				mv.addObject("bList", bList);
+				mv.addObject("maxPage",maxPage);
+				mv.addObject("bList",bList).setViewName("board/listView");
+			}else {
+				mv.addObject("msg","검색 결과가 없습니다.").setViewName("common/errorPage");
+			}
+			
+		} catch (Exception e) {
+			mv.addObject("msg",e.getMessage()).setViewName("common/errorPage");
+		}
+		return mv;
+	}
 	
 	
 	

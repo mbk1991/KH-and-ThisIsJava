@@ -13,12 +13,18 @@ public interface BoardService {
 	public List<Board> printAllBoard(int currentPage, int limit);
 	// getTotalCount 
 	// BOARD_TBL <- SELECT COUNT(*) FROM BOARD_TBL WHERE B_STATUS = 'Y'
-	public int getTotalCount();
+	public int getTotalCount(String searchCondition,String searchValue);
 	//printOneByNo
 	//BOARD_TBL <- SELECT * FROM BOARD_TBL WHERE BOARD_NO = 11
 	public Board printOneByNo(int boardNo);
 	//removeOneByNo
 	//BOARD_TBL <- DELETE FROM BOARD_TBL WHERE BOARD_NO = 22
 	public int removeOneByNo(int boardNo);
+	//modifyBoard
+	//BOARD_TBL <- UPDATE BOARD_TBL SET BOARD_TITLE ="33", BOARD_CONTENTS="33" WHERE BOARD_NO='3'
+	public int modifyBoard(Board board);
+	
+	public List<Board> printAllByValue(int currentPage, int boardLimit, String searchCondition, String searchValue);
+	
 	
 }

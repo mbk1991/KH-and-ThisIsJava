@@ -28,8 +28,8 @@ public class BoardServiceImpl implements BoardService{
 		return bList;
 	}
 	@Override
-	public int getTotalCount() {
-		int totalCount = bStore.selectTotalCount(session);
+	public int getTotalCount(String searchCondition,String searchValue) {
+		int totalCount = bStore.selectTotalCount(session,searchCondition,searchValue);
 		return totalCount;
 	}
 	@Override
@@ -41,6 +41,16 @@ public class BoardServiceImpl implements BoardService{
 	public int removeOneByNo(int boardNo) {
 		int result = bStore.deleteOneByNo(session, boardNo);
 		return result;
+	}
+	@Override
+	public int modifyBoard(Board board) {
+		int result = bStore.updateBoard(session, board);
+		return result;
+	}
+	@Override
+	public List<Board> printAllByValue(int currentPage,int boardLimit, String searchCondition, String searchValue) {
+		List<Board> bList = bStore.printAllByValue(session,currentPage,boardLimit, searchCondition, searchValue);
+		return bList;
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.kh.junspring.board.store.logic;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -35,8 +36,12 @@ public class BoardStoreLogic implements BoardStore{
 	}
 
 	@Override
-	public int selectTotalCount(SqlSession session) {
-		int totalCount = session.selectOne("BoardMapper.selectTotalCount");
+	public int selectTotalCount(SqlSession session,String searchCondition,String searchValue) {
+		
+		HashMap<String,String> paramMap = new HashMap<>();
+		paramMap.put("searchCondition",searchCondition);
+		paramMap.put("searchValue",searchValue);
+		int totalCount = session.selectOne("BoardMapper.selectTotalCount",paramMap);
 		return totalCount;
 	}
 
@@ -50,6 +55,24 @@ public class BoardStoreLogic implements BoardStore{
 	public int deleteOneByNo(SqlSession session, int boardNo) {
 		int result = session.delete("BoardMapper.deleteOneByNo", boardNo);
 		return result;
+	}
+
+	@Override
+	public int updateBoard(SqlSession session, Board board) {
+		int result = session.update("BoardMapper.updateBoard", board);
+		return 0;
+	}
+
+	@Override
+	public List<Board> printAllByValue(SqlSession session,int currentPage,int limit, String searchCondition, String searchValue) {
+		
+		int offset = (currentPage-1)*limit;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		HashMap<String,String> paramMap = new HashMap<>();
+		paramMap.put("searchCondition",searchCondition);
+		paramMap.put("searchValue",searchValue);
+		List<Board> bList = session.selectList("BoardMapper.selectAllByValue", paramMap,rowBounds);
+		return bList;
 	}
 
 }

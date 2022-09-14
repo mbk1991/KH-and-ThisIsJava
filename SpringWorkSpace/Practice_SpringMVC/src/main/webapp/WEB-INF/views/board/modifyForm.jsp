@@ -10,7 +10,10 @@
 <body>
 	<h1 align="center">${board.boardNo }번 게시물 수정하기</h1>
 	<br><br>
-	<form action="#" method="post">
+	<form action="/board/modify.kh" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="boardNo" value="${board.boardNo }">
+		<input type="hidden" name="boardFilename" value="${board.boardFilename }">
+		<input type="hidden" name="boardFileRename" value="${board.boardFileRename }">
 		<table align="center" width="500" border="1">
 			<tr>
 				<td>제목</td>
@@ -26,7 +29,7 @@
 			</tr>
 			<tr height="300">
 				<td>내용</td>
-				<td><textarea cols="30" name="boardContents">${board.boardContents }</textarea><td>
+				<td><textarea cols ="30" rows="50"  name="boardContents">${board.boardContents }</textarea><td>
 			</tr>
 			<tr>
 				<td>첨부파일</td>

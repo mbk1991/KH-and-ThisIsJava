@@ -114,8 +114,6 @@ public class BoardController {
 				board.setBoardFileName(boardFileName);
 				board.setBoardFileReName(boardFileRename);
 				board.setBoardFilePath(boardFilePath);
-				
-				System.out.println(member.getMemberId());
 			} 
 			
 			int result = bService.registPost(board);

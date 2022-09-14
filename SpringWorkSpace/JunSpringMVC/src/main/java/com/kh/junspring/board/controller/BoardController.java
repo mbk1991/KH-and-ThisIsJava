@@ -107,6 +107,12 @@ public class BoardController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/board/modify.kh",method=RequestMethod.POST)
+	public void boardModify(
+			@ModelAttribute Board board) {
+		int result = bService.modifyBoard(board);
+		
+	}
 	
 	
 	
