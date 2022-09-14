@@ -136,6 +136,29 @@ spring에서 관리할 수 있게 하기 위함이다. + commons-dbcp를 사용�
    :이것을 통해  DB 연결을 만듦
 
 * bean등록 시 class는 프로젝트익스플로러에서 Libraries 하위 Maven Dependencies의 jar들을 보고 클래스 풀네임과 setter 및 생성자도 확인 할 수 있다.
+
+---------------------------------
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+			<property name="driverClassName" 	value="oracle.jdbc.driver.OracleDriver"></property>
+			<property name="url" 				value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+			<property name="username" 			value="SPRING"></property>
+			<property name="password" 			value="SPRING"></property>
+		</bean>
+		<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+			<property name="dataSource"  ref="dataSource"></property>
+		</bean>
+		<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+			<constructor-arg ref="sqlSession"></constructor-arg>
+		</bean>
+		
+		<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			<property name="maxUploadSize" value="10000000"></property>
+			<property name="maxInMemorySize" value="10000000"></property>
+		</bean>
+
+---------------------------------
+
  
 17. Service와 Store 로직 구현. 스프링 어노테이션을 이용한 DI를 이용하여 진행.
 
