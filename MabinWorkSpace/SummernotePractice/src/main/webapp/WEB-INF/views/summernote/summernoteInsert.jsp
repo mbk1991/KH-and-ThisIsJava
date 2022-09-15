@@ -37,6 +37,10 @@
 			placeholder : 'Hello stand alone ui',
 			tabsize : 2,
 			height : 120,
+			callbacks: {
+				
+				
+			}
 		});
 	</script>
 
