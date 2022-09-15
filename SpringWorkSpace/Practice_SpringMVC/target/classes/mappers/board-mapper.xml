@@ -41,7 +41,7 @@
 		        BOARD_WRITER LIKE '%'||#{searchValue}||'%' 
 			</if>
 			<if test="searchCondition.toString()=='all'">
-		        BOARD_WRITER LIKE '%'||#{searchValue}||'%' 
+		        BOARD_TITLE LIKE '%'||#{searchValue}||'%' 
 		        OR BOARD_CONTENTS LIKE '%'||#{searchValue}||'%'
 		        OR BOARD_WRITER LIKE '%'||#{searchValue}||'%'
 			</if>
@@ -63,7 +63,7 @@
 		        BOARD_WRITER LIKE '%'||#{searchValue}||'%' 
 			</if>
 			<if test="searchCondition.toString()=='all'">
-		        BOARD_WRITER LIKE '%'||#{searchValue}||'%' 
+		        BOARD_TITLE LIKE '%'||#{searchValue}||'%' 
 		        OR BOARD_CONTENTS LIKE '%'||#{searchValue}||'%'
 		        OR BOARD_WRITER LIKE '%'||#{searchValue}||'%'
 			</if>
@@ -78,6 +78,10 @@
 	<update id="updateBoard">
 		UPDATE BOARD_TBL SET BOARD_TITLE=#{boardTitle},BOARD_CONTENTS=#{boardContents},BOARD_FILENAME=#{boardFilename},BOARD_RENAME=#{boardFileRename},BOARD_FILEPATH=#{boardFilepath},B_UPDATE_DATE = DEFAULT
 		WHERE BOARD_NO=#{boardNo}
+	</update>
+	
+	<update id="updateCount">
+		UPDATE BOARD_TBL SET BOARD_COUNT = BOARD_COUNT+1 WHERE BOARD_NO = #{boardNo}
 	</update>
 	
 </mapper>

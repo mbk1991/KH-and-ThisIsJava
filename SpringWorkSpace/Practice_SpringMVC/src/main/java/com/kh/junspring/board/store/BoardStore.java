@@ -17,4 +17,5 @@ public interface BoardStore {
 	public int updateBoard(SqlSession session,Board board);
 	public List<Board> printAllByValue(SqlSession session,int currentPage,int boardLimit, String searchCondition, String searchValue);
 
+	public int updateBoardCount(SqlSession session,int boardNo);
 }

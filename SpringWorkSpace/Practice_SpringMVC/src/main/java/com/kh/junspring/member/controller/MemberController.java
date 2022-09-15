@@ -36,7 +36,8 @@ public class MemberController {
 			// 다른게 있다면 Member객체에서 그 값은 안들어감.
 			@ModelAttribute Member member
 			, @RequestParam("post") String post
-			, @RequestParam("address") String memberAddress
+			, @RequestParam("address1") String memberAddress1
+			, @RequestParam("address2") String memberAddress2
 //			, Model model
 			, ModelAndView mv) {
 		// request.setCharacterEncoding("utf-8");
@@ -44,7 +45,7 @@ public class MemberController {
 //			Member member 
 //			= new Member(memberId, memberPwd, memberName, memberEmail, memberPhone
 //					, post + "," + memberAddress);
-			member.setMemberAddr(post + "," + memberAddress);
+			member.setMemberAddr(post + "," + memberAddress1 +","+ memberAddress2);
 			int result = mService.registerMember(member);
 			if(result > 0) {
 				// response.sendRedirect("/member/list.kh");
@@ -143,11 +144,12 @@ public class MemberController {
 	public ModelAndView modifyMember(
 			@ModelAttribute Member member
 			, @RequestParam("post") String post
-			, @RequestParam("address") String memberAddr
+			, @RequestParam("address1") String memberAddress1
+			, @RequestParam("address2") String memberAddress2
 //			, Model model
 			, ModelAndView mv) {
 		try {
-			member.setMemberAddr(post + "," + memberAddr);
+			member.setMemberAddr(post + "," + memberAddress1 +","+ memberAddress2);
 			int result = mService.modifyMember(member);
 			if(result > 0) {
 				// redirect

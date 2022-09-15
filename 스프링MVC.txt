@@ -62,7 +62,7 @@
  3)maven-compiler-plugin 의 <source> 및 <target> 1.8 변경.
 
 8.pom.xml 마이바티스를 위한 설정 변경 - maven repository
- 1) ojdbc6.jar
+ 1) ojdbc6.jar 11.2.0.3
     :메이븐리포지토리에서 ojdbc6는 다운이 불가한 상태. 따로 다운이 가능한 곳에서 받아야함.
     :<repositories> - <repository> 하위에 <id>oracle</id>
      <url>http://www.datanucleus.org/downloads/maven2/</url>

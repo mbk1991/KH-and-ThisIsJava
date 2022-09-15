@@ -10,7 +10,7 @@
 <h1>
  글작성
 </h1><hr>
-<button onclick="location.href='summer/registerView.kh';">게시물 작성</button>
+<button onclick="location.href='/summer/registerView.kh';">게시물 작성</button>
 
 </body>
 </html>

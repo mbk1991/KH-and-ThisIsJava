@@ -110,8 +110,10 @@ public class BoardController {
 		}
 		session.setAttribute("currentPage", currentPage);
 		
+		//el을 
 		List<Board> bList = bService.printAllBoard(currentPage, boardLimit);
 		if(!bList.isEmpty()) {
+			mv.addObject("urlVal","list");
 			mv.addObject("currentPage",currentPage);
 			mv.addObject("startNavi", startNavi);
 			mv.addObject("endNavi", endNavi);
@@ -132,6 +134,8 @@ public class BoardController {
 			//세션에 보드넘버를 저장. 삭제,수정 할 때 사용하기 위함.
 			//세션을 초기화하는 것도 필요해보인다. 이름이 같으면 그냥 초기화가 되나?
 			session.setAttribute("boardNo",board.getBoardNo());
+			
+			int result = bService.modifyBoardCount(boardNo);
 			
 			mv.addObject("board",board).setViewName("board/detailView");
 		} catch (Exception e) {
@@ -249,21 +253,27 @@ public class BoardController {
 			if(!bList.isEmpty()) {
 				
 				///jsp에 조건문/
-				mv.addObject("currentPage",currentPage);
-				mv.addObject("startNavi", startNavi);
-				mv.addObject("endNavi", endNavi);
-				mv.addObject("bList", bList);
-				mv.addObject("maxPage",maxPage);
-				mv.addObject("bList",bList).setViewName("board/listView");
 			}else {
-				mv.addObject("msg","검색 결과가 없습니다.").setViewName("common/errorPage");
+				mv.addObject("bList",null);
 			}
+			mv.addObject("urlVal","search");
+			mv.addObject("searchCondition",searchCondition);
+			mv.addObject("searchValue",searchValue);
+			mv.addObject("currentPage",currentPage);
+			mv.addObject("startNavi", startNavi);
+			mv.addObject("endNavi", endNavi);
+			mv.addObject("bList", bList);
+			mv.addObject("maxPage",maxPage);
+			mv.addObject("bList",bList).setViewName("board/listView");
 			
 		} catch (Exception e) {
 			mv.addObject("msg",e.getMessage()).setViewName("common/errorPage");
 		}
 		return mv;
 	}
+	
+	
+	
 	
 	
 	

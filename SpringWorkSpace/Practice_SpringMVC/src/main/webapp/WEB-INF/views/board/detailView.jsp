@@ -54,12 +54,25 @@
 			</tr>
 		</table>
 <!-- 댓글 등록 -->
-	<table>
-	
+	<form action="/board/addReply.kh" method="post">
+	<table align="center" width="500" border="1">
+		<tr>
+			<td>
+				<textarea row="3" cols="55"></textarea>
+			</td>
+			<td>
+				<button>등록하기</button>
+			</td>
+		</tr>
 	</table>
-
+	</form>
 <!-- 댓글 목록 -->
-		
+	<table align="center" width="500" border="1">
+		<tr>
+			<td>
+			</td>
+		</tr>
+	</table>		
 		
 		
 		<script>

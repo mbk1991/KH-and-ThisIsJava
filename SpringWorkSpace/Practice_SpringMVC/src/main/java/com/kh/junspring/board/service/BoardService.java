@@ -26,5 +26,6 @@ public interface BoardService {
 	
 	public List<Board> printAllByValue(int currentPage, int boardLimit, String searchCondition, String searchValue);
 	
+	public int modifyBoardCount(int boardNo);
 	
 }

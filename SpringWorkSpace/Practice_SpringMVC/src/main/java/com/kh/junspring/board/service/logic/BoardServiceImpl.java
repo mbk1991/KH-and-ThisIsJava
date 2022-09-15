@@ -52,5 +52,10 @@ public class BoardServiceImpl implements BoardService{
 		List<Board> bList = bStore.printAllByValue(session,currentPage,boardLimit, searchCondition, searchValue);
 		return bList;
 	}
+	@Override
+	public int modifyBoardCount(int boardNo) {
+		int result = bStore.updateBoardCount(session, boardNo);
+		return result;
+	}
 
 }

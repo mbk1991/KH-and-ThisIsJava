@@ -44,13 +44,20 @@
 				<tr>
 					<td> * 우편번호</td>
 					<td>
-						<input type="text" name="post" value="${addrInfos[0] }">
+						<input type="text" name="post" class="postcodify_postcode5" value="${addrInfos[0] }">
+						<button type="button" id="postcodify_search_button">검색</button><br />
 					</td>
 				</tr>
 				<tr>
-					<td> * 주소</td>
+					<td> * 도로명 주소</td>
 					<td>
-						<input type="text" name="address" value="${addrInfos[1] }">
+						<input type="text" name="address1" class="postcodify_address" value="${addrInfos[1] }">
+					</td>
+				</tr>
+					<tr>
+					<td> * 상세 주소</td>
+					<td>
+						<input type="text" name="address2" class="postcodify_details" value="${addrInfos[2] }">
 					</td>
 				</tr>
 				<tr>
@@ -62,12 +69,16 @@
 			</table>
 		</form>
 	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 	<script>
 		function removeMember() {
 			if(confirm("탈퇴하시겠습니까?")) {
 				location.href = "/member/remove.kh";
 			}
 		}
+		
+		$(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 	</script>
 </body>
 </html>
