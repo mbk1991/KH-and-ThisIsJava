@@ -18,7 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.junspring.board.domain.Board;
+import com.kh.junspring.board.domain.Reply;
 import com.kh.junspring.board.service.BoardService;
+import com.kh.junspring.member.domain.Member;
 
 // @Component
 @Controller
@@ -134,9 +136,13 @@ public class BoardController {
 			//세션에 보드넘버를 저장. 삭제,수정 할 때 사용하기 위함.
 			//세션을 초기화하는 것도 필요해보인다. 이름이 같으면 그냥 초기화가 되나?
 			session.setAttribute("boardNo",board.getBoardNo());
-			
 			int result = bService.modifyBoardCount(boardNo);
-			
+			List<Reply> rList = bService.printAllReplyByNo(boardNo);
+			if(!rList.isEmpty()) {
+				mv.addObject("rList",rList);
+			}else {
+				mv.addObject("rList",null);
+			}
 			mv.addObject("board",board).setViewName("board/detailView");
 		} catch (Exception e) {
 			mv.addObject("msg",e.getMessage()).setViewName("common/errorPage");
@@ -268,6 +274,27 @@ public class BoardController {
 			
 		} catch (Exception e) {
 			mv.addObject("msg",e.getMessage()).setViewName("common/errorPage");
+		}
+		return mv;
+	}
+	
+	
+	
+	/*
+	 * 댓글 등록
+	 * @param mv
+	 * @return mv
+	 */
+	@RequestMapping(value="/board/addReply.kh",method=RequestMethod.POST)
+	public ModelAndView addBoardReply(ModelAndView mv,
+			@ModelAttribute Reply reply,
+			HttpSession session) {
+		//INSERT INTO REPLY_TBL VALUES(REPLY_NO,REF_BOARD_NO,REPLY_CONTENTS,REPLY_WRITER,R_CREATE_DATE,R_UPDATE_DATE,R_STATUS)
+		Member member = (Member)session.getAttribute("loginUser");
+		reply.setReplyWriter(member.getMemberId());
+		int result = bService.registerReply(reply);
+		if(result > 0) {
+			mv.setViewName("redirect:/board/detail.kh?boardNo="+reply.getRefBoardNo());
 		}
 		return mv;
 	}

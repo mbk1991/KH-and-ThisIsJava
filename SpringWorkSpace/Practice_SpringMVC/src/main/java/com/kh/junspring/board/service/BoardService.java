@@ -3,6 +3,7 @@ package com.kh.junspring.board.service;
 import java.util.List;
 
 import com.kh.junspring.board.domain.Board;
+import com.kh.junspring.board.domain.Reply;
 
 public interface BoardService {
 	// registerBoard
@@ -27,5 +28,9 @@ public interface BoardService {
 	public List<Board> printAllByValue(int currentPage, int boardLimit, String searchCondition, String searchValue);
 	
 	public int modifyBoardCount(int boardNo);
+	
+	public int registerReply(Reply reply);
+	
+	public List<Reply> printAllReplyByNo(int boardNo);
 	
 }

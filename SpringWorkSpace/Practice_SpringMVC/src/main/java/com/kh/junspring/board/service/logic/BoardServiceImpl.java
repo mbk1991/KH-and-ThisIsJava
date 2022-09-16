@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.junspring.board.domain.Board;
+import com.kh.junspring.board.domain.Reply;
 import com.kh.junspring.board.service.BoardService;
 import com.kh.junspring.board.store.BoardStore;
 
@@ -56,6 +57,16 @@ public class BoardServiceImpl implements BoardService{
 	public int modifyBoardCount(int boardNo) {
 		int result = bStore.updateBoardCount(session, boardNo);
 		return result;
+	}
+	@Override
+	public int registerReply(Reply reply) {
+		int result = bStore.insertReply(session,reply);
+		return result;
+	}
+	@Override
+	public List<Reply> printAllReplyByNo(int boardNo) {
+		List<Reply> lList = bStore.selectAllReplyByNo(session,boardNo);
+		return lList;
 	}
 
 }

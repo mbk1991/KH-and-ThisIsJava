@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.junspring.board.domain.Board;
+import com.kh.junspring.board.domain.Reply;
 import com.kh.junspring.board.store.BoardStore;
 
 @Repository
@@ -79,6 +80,18 @@ public class BoardStoreLogic implements BoardStore{
 	public int updateBoardCount(SqlSession session, int boardNo) {
 		int result = session.update("BoardMapper.updateCount",boardNo);
 		return result;
+	}
+
+	@Override
+	public int insertReply(SqlSession session, Reply reply) {
+		int result = session.insert("ReplyMapper.insertReply", reply);
+		return result;
+	}
+
+	@Override
+	public List<Reply> selectAllReplyByNo(SqlSession session, int boardNo) {
+		List<Reply> lList = session.selectList("ReplyMapper.selectReply", boardNo);
+		return lList;
 	}
 
 }

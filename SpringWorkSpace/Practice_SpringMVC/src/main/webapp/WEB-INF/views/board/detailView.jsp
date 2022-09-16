@@ -55,10 +55,11 @@
 		</table>
 <!-- 댓글 등록 -->
 	<form action="/board/addReply.kh" method="post">
+	<input type="hidden" name="refBoardNo" value="${board.boardNo}">
 	<table align="center" width="500" border="1">
 		<tr>
 			<td>
-				<textarea row="3" cols="55"></textarea>
+				<textarea name="replyContents" row="3" cols="55"></textarea>
 			</td>
 			<td>
 				<button>등록하기</button>
@@ -68,10 +69,20 @@
 	</form>
 <!-- 댓글 목록 -->
 	<table align="center" width="500" border="1">
+	<c:forEach items="${rList}" var="reply" >
 		<tr>
-			<td>
-			</td>
+			<td width="100">${reply.replyWriter }</td>
+			<td>${reply.replyContents}</td>
+			<td>${reply.rUpdateDate }</td>
+			<td><a href="#">수정</a> <a href="#">삭제</a></td>
 		</tr>
+		<tr>
+			<td colspan="3">
+				<input type="text" size="50" value="${reply.replyContents}">
+			</td>
+			<td><button></button></td>
+		</tr>
+	</c:forEach>
 	</table>		
 		
 		

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.junspring.board.domain.Board;
+import com.kh.junspring.board.domain.Reply;
 
 public interface BoardStore {
 	// insertBoard
@@ -18,4 +19,6 @@ public interface BoardStore {
 	public List<Board> printAllByValue(SqlSession session,int currentPage,int boardLimit, String searchCondition, String searchValue);
 
 	public int updateBoardCount(SqlSession session,int boardNo);
+	public int insertReply(SqlSession session, Reply reply);
+	public List<Reply> selectAllReplyByNo(SqlSession session, int boardNo);
 }
