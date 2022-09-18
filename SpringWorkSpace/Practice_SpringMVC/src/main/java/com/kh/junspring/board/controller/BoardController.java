@@ -71,6 +71,7 @@ public class BoardController {
 				board.setBoardFilename(boardFilename);
 				board.setBoardFileRename(boardFileRename);
 				board.setBoardFilepath(boardFilepath);
+				
 			}
 			int result = bService.registerBoard(board);
 			mv.setViewName("redirect:/board/list.kh");
