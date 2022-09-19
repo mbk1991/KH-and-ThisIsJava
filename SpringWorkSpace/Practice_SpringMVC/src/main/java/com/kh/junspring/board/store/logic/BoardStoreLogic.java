@@ -100,4 +100,10 @@ public class BoardStoreLogic implements BoardStore{
 		return result;
 	}
 
+	@Override
+	public int deleteReply(SqlSession session, int replyNo) {
+		int result = session.delete("ReplyMapper.deleteReply", replyNo);
+		return result;
+	}
+
 }

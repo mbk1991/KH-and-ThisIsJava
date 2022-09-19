@@ -318,8 +318,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/board/removeReply.kh", method=RequestMethod.POST)
-	public ModelAndView removeReply(ModelAndView mv) {
-		
+	public ModelAndView removeReply(ModelAndView mv,
+			@RequestParam("replyNo") Integer replyNo) {
+		int result = bService.removeReply(replyNo);
+		if(result > 0){
+			mv.setViewName("redirect:/board/list.kh");
+		}else {
+			
+		}
 		return mv;
 	}
 	

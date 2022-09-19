@@ -76,8 +76,8 @@
 			<td>${reply.replyContents}</td>
 			<td>${reply.rUpdateDate }</td>
 			<td>
-				<a href="#" onclick="modifyView(this,'${reply.replyContents}',${reply.replyNo });">수정</a> 
-				<a href="#">삭제</a>
+				<a href="#" onclick="modifyView(this,'${reply.replyContents}',${reply.replyNo });">수정</a>
+				<a href="#" onclick="removeReply(${reply.replyNo});">삭제</a>
 			</td>
 		</tr>
 	</c:forEach>
@@ -97,17 +97,19 @@
 					var $delForm = $("<form>");
 					$delForm.attr("action","/board/removeReply.kh");
 					$delForm.attr("method","POST");
-					$delForm.append("<input type='hidden' name='replyNo' value='"+replyNo+"'>)
+					$delForm.append("<input type='hidden' name='replyNo' value='"+replyNo+"'>");
+					$delForm.appendTo("body");
 					$delForm.submit();
 				}
 			}
 			
 			
 			function modifyView(obj,replyContents,replyNo){
+				alert("ddd");
 				event.preventDefault();
 				var $tr = $("<tr>");
 				$tr.append("<td colspan='3'><input type='text' size='50' value='"+replyContents+"'></td>");
-				$tr.append("<td><button onclick='modifyReply("+replyNo+","+obj+");'>수정</button></td>");
+				$tr.append("<td><button onclick='modifyReply("+replyNo+",this);'>수정</button></td>");
 				console.log($tr[0]);
 				console.log(obj);
 				$(obj).parent().parent().after($tr);

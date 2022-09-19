@@ -35,4 +35,6 @@ public interface BoardService {
 	
 	public int modifyReply (Reply reply);
 	
+	public int removeReply (int replyNo);
+	
 }
