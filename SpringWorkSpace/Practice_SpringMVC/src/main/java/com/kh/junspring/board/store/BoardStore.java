@@ -21,4 +21,5 @@ public interface BoardStore {
 	public int updateBoardCount(SqlSession session,int boardNo);
 	public int insertReply(SqlSession session, Reply reply);
 	public List<Reply> selectAllReplyByNo(SqlSession session, int boardNo);
+	public int updateReply(SqlSession session, Reply reply);
 }

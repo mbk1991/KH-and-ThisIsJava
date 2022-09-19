@@ -94,4 +94,10 @@ public class BoardStoreLogic implements BoardStore{
 		return lList;
 	}
 
+	@Override
+	public int updateReply(SqlSession session, Reply reply) {
+		int result = session.update("ReplyMapper.updateReply", reply);
+		return result;
+	}
+
 }

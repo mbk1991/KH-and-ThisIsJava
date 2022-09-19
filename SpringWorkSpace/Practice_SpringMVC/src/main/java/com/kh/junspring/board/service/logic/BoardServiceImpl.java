@@ -68,5 +68,10 @@ public class BoardServiceImpl implements BoardService{
 		List<Reply> lList = bStore.selectAllReplyByNo(session,boardNo);
 		return lList;
 	}
+	@Override
+	public int modifyReply(Reply reply) {
+		int result = bStore.updateReply(session, reply);
+		return result;
+	}
 
 }

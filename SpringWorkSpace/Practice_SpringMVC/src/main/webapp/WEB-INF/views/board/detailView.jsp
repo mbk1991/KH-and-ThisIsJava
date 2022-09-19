@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 조회</title>
+<script src="/resources/js/jquery-3.6.1.min.js"></script>
 </head>
 <body>
 	<h1 align="center">${board.boardNo }번 게시물 상세 보기</h1>
@@ -74,13 +75,10 @@
 			<td width="100">${reply.replyWriter }</td>
 			<td>${reply.replyContents}</td>
 			<td>${reply.rUpdateDate }</td>
-			<td><a href="#">수정</a> <a href="#">삭제</a></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<input type="text" size="50" value="${reply.replyContents}">
+			<td>
+				<a href="#" onclick="modifyView(this,'${reply.replyContents}',${reply.replyNo });">수정</a> 
+				<a href="#">삭제</a>
 			</td>
-			<td><button></button></td>
 		</tr>
 	</c:forEach>
 	</table>		
@@ -92,6 +90,47 @@
 				if(window.confirm("정말 삭제하시겠습니까")){
 					location.href="/board/remove.kh";
 				}
+			}
+			function removeReply(replyNo){
+				event.preventDefault();
+				if(confirm("정말 삭제하시겠습니까?")){
+					var $delForm = $("<form>");
+					$delForm.attr("action","/board/removeReply.kh");
+					$delForm.attr("method","POST");
+					$delForm.append("<input type='hidden' name='replyNo' value='"+replyNo+"'>)
+					$delForm.submit();
+				}
+			}
+			
+			
+			function modifyView(obj,replyContents,replyNo){
+				event.preventDefault();
+				var $tr = $("<tr>");
+				$tr.append("<td colspan='3'><input type='text' size='50' value='"+replyContents+"'></td>");
+				$tr.append("<td><button onclick='modifyReply("+replyNo+","+obj+");'>수정</button></td>");
+				console.log($tr[0]);
+				console.log(obj);
+				$(obj).parent().parent().after($tr);
+			}
+			
+			function modifyReply(rNo,obj){
+				var inputTag = $(obj).parent().siblings().eq(0).children();
+				console.log("inputTag" + inputTag);
+// 				var inputTag = $(obj).parent().prev().children();
+// 				var replyContents = $("#modifyInput").val();
+				var replyContents = inputTag.val();
+				console.log(replyContents);
+				console.log(rNo);
+				
+				var $form = $("<form>");
+				$form.attr("action","/board/modifyReply.kh");
+				$form.attr("method","post");
+				console.log($form);
+				$form.append("<input type='hidden' value='"+replyContents+"' name='replyContents'>");
+				$form.append("<input type='hidden' value='"+rNo+"' name='replyNo'>")
+				console.log($form[0]);
+				$form.appendTo("body");
+				$form.submit();
 			}
 		</script>
 		

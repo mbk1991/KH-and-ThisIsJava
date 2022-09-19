@@ -281,7 +281,7 @@ public class BoardController {
 	
 	
 	
-	/*
+	/**
 	 * 댓글 등록
 	 * @param mv
 	 * @return mv
@@ -297,6 +297,29 @@ public class BoardController {
 		if(result > 0) {
 			mv.setViewName("redirect:/board/detail.kh?boardNo="+reply.getRefBoardNo());
 		}
+		return mv;
+	}
+	
+	/**
+	 * 
+	 */
+	@RequestMapping(value="/board/modifyReply.kh",method=RequestMethod.POST)
+	public ModelAndView modifyReply(ModelAndView mv,
+			@ModelAttribute Reply reply) {
+		int result = bService.modifyReply(reply);
+		if(result > 0) {
+//			mv.setViewName("redirect:/board/detail.kh?boardNo=");
+			mv.setViewName("redirect:/board/list.kh");
+		}else {
+			
+		}
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/board/removeReply.kh", method=RequestMethod.POST)
+	public ModelAndView removeReply(ModelAndView mv) {
+		
 		return mv;
 	}
 	

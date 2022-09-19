@@ -16,12 +16,13 @@
   <select id="selectReply" resultMap="replyResultMap">
   	SELECT * FROM REPLY_TBL WHERE REF_BOARD_NO=#{refBoardNo}
   </select>
-  
-  
   <insert id="insertReply">
   	INSERT INTO REPLY_TBL 
   	VALUES(REPLY_SEQ_NO.NEXTVAL,#{refBoardNo},#{replyContents},#{replyWriter},DEFAULT,DEFAULT,DEFAULT)
   </insert>
+  <update id="updateReply">
+  	UPDATE REPLY_TBL SET REPLY_CONTENTS=#{replyContents} WHERE REPLY_NO = #{replyNo}
+  </update>
 
 	  
   

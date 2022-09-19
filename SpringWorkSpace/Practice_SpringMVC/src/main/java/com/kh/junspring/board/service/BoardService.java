@@ -33,4 +33,6 @@ public interface BoardService {
 	
 	public List<Reply> printAllReplyByNo(int boardNo);
 	
+	public int modifyReply (Reply reply);
+	
 }
