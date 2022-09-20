@@ -93,13 +93,16 @@
 			}
 			function removeReply(replyNo){
 				event.preventDefault();
+				console.log(replyNo);
 				if(confirm("정말 삭제하시겠습니까?")){
 					var $delForm = $("<form>");
-					$delForm.attr("action","/board/removeReply.kh");
+					$delForm.attr("action","/board/removeReply.kh ");
 					$delForm.attr("method","POST");
 					$delForm.append("<input type='hidden' name='replyNo' value='"+replyNo+"'>");
 					$delForm.appendTo("body");
 					$delForm.submit();
+					
+					console.log("확인");
 				}
 			}
 			
