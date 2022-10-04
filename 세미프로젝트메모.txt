@@ -226,3 +226,203 @@ includes(문자열)함수를 사용하여야 함.
 2. div 틀을 잡아주고.
 3. 부모에서 폭을 잡고
 4. 자식에서 높이를 잡고 있음.
+
+
+
+220926
+##1
+최신글 조회 쿼리문
+유니온으로 합친 것을 인라인뷰로 사용해서
+상위 5개만 노출되도록해보자.
+마이바티스에서 비교연산자가 에러나는 문제 발생.
+방법1.<![CDATA[]]> 안에 비교 연산자를 넣는다.
+방법2. 방법2는 에러가 나서 1번으로 해결함.
+lt,<
+gt,>
+lte <=를 사용한다.
+
+홈컨트롤러 url에 같이 적어주어야 한다.
+메인페이지의 jsp에서 ajax를 이용하여 
+페이지 로드 시 컨트롤러에서 값을 가져오고자 하였다.
+가져온 값을 el로 사용해보려하였으나 js단에서 success를 통해 받은 값을
+el로 사용할 수는 없었다. 이런 경우 js의 배열로 다루어서 처리해야하지 않을까
+싶은데 번거로운 일인 것 같다......
+
+
+##2
+검색 쿼리문 수정
+SELECT BOARD_NO,REVIEW_TITLE,REVIEW_WRITER,R_LOCATION_CODE,REVIEW_FILENAME,REVIEW_RENAME,REVIEW_FILEPATH,REVIEW_COUNT,R_CREATE_DATE,R_UPDATE_DATE,R_STATUS,THUMBNAIL_PATH,LOCATION_NAME
+		FROM REVIEW_TBL R LEFT JOIN LOCATION_TBL L
+		ON R.R_LOCATION_CODE = L.LOCATION_CODE
+		<where>
+			<if test='searchCondition.toString()=="all"'>
+				(REVIEW_TITLE LIKE '%'||#{searchValue}||'%' <if test='searchRegion.toString()!="00"'>AND R_LOCATION_CODE=#{searchRegion}</if>)OR
+				(REVIEW_CONTENTS LIKE '%'||#{searchValue}||'%' <if test='searchRegion.toString()!="00"'>AND R_LOCATION_CODE=#{searchRegion}</if>)OR
+				(REVIEW_WRITER LIKE '%'||#{searchValue}||'%' <if test='searchRegion.toString()!="00"'>AND R_LOCATION_CODE=#{searchRegion}</if>)
+			</if> 
+			<if test='searchCondition.toString()=="title"'>
+				REVIEW_TITLE LIKE '%'||#{searchValue}||'%' <if test='searchRegion.toString()!="00"'>AND R_LOCATION_CODE=#{searchRegion}</if>
+			</if>
+			<if test='searchCondition.toString()=="writer"'>
+				REVIEW_WRITER LIKE '%'||#{searchValue}||'%' <if test='searchRegion.toString()!="00"'>AND R_LOCATION_CODE=#{searchRegion}</if>
+			</if>
+			<if test='searchCondition.toString()=="contents"'>
+				REVIEW_CONTENTS LIKE '%'||#{searchValue}||'%' <if test='searchRegion.toString()!="00"'>AND R_LOCATION_CODE=#{searchRegion}</if>
+			</if>
+		</where>
+		ORDER BY R_CREATE_DATE DESC
+
+포인트는 <if>태그를 사용하여서 로케이션코드가 전국('00')이 안인 경우에만
+where조건에 검색지역 조건이 적용되도록 한 것이다.
+
+##3
+댓글 개수도 추가하고 싶으나 보류
+
+##4
+화면단 꾸미기.
+이클립스 css가 적용되지 않는 문제 발생.
+
+깃허브 리드미 파일 정리하기.
+
+css로 화면 꾸미는 중..
+긴 경우 생략하기..
+
+div p {
+  overflow: hidden;  		// 을 사용해 영역을 감출 것
+  text-overflow: ellipsis;  	// 로 ... 을 만들기 
+  white-space: nowrap; 		// 아래줄로 내려가는 것을 막기위해
+  word-break:break-all
+  width: 100px;
+  height: 20px;
+}
+출처: https://devbirdfeet.tistory.com/140 [새발개발자:티스토리]
+
+
+div에 테두리를 그려놓고 보면 편하다.
+
+
+
+220927 학원 시험
+
+
+프로젝트화면..
+
+
+클래스
+note-editor note-frame
+썸머노트 css주기
+
+
+css로 한땀 한땀 만들기.
+
+왼쪽 사이드바 만든 것을
+플로팅 메뉴로 바꿈.
+
+제목이 너무 길면 저장이 안된다...
+
+220928
+제목 길이 유효성 검사
+30자가 넘어가면 30자 초과하는 부분이 지워지도록
+
+발표보고서 제작)
+기능을 어떻게 만들었는지
+uml만으로는 힘들기 때문에 화면단으로 설명을 해야함.
+
+
+ㅁ왜 이 프로젝트를 했는가
+ㅁ프로젝트가 왜 좋은가
+ㅁ어떻게 구현하였나.
+1) 화면 부터 uml까지 구현에 대한 이해도를 높이기 위함.
+
+ㅁ코딩을 하면서 어려웠던 점 공유.
+
+ㅁ소감
+  팀원 각자 소감.
+
+ㅁQnA
+
+### 기능 상 보완할 것
+
+채택된 게시물의 수정 삭제를 막아야 함.
+
+==================
+
+
+220929 세미프로젝트 발표
+데이터베이스는 SQL로 가지고 다니는 것.
+SQL디벨로퍼에서 익스포트하여 SQL문을 
+가지고다닌다!
+DROP 테이블부터해서 테이블 생성 등
+쭉 sql문으로 실행할수 있도록 가지고 다닌다.
+
+
+채팅 아이자브?
+아이자브
+
+다른조 신기한 기능.
+-이메일인증
+-로그인 유지기능(쿠키, 인터셉터)
+
+
+인터셉터. 따로 클래스를 빼서 세션을 다른곳엥서
+처리하도록함? 체크박스를 클릭하여 7일동안 
+쿠키를 저장하도록 함. ?
+
+4일부터
+ajax aop 배우기로함.
+
+
+220930
+프로젝트 리뷰
+ㅁ실무에서는 자바스크립트 코드를 따로
+파일에 넣어서 동작을 시킨다.
+
+ㅁ파이널때는 js코드를 파일로 모아서 사용하자.
+폴더 정리를 잘 하자
+
+ㅁ자바doc 파란주석
+학원에서한 습관이 회사에도 그대로 간다.
+
+ㅁ mapper selectKey태그
+
+ㅁ 인터셉터
+
+ㅁ System.out.println은 코드를 느리게 만든다.
+ logger를 사용하여 확인한다.
+콘솔창에서 쿼리문이 뭐가되었는지 파라미터가 뭐가 넘어갔는지 확인할 수 있게 한다.
+
+ㅁ동적쿼리
+
+ㅁ 쿼리문 비교연산자는 CDATA 씌우기.
+
+ㅁ e.printStackTrade
+
+ㅁ자바스크립트의 ajax와 jQuery의 ajax 비교해보기
+
+ㅁDB에 암호를 저장할때는 암호화를 하여 저장한다.
+BCrypt. 암호화 복호화.
+
+ㅁ채팅 ajax
+
+ㅁ회원가입 인증 이메일
+javamailsender
+
+ㅁdomain 속에 List<Reply> reply;
+로 도메인 속에 List를 다룰 수 있다.
+마이바티스를 고쳐야함.
+private int 변수1
+private String 변수2
+private List<Reply> reply
+댓글 리스트를 게시물 도메인에서 다루면
+한번에 select할 수 ㅇ ㅣㅆ다.
+
+ㅁ 자주쓰는것은 모듈화해준다.
+ex) 영어->한글로 바꾸는 메소드를 만들어줌.
+
+ㅁforeach 태그를 스크립트에 사용할 수 있다.
+스크립트에 jstl을 쓸 수 있다.
+
+ㅁ 페이징객체를 bean으로 쓴다면
+@Autowired
+@Value("")
+setter이용

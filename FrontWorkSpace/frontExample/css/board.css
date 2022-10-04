@@ -101,15 +101,32 @@ div{
     background-color: white;
 
 }
-    #left-area{
+    #board-area{
         float: left;
-        width: 480px;
-        margin: 0px;
+        width: 100%;
+        margin: 0;
         background-color: white;
-      
-
-
     }
+        #notice-area{
+            
+        }
+        #notice-title{
+            position: relative;
+            left: 50%;
+            font-size: larger;
+            font-weight: bold;
+        }
+        #notice-table{
+            position: relative;
+            left: 100px;
+            width: 80%;
+            height: 160px;
+            text-align: center;            
+        }
+        th,td{
+            border-bottom: 1px solid rgb(170, 170, 170);
+        }
+        
         #ad-area{
             height: 200px;
             margin: 3px;
@@ -123,15 +140,22 @@ div{
             }
         #article-area{
             height: 300px;
-            background-color: aliceblue;
+            background-color: white;
             margin: 3px;
             border: 2px solid rgb(170, 170, 170);
         }
+            #article-title{
+                position: relative;
+                left: 50%;
+                font-size: larger;
+                font-weight: bold;
+
+            }
             .poster-wrap{
               float: left;
               margin-top: 30px;
-              margin-left: 14px;
-              width: 100px;
+              margin-left: 20px;
+              width: 22%;
               /* height: 100%; */
             }
             .article-thumb{
@@ -142,14 +166,7 @@ div{
                 text-align: center;
                 font-weight: bold;
             }
-            .article-info{
-
-            }
-            .view{
-                width: 15px;
-                height: 15px;
-            }
-            .reply{
+            .view,.reply{
                 width: 15px;
                 height: 15px;
             }
