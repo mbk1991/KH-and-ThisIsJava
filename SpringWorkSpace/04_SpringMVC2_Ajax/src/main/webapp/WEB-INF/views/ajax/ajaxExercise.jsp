@@ -33,11 +33,87 @@
 	<h3>3. 버튼 클릭시 서버에서 보낸 값 수신</h3>
 	<button id="jq-btn3">서버에서 보낸값 확인</button>
 	<p id="confirm-area"></p>
+	
+	<h4>4. 서버로 전송값 보내고 결과 문자열 받아서 처리</h4>
+	<p>숫자 2개를 전송하고 더한 값 받기</p>
+	첫번째 수 : <input type="text" id="num-1"><br>
+	두번째 수 : <input type="text" id="num-2"><br>
+	<button id="jq-btn4">전송 및 결과확인</button>
+	<p id="p4"></p>
+	
 		
+	<h1>JSON 개요</h1>
+	<p>
+		Ajax 서버 통신시 데이터 전송을 위한 포맷
+		<br>
+		JSON(Javscript Object Notation) : 자바스크립트 객체 표기법
+		<br>
+		JSON을 사용하면 모든 데이터형을 서버와 주고 받을 수 있다.(사용목적)
+		<br> 숫자, 문자열, boolean, 배열, 객체, null
+		<br>
+		'{'으로 시작하여 '}'로 끝나며 그 속에 데이터를 표기하고 'key : value(값)' 쌍으로 구성된다.
+		<pre>
+			{
+				"name" : "이순신",
+				"age" : 27,
+				"birth" : "1990-01-01",
+				"gender" : "남",
+				"marry" : true,
+				"address" : "서울특별시 중구 인사동",
+				"family" : {  
+							"father" : "아버지",
+							"mother" : "어머니",
+							"brother" : "동생"
+						}
+			}
+		</pre>
+	</p>
+	
+	<h4>5. 서버로 전송값 보내고 결과 JSON으로 받아서 처리</h4>
+	유저 번호 입력 : <input type="text" id="user-num"><br>
+	<p id="p5"></p>
+	<button id="jq-btn5">실행 및 결과확인</button>
 	
 
 	<script>
 ////jQuery방식
+	$("#jq-btn5").on("click",function(){
+		var memberId = $("#user-num").val();
+		$.ajax({
+			url:"/ajax/ex4.kh",
+			type:"GET",
+			data:{"memberId":memberId},
+			success: function(result){
+				console.log(result);
+				$("#p5").html(result.memberPwd);
+			},
+			error: function(){
+				console.log("서버 처리 실패");
+			}
+		});
+	});
+
+
+	$("#jq-btn4").on("click",function(){
+		var num1 = $("#num-1").val();
+		var num2 = $("#num-2").val();
+		$.ajax({
+			url : "/ajax/ex3.kh",
+			type : "get",
+			data : {"num1":num1,"num2":num2},
+			success : function(result){
+				$("#p4").html("연산결과 :"+result);
+			},
+			error : function(){}
+		});
+	});
+
+
+
+
+
+
+
 		$("#jq-btn3").on("click",function(){
 			$.ajax({
 				url : "/ajax/ex2.kh",
