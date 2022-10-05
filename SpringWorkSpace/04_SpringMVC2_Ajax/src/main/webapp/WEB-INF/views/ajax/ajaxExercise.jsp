@@ -74,9 +74,64 @@
 	<p id="p5"></p>
 	<button id="jq-btn5">실행 및 결과확인</button>
 	
+	
+	<h4>6. 서버로 전송값을 보내고 JSONArray로 결과 받아서 처리</h4>
+	<p>유저 번호를 보내서 해당 유저를 가져오고, 없는 경우 전체리스트 가져오기</p>
+	유저 번호 입력 : <input type="text" id="find-num"><br>
+	<p id="p6"></p>
+	<button id="jq-btn6">실행 및 결과확인</button>
 
 	<script>
 ////jQuery방식
+	$("#jq-btn6").on("click",function(){
+		var inputId = $("#find-num").val();
+		
+		$.ajax({
+			url: "/ajax/ex5.kh",
+			type: "get",
+			data: {"memberId":inputId},
+			success:function(data){
+				
+				var outputStr = "";
+				for(var i=0; i<data.length; i++){
+					outputStr += data[i].memberId +"/" + data[i].memberPwd;
+					if(i<data.length-1){
+						outputStr+="<br>";
+					}
+				}
+				$("#p6").html(outputStr);
+				
+				
+				//0.강사님 풀이) ajax로 데이터를 보내서 서버에서 처리하는 방법
+				
+// 				1. 내가 푼 방식) json array를 다 받고 js처리하는방법
+// 				var check=false;
+// 				var allString ="";
+// 				for(var i=0; i<data.length; i++){
+// 					if(inputId == data[i].memberId){
+// 						$("#p6").html("아이디 :" +data[i].memberId + "비밀번호 :"+data[i].memberPwd);						
+// 						check=true;
+// 					}
+// 					allString += "아이디 :" +data[i].memberId + "비밀번호 :"+data[i].memberPwd;
+// 					if(i<data.length-1){
+// 						allString += "<br>";
+// 					}
+// 				  }
+// 				if(check==false){
+					
+// 					$("#p6").html("찾는 회원이 없습니다<br>"+allString);
+// 				}
+				
+				},
+
+			error:function(){
+				console.log("서버 요청 실패!!");
+			}
+		});
+		
+		
+	});
+
 	$("#jq-btn5").on("click",function(){
 		var memberId = $("#user-num").val();
 		$.ajax({
