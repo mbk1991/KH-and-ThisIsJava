@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.kh.springmvc.member.domain.Member;
 
 @Controller
@@ -113,6 +114,20 @@ public class AjaxController {
 		
 		return jsonArr.toString();
 //		return jsonArr.toJSONString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/ajax/ex6.kh",produces="application/json;charset=utf-8", method=RequestMethod.GET)
+	public String exerciseAjax6() {
+		ArrayList<Member> mList = new ArrayList<Member>();
+		mList.add(new Member("khuser01","pass01"));
+		mList.add(new Member("khuser02","pass02"));
+		mList.add(new Member("khuser03","pass03"));
+		mList.add(new Member("khuser04","pass04"));
+		mList.add(new Member("khuser05","pass05"));
+		
+		return new Gson().toJson(mList);
+		
 	}
 	
 }

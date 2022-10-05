@@ -80,9 +80,35 @@
 	유저 번호 입력 : <input type="text" id="find-num"><br>
 	<p id="p6"></p>
 	<button id="jq-btn6">실행 및 결과확인</button>
+	
+	
+	<h4>7. GSON을 이용한 List 변환</h4>
+	<p>전체리스트 가져오기</p>
+	<p id="p7"></p>
+	<button id="jq-btn7">실행 및 결과확인</button>
+	
+	
+	
 
 	<script>
 ////jQuery방식
+
+	$("#jq-btn7").on("click",function(){
+		$.ajax({
+			url:"/ajax/ex6.kh",
+			type:"GET",
+			data:{},
+			success:function(data){
+				console.log(data);
+			},
+			error:function(){}
+		});
+		
+		
+	});
+
+
+
 	$("#jq-btn6").on("click",function(){
 		var inputId = $("#find-num").val();
 		

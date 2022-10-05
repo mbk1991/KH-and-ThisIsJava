@@ -96,4 +96,18 @@ public class BoardController {
 		mv.setViewName("board/listView");
 		return mv;
 	}
+	
+	// 댓글관리 - Ajax 버전!!
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
