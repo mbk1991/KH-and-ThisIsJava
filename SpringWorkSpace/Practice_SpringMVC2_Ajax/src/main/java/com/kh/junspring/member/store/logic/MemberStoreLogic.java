@@ -24,6 +24,16 @@ public class MemberStoreLogic implements MemberStore{
 	}
 
 	@Override
+	public int checkId(SqlSession session, Member member) {
+		return session.selectOne("MemberMapper.selectCheckId",member);
+	}
+
+	@Override
+	public int selectDupId(SqlSession session, String memberId) {
+		return session.selectOne("MemberMapper.selectIdDupCheck",memberId);
+	}
+
+	@Override
 	public int insertMember(SqlSession session, Member member) {
 		int result = session.insert("MemberMapper.insertMember", member);
 		return result;

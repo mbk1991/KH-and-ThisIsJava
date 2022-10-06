@@ -70,38 +70,89 @@
 	</table>
 <!-- 	</form> -->
 <!-- 댓글 목록 -->
-	<table align="center" width="500" border="1">
-	<c:forEach items="${rList}" var="reply" >
-		<tr>
-			<td width="100">${reply.replyWriter }</td>
-			<td>${reply.replyContents}</td>
-			<td>${reply.rUpdateDate }</td>
-			<td>
-				<a href="#" onclick="modifyView(this,'${reply.replyContents}',${reply.replyNo });">수정</a>
-				<a href="#" onclick="removeReply(${reply.replyNo});">삭제</a>
-			</td>
-		</tr>
-	</c:forEach>
+	<table id="rtb" align="center" width="500" border="1">
+			<thead>
+				<tr>
+					<td colspan="4"><b id="rCount"></b></td>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
 	</table>		
 		
 		
 		<script>
+		var $tableBody = $("#rtb tbody");
+		$tableBody.html("");
+		getReplyList();
+		function getReplyList(){
+			var boardNo = "${board.boardNo}";
+			$.ajax({
+				url:"/board/replyList.kh",
+				data:{"boardNo":boardNo},
+				type:"get",
+				success:function(rList){
+					var $tableBody = $("#rtb tbody");
+					$("#rCount").text("댓글의 개수는 "+(rList.length)+"개입니다.");
+					if(rList!=null){
+						for(var i in rList){
+							var $tr = $("<tr>");
+							var $rWriter = $("<td width='100'>").text(rList[i].replyWriter);
+							var $rContent = $("<td>").text(rList[i].replyContents);
+							var $rCreateDate = $("<td width='100'>").text(rList[i].rCreateDate);
+							var $btnArea = $("<td width='80'>").append("<a href='javascript:void(0);' onclick='modifyView(this,'"+rList[i].replyContents+"',"+rList[i].replyNo+")'>수정</a> ")
+															   .append("<a href='javascript:void(0);' onclick='removeReplyAjax("+rList[i].replyNo+")'>삭제</a> ");
+							$tr.append($rWriter);
+							$tr.append($rContent);
+							$tr.append($rCreateDate);
+							$tr.append($btnArea);
+							$tableBody.append($tr);
+						}
+					}
+					$tableBody.append("");
+				},
+				error:function(){
+				}
+			});
+		}
+		
+		//삭제 온클릭 실행 함수
+		function removeReplyAjax(replyNo){
+			$.ajax({
+				url:"/board/replyDelete.kh",
+				type:"get",
+				data:{"replyNo":replyNo},
+				success:function(data){
+					getReplyList();
+				},
+				error:function(){
+					alert("댓글 삭제 실패");
+				}
+			});
+		}
+		
+		
 			$("#rSubmit").on("click",function(){
 				var refBoardNo = "${board.boardNo }";
 				var replyContents = $("#replyContents").val();
+				
 				$.ajax({
 					url:"/board/replyAdd.kh",
 					type:"POST",
 					data:{
 						 "refBoardNo":refBoardNo,
 						 "replyContents":replyContents
-						 }
+						 },
 					success:function(result){
+						console.log("success확인");
 						if(result =="success"){
-							alert("댓글 등록 성공");
-							//DOM조작 함수호출 등 다양한 이후의 처리.
+							//댓글리스트 
+							$("#replyContents").val("");
+							var $tableBody = $("#rtb tbody");
+							$tableBody.html("");
+							getReplyList();
+							
 						}else{
-							alert("댓글 등록 실패");
 						}
 					},
 					error:function(){}
@@ -150,18 +201,40 @@
 // 				var inputTag = $(obj).parent().prev().children();
 // 				var replyContents = $("#modifyInput").val();
 				var replyContents = inputTag.val();
-				console.log(replyContents);
-				console.log(rNo);
+				$.ajax({
+					url:"/board/replyModify.kh",
+					data:{
+						"replyNo":rNo,
+						"replyContents":replyContents	
+					},
+					type:"post",
+					success:function(result){
+						if(result == "success"){
+							getReplyLlist();
+						}else{
+							alert("댓글 수정 실패");
+						}
+						
+					},
+					error:function(){}
+				});
 				
-				var $form = $("<form>");
-				$form.attr("action","/board/modifyReply.kh");
-				$form.attr("method","post");
-				console.log($form);
-				$form.append("<input type='hidden' value='"+replyContents+"' name='replyContents'>");
-				$form.append("<input type='hidden' value='"+rNo+"' name='replyNo'>")
-				console.log($form[0]);
-				$form.appendTo("body");
-				$form.submit();
+				
+				
+				
+				
+// 				console.log(replyContents);
+// 				console.log(rNo);
+				
+// 				var $form = $("<form>");
+// 				$form.attr("action","/board/modifyReply.kh");
+// 				$form.attr("method","post");
+// 				console.log($form);
+// 				$form.append("<input type='hidden' value='"+replyContents+"' name='replyContents'>");
+// 				$form.append("<input type='hidden' value='"+rNo+"' name='replyNo'>")
+// 				console.log($form[0]);
+// 				$form.appendTo("body");
+// 				$form.submit();
 			}
 		</script>
 		

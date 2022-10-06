@@ -24,6 +24,16 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public int checkId(Member member) {
+		return mStore.checkId(session, member);
+	}
+
+	@Override
+	public int checkDupId(String memberId) {
+		return mStore.selectDupId(session, memberId);
+	}
+
+	@Override
 	public Member printOneById(String memberId) {
 		Member member = mStore.selectOneById(session, memberId);
 		return member;

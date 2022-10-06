@@ -5,16 +5,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.junspring.member.domain.Member;
 import com.kh.junspring.member.service.MemberService;
-import com.kh.junspring.member.service.logic.MemberServiceImpl;
 
 @Controller
 public class MemberController {
@@ -25,6 +24,24 @@ public class MemberController {
 //		// TODO Auto-generated method stub
 //		request.getRequestDispatcher("/WEB-INF/views/member/join.jsp").forward(request, response);
 //	}
+	
+	/**
+	 * ajax 아이디 체크
+	 * @param member
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/member/checkDupId.kh",method=RequestMethod.GET)
+	public String checkId(@RequestParam("memberId") String memberId) {
+		
+		return mService.checkDupId(memberId)+"";
+	}
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value="/member/joinView.kh", method=RequestMethod.GET)
 	public String memberJoinView() {
 		return "member/join";

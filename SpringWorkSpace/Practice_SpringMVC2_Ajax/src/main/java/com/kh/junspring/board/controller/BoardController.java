@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.kh.junspring.board.domain.Board;
 import com.kh.junspring.board.domain.Reply;
 import com.kh.junspring.board.service.BoardService;
@@ -288,7 +290,7 @@ public class BoardController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value="/board/replyAdd.kh",produces="application/json;charset=utf-8", method=RequestMethod.POST)
+	@RequestMapping(value="/board/replyAdd.kh", method=RequestMethod.POST)
 	public String boardReplyAdd(
 			@ModelAttribute Reply reply) {
 		reply.setReplyWriter("admin");
@@ -301,6 +303,56 @@ public class BoardController {
 		}
 	}
 	
+	/**
+	 * ajax 댓글 삭제
+	 * @param replyNo
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/board/replyDelete.kh",method=RequestMethod.GET)
+	public String boardReplyDelete(@RequestParam("replyNo")Integer replyNo) {
+		int result = bService.removeReply(replyNo);
+		if(result > 0) {
+			return "success";
+		}else {
+			return "fail";
+		}
+	}
+	
+	/**
+	 * ajax댓글 수정
+	 */
+	@ResponseBody
+	@RequestMapping(value="/board/replyModify.kh",method=RequestMethod.POST)
+	public String boardReplyModify(
+			@ModelAttribute Reply reply) {
+		int result = bService.modifyReply(reply);
+		if(result > 0) {
+			return "success";
+		}else {
+			return "fail";
+		}
+	}
+	
+	
+	
+	/**
+	 * 게시판 리스트 출력
+	 * @param boardNum
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/board/replyList.kh",produces="application/json;charset=utf8", method=RequestMethod.GET)
+	public String boardReplyList(@RequestParam("boardNo")Integer boardNum) {
+		int boardNo = (boardNum == null) ? 1 : boardNum;
+		List<Reply>rList = bService.printAllReplyByNo(boardNo);
+		if(!rList.isEmpty()) {
+			
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			return gson.toJson(rList);
+		}
+		return null;
+	}
 	
 	
 	

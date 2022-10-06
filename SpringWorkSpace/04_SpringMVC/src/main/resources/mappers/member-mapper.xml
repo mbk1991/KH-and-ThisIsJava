@@ -22,6 +22,17 @@
 <!--   </select> -->
   
   
+  <select id="selectIdDupCheck" resultType="_int">
+  	SELECT COUNT(*) FROM MEMBER_TBL
+  	WHERE MEMBER_ID=#{memberId} AND M_STATUS = 'Y'
+  </select>
+  
+  
+  <select id="selectCheckId" resultType="_int" parameterType="Member">
+  	SELECT COUNT(*) FROM MEMBER_TBL 
+  	WHERE MEMBER_ID = #{memberId}
+  </select>
+  
   <select id="selectLoginOne" resultMap="memberResult">
   	SELECT MEMBER_ID, MEMBER_NAME FROM MEMBER_TBL
   	WHERE MEMBER_ID = #{memberId} AND MEMBER_PWD =#{memberPwd}

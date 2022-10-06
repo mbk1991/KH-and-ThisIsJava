@@ -18,6 +18,11 @@
 <!-- 	<select id="selectCheckOne" resultType="_int"> -->
 <!-- 		SELECT COUNT(*) FROM MEMBER_TBL -->
 <!-- 	</select> -->
+	  <select id="selectIdDupCheck" resultType="_int">
+	  	SELECT COUNT(*) FROM MEMBER_TBL
+	  	WHERE MEMBER_ID=#{memberId} AND M_STATUS = 'Y'
+	  </select>
+
 	<insert id="insertMember" parameterType="Member">
 		INSERT INTO MEMBER_TBL
 		VALUES(#{memberId}, #{memberPwd}, #{memberName}, #{memberEmail}, #{memberPhone }, #{memberAddr }, DEFAULT, DEFAULT, DEFAULT)
