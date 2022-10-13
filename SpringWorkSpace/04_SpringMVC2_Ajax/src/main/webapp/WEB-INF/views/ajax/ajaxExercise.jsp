@@ -93,39 +93,37 @@
 	<script>
 ////jQuery방식
 
-	$("#jq-btn7").on("click",function(){
-		$.ajax({
-			url:"/ajax/ex6.kh",
-			type:"GET",
-			data:{},
-			success:function(data){
-				console.log(data);
-			},
-			error:function(){}
-		});
-		
-		
+$("#jq-btn7").on("click",function(){
+	$.ajax({
+		url:"/ajax/ex6.kh",
+		type:"GET",
+		data:{},
+		success:function(data){
+			console.log(data);
+		},
+		error:function(){}
 	});
+});
 
 
 
-	$("#jq-btn6").on("click",function(){
-		var inputId = $("#find-num").val();
-		
-		$.ajax({
-			url: "/ajax/ex5.kh",
-			type: "get",
-			data: {"memberId":inputId},
-			success:function(data){
-				
-				var outputStr = "";
-				for(var i=0; i<data.length; i++){
-					outputStr += data[i].memberId +"/" + data[i].memberPwd;
-					if(i<data.length-1){
-						outputStr+="<br>";
-					}
+$("#jq-btn6").on("click",function(){
+	var inputId = $("#find-num").val();
+	
+	$.ajax({
+		url: "/ajax/ex5.kh",
+		type: "get",
+		data: {"memberId":inputId},
+		success:function(data){
+			
+			var outputStr = "";
+			for(var i=0; i<data.length; i++){
+				outputStr += data[i].memberId +"/" + data[i].memberPwd;
+				if(i<data.length-1){
+					outputStr+="<br>";
 				}
-				$("#p6").html(outputStr);
+			}
+			$("#p6").html(outputStr);
 				
 				
 				//0.강사님 풀이) ajax로 데이터를 보내서 서버에서 처리하는 방법
@@ -150,104 +148,98 @@
 				
 				},
 
-			error:function(){
-				console.log("서버 요청 실패!!");
-			}
-		});
-		
-		
+		error:function(){
+			console.log("서버 요청 실패!!");
+		}
 	});
+});
 
-	$("#jq-btn5").on("click",function(){
-		var memberId = $("#user-num").val();
-		$.ajax({
-			url:"/ajax/ex4.kh",
-			type:"GET",
-			data:{"memberId":memberId},
-			success: function(result){
-				console.log(result);
-				$("#p5").html(result.memberPwd);
-			},
-			error: function(){
-				console.log("서버 처리 실패");
-			}
-		});
+$("#jq-btn5").on("click",function(){
+	var memberId = $("#user-num").val();
+	$.ajax({
+		url:"/ajax/ex4.kh",
+		type:"GET",
+		data:{"memberId":memberId},
+		success: function(result){
+			console.log(result);
+			$("#p5").html(result.memberPwd);
+		},
+		error: function(){
+			console.log("서버 처리 실패");
+		}
 	});
+});
 
 
-	$("#jq-btn4").on("click",function(){
-		var num1 = $("#num-1").val();
-		var num2 = $("#num-2").val();
-		$.ajax({
-			url : "/ajax/ex3.kh",
-			type : "get",
-			data : {"num1":num1,"num2":num2},
-			success : function(result){
-				$("#p4").html("연산결과 :"+result);
-			},
-			error : function(){}
-		});
+$("#jq-btn4").on("click",function(){
+	var num1 = $("#num-1").val();
+	var num2 = $("#num-2").val();
+	$.ajax({
+		url : "/ajax/ex3.kh",
+		type : "get",
+		data : {"num1":num1,"num2":num2},
+		success : function(result){
+			$("#p4").html("연산결과 :"+result);
+		},
+		error : function(){}
 	});
+});
+
+$("#jq-btn3").on("click",function(){
+	$.ajax({
+		url : "/ajax/ex2.kh",
+		type : "GET",
+		success : function(data){
+			$("#confirm-area").html(data);
+		},
+		error : function(){
+			console.log("처리 실패");
+		}
+	});
+});
 
 
 
-
-
-
-
-		$("#jq-btn3").on("click",function(){
-			$.ajax({
-				url : "/ajax/ex2.kh",
-				type : "GET",
-				success : function(data){
-					$("#confirm-area").html(data);
-				},
-				error : function(){
-					console.log("처리 실패");
-				}
-			});
-		});
-
-
-
-		function jqueryFunc(){
-			var message = $("#msg-2").val();
-			$.ajax({
-				url : "/ajax/ex1.kh",
-				data : {"msg" : message},
-				type : "get",
-				success : function(){
-					console.log("서버 전송 성공");
-				},
-				error : function(){
-					console.log("서버 전송 실패");
-				}
-			});
-	}
+function jqueryFunc(){
+	var message = $("#msg-2").val();
+	$.ajax({
+		url : "/ajax/ex1.kh",
+		data : {"msg" : message},
+		type : "get",
+		success : function(data){
+			console.log("서버 전송 성공");
+			console.log(data);
+		},
+		error : function(){
+			console.log("서버 전송 실패");
+		}
+	});
+}
 	
 	
 	
 ////바닐라js방식
-		function jsFunc(){
-			//1.XMLHttpRequest 객체 생성
-			var xhttp = new XMLHttpRequest();
-			var msg = document.querySelector("#msg-1").value;
-			//2.요청정보 설정
-			xhttp.open("GET","/ajax/ex1.kh?msg="+msg,true);
-			//3.데이터처리에 따른 동작함수 설정
-			xhttp.onreadystatechange=function(){
-				if(this.readyState = 4 && this.status == 200){
-					//status -> 200(요청성공),404(페이지,url없음),500(서버오류발생),403(접근거부),400(쿼리스트링 갯수오류)
-					console.log("서버 전송 성공")
-					var responseJson = JSON.parse(xhttp.response);
-					console.log(responseJson.msg);
-				}else if(this.readState == 4 && this.status == 404){
-					console.log("서버 전송 실패")
-				}
-			}
-			//4.전송
-			xhttp.send();
+function jsFunc(){
+	//1.XMLHttpRequest 객체 생성
+	var xhttp = new XMLHttpRequest();
+	var msg = document.querySelector("#msg-1").value;
+	//2.요청정보 설정
+	xhttp.open("GET","/ajax/ex1.kh?msg="+msg,true);
+	//3.데이터처리에 따른 동작함수 설정
+	xhttp.onreadystatechange=function(){
+		if(this.readyState == 4 && this.status == 200){
+			//status -> 200(요청성공),404(페이지,url없음),500(서버오류발생),403(접근거부),400(쿼리스트링 갯수오류)
+			console.log("서버 전송 성공");
+			var responseJson = JSON.parse(xhttp.response);
+			console.log(responseJson);
+		}else if(this.readState == 4 && this.status == 404){
+			console.log("서버 전송 실패");
+			console.log(data);
 		}
+	}
+	//4.전송
+	xhttp.send();
+}
 	</script>
 </body>
 </html>

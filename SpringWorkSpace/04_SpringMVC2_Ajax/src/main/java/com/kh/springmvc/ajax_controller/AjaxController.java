@@ -26,7 +26,10 @@ public class AjaxController {
 	@RequestMapping(value="/ajax/ex1.kh",method=RequestMethod.GET)
 	public String exerciseAjax1(@RequestParam("msg")String msg) {
 		System.out.println("전송받은 데이터: "+msg);
-		return "{'msg':'success'}";
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("msg","success");
+//		return jsonObject.toString();
+		return "{'msg':'123'}";
 		
 	}
 	
@@ -125,6 +128,7 @@ public class AjaxController {
 		mList.add(new Member("khuser03","pass03"));
 		mList.add(new Member("khuser04","pass04"));
 		mList.add(new Member("khuser05","pass05"));
+		System.out.println(new Gson().toJson(mList));
 		
 		return new Gson().toJson(mList);
 		

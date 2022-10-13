@@ -21,6 +21,12 @@
     height: 200px;
     background-color: gold;
     transform: rotatez(180deg);
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: x-large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: medium;
+    color:rgb(213, 213, 213)
 }
 
 .tran3{
@@ -45,6 +51,10 @@
     border: 1px solid red;
     transition-duration: 2s;
     transition-delay: 2s;
+    color:beige;
+    vertical-align: middle;
+    border-style: none;
+    
 }
 .tran4:active{
     background-color: rosybrown;
