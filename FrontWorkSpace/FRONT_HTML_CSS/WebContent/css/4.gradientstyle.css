@@ -7,6 +7,10 @@
 }
 #gradient1{
     background: linear-gradient(to bottom, blue,white);
+    text-decoration: underline;
+    color:whitesmoke;
+    border-radius:10px;
+    
 }
 #gradient2{
     background: linear-gradient(45deg,blue,red)
@@ -15,7 +19,7 @@
     background: linear-gradient(blue,red,purple);
 }
 #gradient4{
-    background: linear-gradient(blue 25%,red 50%,yellow 75%, black 100%)
+    background: linear-gradient(rgb(255, 251, 230) 25%,red 50%,yellow 75%, black 100%)
 }
 #gradient5{
     background: repeating-linear-gradient(green,yellow 33%);

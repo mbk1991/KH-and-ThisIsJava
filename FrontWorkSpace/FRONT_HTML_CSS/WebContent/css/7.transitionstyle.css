@@ -36,12 +36,17 @@
     border: 1px solid red;
     transition-duration: 5s;
     transition-timing-function: ease;
+    display:none;
+    vertical-align: middle;
+    border-style: none;
+    
 }
 
 .tran3:active{
     background-color: steelblue;
     border: 1px solid steelblue;
     transform: rotateZ(180deg);
+    color:darkorange
 }
 
 .tran4{
@@ -59,4 +64,5 @@
 .tran4:active{
     background-color: rosybrown;
     border: 1px solid rosybrown;   
+    text-align: center;
 }

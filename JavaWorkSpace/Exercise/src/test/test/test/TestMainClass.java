@@ -4,6 +4,13 @@ public class TestMainClass {
 
 	public static void main(String[] args) {
 		
+		String fileName = "image2.png";
+		
+		System.out.println("파일 .확장자 분리");
+		System.out.println(fileName.substring(fileName.lastIndexOf(".")));
+		
+		
+		
 		//img태그의 src의 경로만 가져오기.
 		
 		String target="<p><img src=\"/resources/image/review/summerImageFiles/20220919164712.png\" style=\"width: 543px;\"><img src=\"/resources/image/review/summerImageFiles/20220919164617.png\" style=\"width: 678px;\">"
