@@ -1,4 +1,4 @@
-package com.kh.springmvc;
+package com.kh.springmvc.customer;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;

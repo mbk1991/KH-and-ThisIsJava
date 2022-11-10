@@ -1,5 +1,7 @@
 package com.kh.junspring.member.service.logic;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +37,10 @@ public class MemberServiceImpl implements MemberService {
 		int result = mStore.insertMember(session, member);
 		return result;
 	}
+	@Override
+	public int registerMember(Map<String, String> paramMap) {
+		return 1;
+	}
 
 	@Override
 	public int modifyMember(Member member) {
@@ -49,5 +55,7 @@ public class MemberServiceImpl implements MemberService {
 				, memberId);
 		return result;
 	}
+
+
 
 }

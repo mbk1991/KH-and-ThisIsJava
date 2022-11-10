@@ -1,5 +1,8 @@
 package com.kh.springmvc.member.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,6 +23,35 @@ public class MemberController {
 
 	@Autowired
 	private MemberService mService;
+
+	//MockMVC 테스트용 메소드!
+	@RequestMapping(value = "/memberRegister.do", method = RequestMethod.POST)
+	public ModelAndView memberRegister(ModelAndView mv,
+			@RequestParam("userId")String userId,
+			@RequestParam("password") String password,
+			@RequestParam("name")String name,
+			@RequestParam("email")String email,
+			@RequestParam("tel")String tel) {
+		
+		Map<String,String> paramMap = new HashMap<>();
+		paramMap.put("userId",userId);
+		paramMap.put("password",password);
+		paramMap.put("name",name);
+		paramMap.put("email",email);
+		paramMap.put("tel",tel);
+		
+		int result = mService.registerMember(paramMap);
+		String str = "";
+		if(result>0) {
+			str = "회원가입 성공";
+		}else {
+			str = "회원가입 실패";
+		}
+		mv.addObject("msg",str);
+		mv.setViewName("common/errorPage");
+		
+		return mv;
+	}
 
 	@RequestMapping(value = "/member/joinView.kh", method = RequestMethod.GET)
 	public String memberJoinView() {
@@ -130,16 +162,16 @@ public class MemberController {
 			if (result > 0) {
 				mv.setViewName("redirect:/home.kh");
 			} else {
-				mv.addObject("msg","정보 수정에 실패하였습니다.").setViewName("common/errorPage");
+				mv.addObject("msg", "정보 수정에 실패하였습니다.").setViewName("common/errorPage");
 			}
 		} catch (Exception e) {
-			mv.addObject("msg",e.getMessage()).setViewName("common/errorPage");
+			mv.addObject("msg", e.getMessage()).setViewName("common/errorPage");
 		}
 		return mv;
 	}
 
-	@RequestMapping(value="/member/remove.kh",method=RequestMethod.GET)
-	public ModelAndView removeMember(HttpSession session,ModelAndView mv) {
+	@RequestMapping(value = "/member/remove.kh", method = RequestMethod.GET)
+	public ModelAndView removeMember(HttpSession session, ModelAndView mv) {
 		System.out.println("동작확인");
 		try {
 			Member member = (Member) session.getAttribute("loginUser");
@@ -153,9 +185,9 @@ public class MemberController {
 				mv.addObject("msg", "탈퇴에 실패하였습니다.").setViewName("common/errorPage");
 			}
 		} catch (Exception e) {
-			mv.addObject("msg",e.toString()).setViewName("common/errorPage");
+			mv.addObject("msg", e.toString()).setViewName("common/errorPage");
 		}
-		
+
 		return mv;
 	}
 }

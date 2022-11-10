@@ -1,5 +1,7 @@
 package com.kh.springmvc.member.service.logic;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +47,11 @@ public class MemberServiceImpl implements MemberService{
 	public int removeMember(String memberId) {
 		int result = mStore.deleteMember(session, memberId);
 		return result;
+	}
+
+	@Override
+	public int registerMember(Map<String, String> paramMap) {
+		return 1;
 	}
 
 }
